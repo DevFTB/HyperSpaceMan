@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/SolarSystem/_Scenes/Fuel Station.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Enemy/_Graphics/bullet_sprite.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 108.356
+
+[node name="Fuel Station" type="Area2D" groups=[
+"Fuel Station",
+]]
+
+scale = Vector2( 2.53961, 2.53961 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+fuel_amount = 0
+fuel_price = null
+randomness = null
+tooltip = "Press F to buy fuel for %s minerals"
+no_fuel_tooltip = "Out of fuel"
+
+[node name="Sprite" type="Sprite" parent="." index="0" groups=[
+"Fuel Station",
+]]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+

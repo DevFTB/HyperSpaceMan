@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/SolarSystem/_Scenes/SpaceObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/SolarSystem/_Scripts/Planet.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "rotate",
+"speed": 5.0
+} ]
+
+[node name="Planet" groups=[
+"Collider",
+] instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
+
+[node name="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" parent="." index="1"]
+
+frames = SubResource( 1 )
+animation = "rotate"
+_sections_unfolded = [ "Transform" ]
+
+

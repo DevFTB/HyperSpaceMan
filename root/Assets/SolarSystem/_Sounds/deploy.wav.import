@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deploy.wav-a59e4d6511c1e93c741a6023e214fe43.sample"
+
+[deps]
+
+source_file="res://Assets/SolarSystem/_Sounds/deploy.wav"
+dest_files=[ "res://.import/deploy.wav-a59e4d6511c1e93c741a6023e214fe43.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
