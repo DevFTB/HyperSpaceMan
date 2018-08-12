@@ -39,30 +39,23 @@ player = NodePath("../../Player")
 script = ExtResource( 4 )
 solar_system_scene = ExtResource( 5 )
 grid_size = 2000
+min_distance = 15000
+max_distance = 60000
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
 ] instance=ExtResource( 6 )]
 
-
-GUI = NodePath("../CanvasLayer/GUI")
-minerals = 1000
-fuel_capacity = 1000
-mining_time = 5
-engine_acceleration = 50
-max_speed = 500
-max_health = 1000
-friction = 1
-fuel_value = 100
+bullet_speed = null
+damage = null
+engine_acceleration = null
+max_speed = null
+Bullet = null
+shoot_sound = null
+move_sound = null
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
-
-script = ExtResource( 4 )
-solar_system_scene = ExtResource( 5 )
-grid_size = 1250
-min_distance = 6000
-max_distance = 16000
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="." method="_on_unpause"]
 
 

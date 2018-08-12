@@ -82,12 +82,7 @@ colors = PoolColorArray( 1, 0.078125, 0.078125, 1, 1, 0.539063, 0, 1 )
 [sub_resource type="GradientTexture" id=2]
 
 flags = 4
-<<<<<<< HEAD
-gradient = SubResource( 1 )
-width = 64
 
-[sub_resource type="RectangleShape2D" id=3]
-=======
 gradient = SubResource( 3 )
 width = 2048
 
@@ -132,16 +127,11 @@ anim_loop = false
 _sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Scale", "Trail" ]
 
 [sub_resource type="RectangleShape2D" id=6]
->>>>>>> master
 
 custom_solver_bias = 0.0
 extents = Vector2( 27.3591, 28.2188 )
 
-<<<<<<< HEAD
-[sub_resource type="SpriteFrames" id=4]
-=======
 [sub_resource type="SpriteFrames" id=7]
->>>>>>> master
 
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
@@ -162,15 +152,12 @@ _sections_unfolded = [ "Transform" ]
 movement_speed = 50
 damage = 30
 max_health = 100
-<<<<<<< HEAD
-seperation_velocity = 100.0
-=======
+
 bullet_speed = 750.0
 fire_rate = 0.5
 seperation_speed = 800.0
 seperation_drag = 40.0
 bullet = ExtResource( 2 )
->>>>>>> master
 
 [node name="Life Bar" type="TextureProgress" parent="." index="0"]
 
@@ -222,9 +209,6 @@ _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 
 [node name="Particles2D" type="Particles2D" parent="Enemy" index="0"]
 
-<<<<<<< HEAD
-shape = SubResource( 3 )
-=======
 position = Vector2( 2.31753, -2.42705 )
 rotation = 1.5708
 emitting = true
@@ -250,17 +234,14 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Trans
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" index="1"]
 
 shape = SubResource( 6 )
->>>>>>> master
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy" index="2"]
 
 scale = Vector2( 0.45, 0.45 )
-<<<<<<< HEAD
-frames = SubResource( 4 )
-=======
+
 frames = SubResource( 7 )
->>>>>>> master
+
 animation = "Move"
 _sections_unfolded = [ "Transform" ]
 
