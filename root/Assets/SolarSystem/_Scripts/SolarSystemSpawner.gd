@@ -75,18 +75,18 @@ func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid
 		var goal_x_grid = int(goal_pos.x/(grid_size * 2))
 		var goal_y_grid = int(goal_pos.y/(grid_size * 2))
 		if not new_sun_pos_dict.has([goal_x_grid, goal_y_grid]):
-			create_solar_system(goal_x_grid * (grid_size * 2) + rand_range(-0.8 * grid_size, 0.8 * grid_size), goal_y_grid * (grid_size * 2) + rand_range(-0.8 * grid_size, 0.8 * grid_size), int(rand_range(3, 6)), int(rand_range(1500, 3250)), sun_sprites, planet_sprites)
+			create_solar_system(goal_x_grid * (grid_size * 2) + rand_range(-0.7 * grid_size, 0.7 * grid_size), goal_y_grid * (grid_size * 2) + rand_range(-0.7 * grid_size, 0.7 * grid_size), int(rand_range(5, 9)), int(rand_range(1500, 3250)), sun_sprites, planet_sprites)
 			new_sun_pos_dict[[goal_x_grid, goal_y_grid]] = true
 	return new_sun_pos_dict
 	
 func start_spawn(sun_sprites, planet_sprites, sun_dict, grid_size):
 	var new_dict = sun_dict
-	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),4000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 3000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),5000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 5000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 5000, sun_sprites, planet_sprites, new_dict, grid_size)
 	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
 	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),8000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(2, Vector2(0, 1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(2, Vector2(0,-1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
 	return new_dict

@@ -16,12 +16,18 @@ func _ready():
 	# Initialization here
 	#pass
 	randomize()
-	init(50, 3000, [["res://Assets/SolarSystem/_Graphics/Suns/placeholde/sun00.png","res://Assets/SolarSystem/_Graphics/Suns/placeholde/sun01.png"]], [["res://Assets/SolarSystem/_Graphics/Planets/t1p1/t100.png", "res://Assets/SolarSystem/_Graphics/Planets/t1p1/t101.png"]])
 
 func init(n, spread, sun_sprites, planet_sprites):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
 	var planet_width = load(planet_sprites[0][0]).get_width() * planet_max
 	var planet_grid ={}
+	#*1.5 for clear radius around sun
+	var sun_width = (load(sun_sprites[0][0]).get_width() * sun_max) * 1.5
+	var sun_to_planet = sun_width/planet_width
+	for i in range(-ceil(sun_to_planet/2), ceil(sun_to_planet/2)):
+		for j in range(-ceil(sun_to_planet/2), ceil(sun_to_planet/2)):
+			planet_grid[Vector2(i, j)] = true
+	
 	#
 	var sun = sun_scene.instance()
 	add_child(sun)
@@ -30,10 +36,9 @@ func init(n, spread, sun_sprites, planet_sprites):
 	for x in range(0, n):
 		#
 		var spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
-		print(spawn_pos/planet_width)
-		if planet_grid.has(floor(spawn_pos/planet_width)):
+		if not planet_grid.has((spawn_pos/planet_width).floor()):
 
-			planet_grid[floor(spawn_pos/planet_width)] = true
+			planet_grid[(spawn_pos/planet_width).floor()] = true
 			#
 			var planet = planet_scene.instance()
 			add_child(planet)
@@ -44,7 +49,7 @@ func init(n, spread, sun_sprites, planet_sprites):
 			
 			planet.init(planet_scale, sprite, amount_of_enemies)
 			
-			planet.position = floor(spawn_pos/planet_width) * planet_width
+			planet.position = (spawn_pos/planet_width).floor() * planet_width
 		
 
 #func _process(delta):
