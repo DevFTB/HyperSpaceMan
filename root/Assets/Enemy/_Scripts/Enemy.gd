@@ -17,8 +17,11 @@ var health
 var vector_to_player
 
 var seperation_velocity
+var follow_velocity
 
 var player
+
+var dead
 
 func _ready():
 
@@ -41,9 +44,9 @@ func _process(delta):
 
 func move(delta):
 	
-	look_at(player.global_position)
-	
-	var follow_velocity = vector_to_player.normalized() * (vector_to_player.abs().length())
+	if (not dead):
+		follow_velocity = vector_to_player.normalized() * (vector_to_player.abs().length())
+		look_at(player.global_position)
 	
 	position += (follow_velocity + seperation_velocity) * delta
 
@@ -62,10 +65,14 @@ func reduce_health(decrement):
 	health -= decrement
 	$"Life Bar".value = health
 	if health <= 0:
-		dead()
+		die()
 
-func dead():
+func die():
+	dead = true
+	
+	$Enemy/CollisionShape2D.disabled = true
 	$Enemy/AnimatedSprite.play("Die")
+	
 
 func _on_FireTimer_timeout():
 	
