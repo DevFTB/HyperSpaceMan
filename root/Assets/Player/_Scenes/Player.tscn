@@ -101,11 +101,11 @@ collision_layer = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
-minerals = null
-fuel = null
-fuel_capacity = null
+minerals = 0
+fuel = 0.0
+fuel_capacity = 0
 mining_time = 0
 bullet_speed = 750
 damage = 50
@@ -187,7 +187,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="ShootTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 0.1
+wait_time = 0.25
 one_shot = false
 autostart = false
 
