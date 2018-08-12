@@ -41,7 +41,7 @@ fuel_value = 100
 script = ExtResource( 4 )
 solar_system_scene = ExtResource( 5 )
 grid_size = 1250
-min_distance = 8000
+min_distance = 6000
 max_distance = 16000
 
 
