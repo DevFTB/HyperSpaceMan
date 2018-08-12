@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Player/_Sounds/shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Player/_Sounds/move.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Player/_Graphics/particles.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Player/_Graphics/playership.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/_Graphics/playerv1.png" type="Texture" id=6]
 
 [sub_resource type="Gradient" id=1]
 
@@ -90,7 +90,7 @@ _sections_unfolded = [ "Angle", "Animation", "Color", "Damping", "Emission Shape
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
-[node name="Player" type="Area2D" index="0"]
+[node name="Player" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -104,7 +104,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 GUI = null
 minerals = null
-fuel = null
 fuel_capacity = null
 mining_time = null
 bullet_speed = 750
@@ -121,7 +120,7 @@ move_sound = ExtResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="." index="0"]
 
-position = Vector2( -33.7569, -0.0311241 )
+position = Vector2( -26, 0 )
 scale = Vector2( 0.005, 0.005 )
 emitting = true
 amount = 5
@@ -178,9 +177,9 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( -5.15636, -0.31697 )
+position = Vector2( -8.53134, -0.29984 )
 rotation = 1.5708
-scale = Vector2( 4.26913, 4.99802 )
+scale = Vector2( 1.99885, 3.22765 )
 shape = SubResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
@@ -204,6 +203,7 @@ area_mask = 1
 
 [node name="MoveSoundPlayer" type="AudioStreamPlayer2D" parent="." index="6"]
 
+position = Vector2( 0.237823, -0.237827 )
 stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0

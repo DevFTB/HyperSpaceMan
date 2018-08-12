@@ -4,23 +4,23 @@
 [ext_resource path="res://Assets/Enemy/_Graphics/enemy_sprite.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Player/_Scripts/FireTimer.gd" type="Script" id=3]
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 0.506024, 1 )
 colors = PoolColorArray( 1, 0, 0, 1, 0.90625, 0.603245, 0.0247803, 1, 0, 0.710938, 0.0944214, 1 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture" id=2]
 
 flags = 4
-gradient = SubResource( 3 )
+gradient = SubResource( 1 )
 width = 64
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 27.3591, 28.2188 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -37,7 +37,7 @@ bullet_speed = 600.0
 fire_rate = 0.5
 damage = 30
 max_health = 100
-seperation_velocity = 700.0
+seperation_velocity = 100.0
 
 [node name="Life Bar" type="TextureProgress" parent="." index="0"]
 
@@ -64,7 +64,7 @@ exp_edit = false
 rounded = false
 texture_under = null
 texture_over = null
-texture_progress = SubResource( 4 )
+texture_progress = SubResource( 2 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = true
@@ -73,7 +73,6 @@ _sections_unfolded = [ "Size Flags", "Textures" ]
 [node name="Enemy" type="Area2D" parent="." index="1" groups=[
 "Enemy",
 "Collider",
-"Enemy",
 ]]
 
 z_index = 1
@@ -90,13 +89,13 @@ _sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy" index="1"]
 
 scale = Vector2( 0.45, 0.45 )
-frames = SubResource( 2 )
+frames = SubResource( 4 )
 animation = "Move"
 _sections_unfolded = [ "Transform" ]
 
