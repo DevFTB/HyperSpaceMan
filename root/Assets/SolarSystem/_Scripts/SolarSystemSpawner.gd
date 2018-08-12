@@ -34,7 +34,7 @@ func _process(delta):
 	var pos = [int(full_position.x/grid_size), int(full_position.y/grid_size)]
 	if not explored_grid.has(pos):
 		explored_grid[pos] = true
-		sun_grid = spawn(clamp(randi()%3, 1, 2), full_position, start_pos, ((time_left * min_distance) + max_distance * (game_time - time_left))/game_time, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
+		sun_grid = spawn(2, full_position, start_pos, ((time_left * min_distance) + max_distance * (game_time - time_left))/game_time, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
 		
 func build_animations(path, i):
 	var animations = []
@@ -67,10 +67,7 @@ func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid
 	var new_sun_pos_dict = sun_pos_dict
 	for i in range (0, n):
 		var rand_rotate
-		if randi() % 2 == 0:
-			rand_rotate = rand_range(-0.25 * PI, 0.25 * PI)
-		else:
-			rand_rotate = rand_range(-0.5 * PI, 0.5 * PI)
+		rand_rotate = rand_range(-0.5 * PI, 0.5 * PI)
 		var goal_pos = (pos + ((pos - origin).normalized() * dist).rotated(rand_rotate))
 		var goal_x_grid = int(goal_pos.x/(grid_size * 2))
 		var goal_y_grid = int(goal_pos.y/(grid_size * 2))
