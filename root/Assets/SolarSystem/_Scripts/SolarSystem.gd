@@ -14,8 +14,7 @@ export (PackedScene) var planet_scene
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	#pass
-	randomize()
+	pass
 
 func init(n, spread, sun_sprites, planet_sprites):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
