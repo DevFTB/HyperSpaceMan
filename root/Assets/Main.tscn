@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -46,13 +46,15 @@ max_distance = 60000
 "Player",
 ] instance=ExtResource( 6 )]
 
-bullet_speed = null
-damage = null
-engine_acceleration = null
-max_speed = null
-Bullet = null
-shoot_sound = null
-move_sound = null
+GUI = NodePath("../CanvasLayer/GUI")
+minerals = 1000
+fuel_capacity = 500
+mining_time = 5
+damage = 25
+engine_acceleration = 150
+max_health = 1000
+friction = 1
+fuel_value = 10
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 

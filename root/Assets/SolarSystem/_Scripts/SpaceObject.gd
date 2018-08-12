@@ -39,7 +39,6 @@ func set_amount_of_enemies(amount):
 	_amount_of_enemies = amount
 
 func _spawn_enemies():
-	print(_amount_of_enemies)
 	$AudioStreamPlayer2D.play(0)
 	
 	for i in range(_amount_of_enemies):
