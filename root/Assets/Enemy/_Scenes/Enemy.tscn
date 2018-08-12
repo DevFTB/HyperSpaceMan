@@ -151,6 +151,7 @@ _sections_unfolded = [ "Transform" ]
 movement_speed = 50
 damage = 30
 max_health = 100
+
 bullet_speed = 750.0
 fire_rate = 0.5
 seperation_speed = 800.0
@@ -237,6 +238,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy" index="2"]
 
 scale = Vector2( 0.45, 0.45 )
+
 frames = SubResource( 15 )
 animation = "Move"
 _sections_unfolded = [ "Transform" ]

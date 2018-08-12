@@ -3,7 +3,6 @@ extends Area2D
 export (NodePath) var GUI
 
 export (int) var minerals
-export (float) var fuel
 export (int) var fuel_capacity
 export (int) var mining_time
 export (int) var bullet_speed
@@ -19,12 +18,14 @@ export (PackedScene) var Bullet
 var tooltip = ""
 var location = [ 'Earth', 'Sol' ]
 var acceleration
-var velocity
+var velocity = Vector2(0,0)
 var collision
 var health
-var can_shoot
+var can_shoot = true
 var can_mine
 var can_buy_fuel
+var fuel
+var levels = {"MaxSpeed": 0, "Acceleration": 0, "Damage": 0, "FuelTank": 0, "Health": 0}
 var isPressed = false
 
 
@@ -32,10 +33,8 @@ export (AudioStream) var shoot_sound
 export (AudioStream) var move_sound
 
 func _ready():
-	velocity = Vector2(0,0)
 	fuel = fuel_capacity
 	health = max_health
-	can_shoot = true
 	GUI = get_node(GUI)
 	GUI.init_labels()
 	GUI.reset_all([location, "None", tooltip, [health, max_health], minerals, [fuel, fuel_capacity], velocity.length()])
@@ -63,7 +62,6 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
 		shoot()
 	move(delta)
-	
 		
 func buy_fuel():
 	reduce_minerals(can_buy_fuel.get_price())
@@ -77,47 +75,46 @@ func change_fuel(amount):
 	fuel = clamp(fuel + amount, 0, fuel_capacity)
 	GUI.update_value('Fuel', [int(fuel), fuel_capacity])
 	
+func get_minerals():
+	return minerals
+	
 func reduce_minerals(amount):
 	minerals -= amount
 	GUI.update_value('Minerals', minerals)
-
 
 func accelerate():
 	acceleration = (get_global_mouse_position() - position).normalized() * engine_acceleration
 	velocity += acceleration
 	if velocity.length() >= max_speed:
 		velocity = velocity.normalized() * max_speed
-	fuel -= 0.05
-	GUI.update_value('Speed', int(velocity.length() * 100))
-	GUI.update_value('Fuel', [int(fuel), fuel_capacity])
+	change_fuel(-0.05)
 	if not $MoveSoundPlayer.playing:
     	$MoveSoundPlayer.play()
 
 func die():
 	hide()
-	print("you dead")
 	$CollisionShape2D.disabled = true
 	can_shoot = false
 	$ShootTimer.stop()
 
 func move(delta):
-  
+	GUI.update_value('Speed', int(velocity.length() * 100))
 	position += velocity * delta
 	look_at(get_global_mouse_position())
 
 func shoot():
 	can_shoot = false
 	$ShootTimer.start()
-	
+
 	var bullet = Bullet.instance()
 	bullet.set_damage(damage)
 	bullet.position = position
+	
 	get_parent().add_child(bullet)
 
-	
 	var bullet_velocity =  velocity + (get_global_mouse_position() - bullet.global_position).normalized() * bullet_speed
-	bullet.set_velocity(bullet_velocity)		
-	
+	bullet.set_velocity(bullet_velocity)
+
 	$ShootSoundPlayer.play(0)
 
 func _on_ShootTimer_timeout():
@@ -141,9 +138,8 @@ func fuel_area_exited(area):
 func collide():
 	velocity = -velocity
 	if velocity.length() <= engine_acceleration:
-		velocity = -velocity.normalized() * engine_acceleration
-	collision = true
-	reduce_health(collision_damage)
+		collision = true
+		reduce_health(collision_damage)
 	
 func reduce_health(damage):
 	health -= damage
@@ -155,4 +151,11 @@ func _on_Player_area_exited(area):
 	if area.is_in_group("Collider"):
 		collision = false
 	if area.is_in_group("Fuel Station"):
-		fuel_area_exited(area)
+		fuel_area_exited(area) 
+
+func get_levels():
+	return levels
+
+func buy_upgrade(upgrade, cost):
+	reduce_minerals(cost)
+	levels[upgrade] += 1

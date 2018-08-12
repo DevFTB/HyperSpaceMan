@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=6]
 
+
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
@@ -76,10 +77,10 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
-minerals = 0
-fuel = 0.0
-fuel_capacity = 0
-mining_time = 0
+
+minerals = null
+fuel_capacity = null
+mining_time = null
 bullet_speed = 750
 damage = 50
 engine_acceleration = 200
@@ -127,9 +128,9 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -5.15636, -0.31697 )
+position = Vector2( -8.53134, -0.29984 )
 rotation = 1.5708
-scale = Vector2( 4.26913, 4.99802 )
+scale = Vector2( 1.99885, 3.22765 )
 shape = SubResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
@@ -153,6 +154,7 @@ area_mask = 1
 
 [node name="MoveSoundPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 
+position = Vector2( 0.237823, -0.237827 )
 stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0

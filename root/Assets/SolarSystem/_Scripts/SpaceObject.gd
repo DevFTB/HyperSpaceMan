@@ -4,8 +4,7 @@ extends Area2D
 # var b = "textvar"
 export (float) var min_animation_speed
 export (float) var max_animation_speed
-
-var enemy = preload("res://Assets/Enemy/_Scenes/Enemy.tscn")
+export (PackedScene) var enemy
 
 var _amount_of_enemies
 
@@ -40,7 +39,6 @@ func set_amount_of_enemies(amount):
 	_amount_of_enemies = amount
 
 func _spawn_enemies():
-	print(_amount_of_enemies)
 	$AudioStreamPlayer2D.play(0)
 	
 	for i in range(_amount_of_enemies):
