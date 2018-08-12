@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 108.356
 
-[node name="Fuel Station" type="Area2D" groups=[
+[node name="Fuel Station" type="Area2D" index="0" groups=[
 "Fuel Station",
 ]]
 
@@ -21,10 +21,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-fuel_amount = 0
-fuel_price = null
-randomness = null
+_sections_unfolded = [ "Collision", "Transform" ]
+fuel_amount = 100
+fuel_price = 10
+randomness = 5.0
 tooltip = "Press F to buy fuel for %s minerals"
 no_fuel_tooltip = "Out of fuel"
 
@@ -32,8 +32,9 @@ no_fuel_tooltip = "Out of fuel"
 "Fuel Station",
 ]]
 
+z_index = -1
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

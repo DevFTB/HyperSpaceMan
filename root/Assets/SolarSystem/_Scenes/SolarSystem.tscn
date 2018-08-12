@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystem.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/SolarSystem/_Scenes/Fuel Station.tscn" type="PackedScene" id=4]
 
-[node name="SolarSystem" type="Node2D" index="0"]
+[node name="SolarSystem" type="Node2D"]
 
 script = ExtResource( 1 )
 planet_min = 1.5
@@ -13,5 +14,6 @@ sun_min = 4.0
 sun_max = 5.0
 sun_scene = ExtResource( 2 )
 planet_scene = ExtResource( 3 )
+fuel_station_scene = ExtResource( 4 )
 
 

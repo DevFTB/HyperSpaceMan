@@ -6,6 +6,7 @@ export (float) var sun_max
 
 export (PackedScene) var sun_scene
 export (PackedScene) var planet_scene
+export (PackedScene) var fuel_station_scene
 	
 # class member variables go here, for example:
 # var a = 2
@@ -32,9 +33,18 @@ func init(n, spread, sun_sprites, planet_sprites):
 	add_child(sun)
 	sun.init(rand_range(sun_min, sun_max), sun_sprites[randi()%len(sun_sprites)], int(rand_range(1.0, 2.0)* 8))
 	sun.position = Vector2(0,0)
+	var spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
+	if not planet_grid.has((spawn_pos/planet_width).floor()):
+
+		planet_grid[(spawn_pos/planet_width).floor()] = true
+		#
+		var fuel_station = fuel_station_scene.instance()
+		add_child(fuel_station)
+		
+		fuel_station.position = (spawn_pos/planet_width).floor() * planet_width
 	for x in range(0, n):
 		#
-		var spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
+		spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
 		if not planet_grid.has((spawn_pos/planet_width).floor()):
 
 			planet_grid[(spawn_pos/planet_width).floor()] = true

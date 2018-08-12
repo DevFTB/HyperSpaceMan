@@ -81,7 +81,7 @@ func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid
 	
 func start_spawn(sun_sprites, planet_sprites, sun_dict, grid_size):
 	var new_dict = sun_dict
-	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 3000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
 	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),5000, sun_sprites, planet_sprites, new_dict, grid_size)
 	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 5000, sun_sprites, planet_sprites, new_dict, grid_size)
 	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 5000, sun_sprites, planet_sprites, new_dict, grid_size)
