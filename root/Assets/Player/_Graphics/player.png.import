@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/playership.png-690ba2d8a78406adbb3ba58b147440b9.stex"
+path="res://.import/player.png-bee29e0f998ed2942f233f4142bdc0d2.stex"
 
 [deps]
 
-source_file="res://Assets/Player/_Graphics/playership.png"
-dest_files=[ "res://.import/playership.png-690ba2d8a78406adbb3ba58b147440b9.stex" ]
+source_file="res://Assets/Player/_Graphics/player.png"
+dest_files=[ "res://.import/player.png-bee29e0f998ed2942f233f4142bdc0d2.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
