@@ -57,14 +57,16 @@ func create_solar_system(x, y, n, spread, sun_sprites, planet_sprites):
 	solar_system.position.y = y
 	
 	
-#spawns solar sytem dist from pos in semiscircle (not yet implemented) away from origin
+#spawns solar sytem dist from pos in semicircle away from origin
 func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid_size):
+	var angle = origin.angle_to(pos)
 	for i in range (0, n):
-		var goal_pos = pos + ((pos - origin).normalized() * dist)
+		var rand_rotate = rand_range(-0.5 * PI, 0.5 * PI)
+		print(rand_rotate)
+		var goal_pos = (pos + ((pos - origin).normalized() * dist)).rotated(rand_rotate)
 		var goal_x_grid = int(goal_pos.x/grid_size)
 		var goal_y_grid = int(goal_pos.y/grid_size)
 		if not sun_pos_dict.has([goal_pos.x, goal_pos.y]):
 			create_solar_system(goal_x_grid * grid_size, goal_y_grid * grid_size, int(rand_range(4, 6)), int(rand_range(1000, 2500)), sun_sprites, planet_sprites)
 			sun_pos_dict[[goal_pos.x, goal_pos.y]] = true
-
 
