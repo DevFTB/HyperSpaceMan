@@ -34,7 +34,7 @@ func _process(delta):
 	var pos = [int(full_position.x/grid_size), int(full_position.y/grid_size)]
 	if not explored_grid.has(pos):
 		explored_grid[pos] = true
-		sun_grid = spawn((clamp((randi() % 4) -1, 1, 2)), full_position, start_pos, ((time_left * min_distance) + max_distance * (game_time - time_left))/game_time, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
+		sun_grid = spawn(clamp(randi()%3, 1, 2), full_position, start_pos, ((time_left * min_distance) + max_distance * (game_time - time_left))/game_time, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
 		
 func build_animations(path, i):
 	var animations = []
@@ -65,14 +65,13 @@ func create_solar_system(x, y, n, spread, sun_sprites, planet_sprites):
 #spawns solar sytem dist from pos in semicircle away from origin
 func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid_size):
 	var new_sun_pos_dict = sun_pos_dict
-	var angle = origin.angle_to(pos)
 	for i in range (0, n):
 		var rand_rotate
-		if not (randi() % 3 == 0):
-			rand_rotate = rand_range(-0.2 * PI, 0.2 * PI)
+		if randi() % 2 == 0:
+			rand_rotate = rand_range(-0.25 * PI, 0.25 * PI)
 		else:
-			rand_rotate = rand_range(-0.4 * PI, 0.4 * PI)
-		var goal_pos = (pos + ((pos - origin).normalized() * dist)).rotated(rand_rotate)
+			rand_rotate = rand_range(-0.5 * PI, 0.5 * PI)
+		var goal_pos = (pos + ((pos - origin).normalized() * dist).rotated(rand_rotate))
 		var goal_x_grid = int(goal_pos.x/(grid_size * 2))
 		var goal_y_grid = int(goal_pos.y/(grid_size * 2))
 		if not new_sun_pos_dict.has([goal_x_grid, goal_y_grid]):
@@ -82,8 +81,12 @@ func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid
 	
 func start_spawn(sun_sprites, planet_sprites, sun_dict, grid_size):
 	var new_dict = sun_dict
-	new_dict = spawn(2, Vector2(1, 0), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(2, Vector2(-1, 0), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(2, Vector2(0, 1), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
-	new_dict = spawn(2, Vector2(0,-1), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),4000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 4000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(1, 0), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(-1, 0), Vector2(0, 0),8000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0, 1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(1, Vector2(0,-1), Vector2(0, 0), 8000, sun_sprites, planet_sprites, new_dict, grid_size)
 	return new_dict
