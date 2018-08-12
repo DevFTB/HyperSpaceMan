@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Planet.tscn" type="PackedScene" id=3]
 
-[node name="SolarSystem" type="Node2D"]
+[node name="SolarSystem" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 planet_min = 1.5
