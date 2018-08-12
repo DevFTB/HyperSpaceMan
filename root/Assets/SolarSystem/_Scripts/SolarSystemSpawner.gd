@@ -2,6 +2,8 @@ extends Node
 
 export (PackedScene) var solar_system_scene
 export (int) var grid_size
+export (int) var min_distance
+export (int) var max_distance
 #export (Texture) var sprite6
 #var planet_sprites
 #var sun_sprites
@@ -18,10 +20,13 @@ var sun_sprite_array
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	randomize()
 	start_pos = get_node("/root/Main/Player").position
 	game_time = get_node("/root/Main").game_time
 	planet_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Planets", 2)
 	sun_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Suns", 2)
+	explored_grid[[0,0]] = true
+	sun_grid = start_spawn(sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
 
 func _process(delta):
 	var time_left = get_node("/root/Main").time_left
@@ -29,8 +34,8 @@ func _process(delta):
 	var pos = [int(full_position.x/grid_size), int(full_position.y/grid_size)]
 	if not explored_grid.has(pos):
 		explored_grid[pos] = true
-		spawn(1, full_position, start_pos, 3500, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
-
+		sun_grid = spawn((clamp((randi() % 4) -1, 1, 2)), full_position, start_pos, ((time_left * min_distance) + max_distance * (game_time - time_left))/game_time, sun_sprite_array, planet_sprite_array, sun_grid, grid_size)
+		
 func build_animations(path, i):
 	var animations = []
 	var dir = Directory.new()
@@ -59,14 +64,26 @@ func create_solar_system(x, y, n, spread, sun_sprites, planet_sprites):
 	
 #spawns solar sytem dist from pos in semicircle away from origin
 func spawn(n, pos, origin, dist, sun_sprites, planet_sprites, sun_pos_dict, grid_size):
+	var new_sun_pos_dict = sun_pos_dict
 	var angle = origin.angle_to(pos)
 	for i in range (0, n):
-		var rand_rotate = rand_range(-0.5 * PI, 0.5 * PI)
-		print(rand_rotate)
+		var rand_rotate
+		if not (randi() % 3 == 0):
+			rand_rotate = rand_range(-0.2 * PI, 0.2 * PI)
+		else:
+			rand_rotate = rand_range(-0.4 * PI, 0.4 * PI)
 		var goal_pos = (pos + ((pos - origin).normalized() * dist)).rotated(rand_rotate)
-		var goal_x_grid = int(goal_pos.x/grid_size)
-		var goal_y_grid = int(goal_pos.y/grid_size)
-		if not sun_pos_dict.has([goal_pos.x, goal_pos.y]):
-			create_solar_system(goal_x_grid * grid_size, goal_y_grid * grid_size, int(rand_range(4, 6)), int(rand_range(1000, 2500)), sun_sprites, planet_sprites)
-			sun_pos_dict[[goal_pos.x, goal_pos.y]] = true
-
+		var goal_x_grid = int(goal_pos.x/(grid_size * 2))
+		var goal_y_grid = int(goal_pos.y/(grid_size * 2))
+		if not new_sun_pos_dict.has([goal_x_grid, goal_y_grid]):
+			create_solar_system(goal_x_grid * (grid_size * 2) + rand_range(-0.8 * grid_size, 0.8 * grid_size), goal_y_grid * (grid_size * 2) + rand_range(-0.8 * grid_size, 0.8 * grid_size), int(rand_range(3, 6)), int(rand_range(1500, 3250)), sun_sprites, planet_sprites)
+			new_sun_pos_dict[[goal_x_grid, goal_y_grid]] = true
+	return new_sun_pos_dict
+	
+func start_spawn(sun_sprites, planet_sprites, sun_dict, grid_size):
+	var new_dict = sun_dict
+	new_dict = spawn(2, Vector2(1, 0), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(2, Vector2(-1, 0), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(2, Vector2(0, 1), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
+	new_dict = spawn(2, Vector2(0,-1), Vector2(0, 0), 6000, sun_sprites, planet_sprites, new_dict, grid_size)
+	return new_dict
