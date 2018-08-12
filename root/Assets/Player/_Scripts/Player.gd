@@ -48,6 +48,11 @@ func _input(ev):
 				buy_fuel()
 			else:
 				GUI.update_value('Tooltip', 'Not enough minerals')
+	
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
+		shoot()
+
+func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT) and not collision:
 		accelerate()
 		$Particles2D.emitting = true
@@ -55,11 +60,6 @@ func _input(ev):
 	else:
 		velocity -= velocity.normalized() * friction
 		$Particles2D.emitting = false
-	
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
-		shoot()
-
-func _process(delta):
 	move(delta)
 	
 		

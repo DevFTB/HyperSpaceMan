@@ -90,7 +90,7 @@ _sections_unfolded = [ "Angle", "Animation", "Color", "Damping", "Emission Shape
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
-[node name="Player" type="Area2D" index="0"]
+[node name="Player" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -106,7 +106,7 @@ GUI = null
 minerals = null
 fuel = null
 fuel_capacity = null
-mining_time = null
+mining_time = 0
 bullet_speed = 750
 damage = 50
 engine_acceleration = 200
@@ -187,7 +187,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="ShootTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 0.25
+wait_time = 0.1
 one_shot = false
 autostart = false
 
