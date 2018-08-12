@@ -25,7 +25,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 "Player",
 ] instance=ExtResource( 3 )]
 
-position = Vector2( -156.432, -465.837 )
 GUI = NodePath("../CanvasLayer/GUI")
 minerals = 1000
 fuel = 100.0
@@ -41,6 +40,8 @@ fuel_value = 100
 
 script = ExtResource( 4 )
 solar_system_scene = ExtResource( 5 )
-grid_size = 2000
+grid_size = 1250
+min_distance = 8000
+max_distance = 16000
 
 
