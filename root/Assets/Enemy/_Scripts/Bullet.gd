@@ -18,6 +18,7 @@ func set_direction_and_speed(direction, speed):
 
 func _on_Bullet_area_entered(area):
 	if area.get_name() == "Player":
+		
 		area.reduce_health(damage)
 		queue_free()
 
