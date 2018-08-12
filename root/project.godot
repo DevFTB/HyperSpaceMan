@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Hyper Space Man"
-run/main_scene="res://Assets/Main.tscn"
+run/main_scene="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn"
 
 [display]
 
