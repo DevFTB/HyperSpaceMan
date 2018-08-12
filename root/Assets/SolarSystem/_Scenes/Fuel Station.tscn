@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Fuel Station.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy/_Graphics/bullet_sprite.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station_4.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station_3.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 108.356
 
-[node name="Fuel Station" type="Area2D" index="0" groups=[
+[node name="Fuel Station" type="Area2D" groups=[
 "Fuel Station",
 ]]
 
@@ -28,16 +40,19 @@ randomness = 5.0
 tooltip = "Press F to buy fuel for %s minerals"
 no_fuel_tooltip = "Out of fuel"
 
-[node name="Sprite" type="Sprite" parent="." index="0" groups=[
+[node name="Sprite" type="AnimatedSprite" parent="." index="0" groups=[
 "Fuel Station",
 ]]
 
 z_index = -1
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 
