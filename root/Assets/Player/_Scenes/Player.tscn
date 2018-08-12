@@ -101,8 +101,9 @@ collision_layer = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
+
 minerals = null
 fuel_capacity = null
 mining_time = null

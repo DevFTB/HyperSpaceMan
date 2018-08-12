@@ -44,7 +44,7 @@ grid_size = 2000
 "Player",
 ] instance=ExtResource( 6 )]
 
-position = Vector2( 953.163, 538.21 )
+
 GUI = NodePath("../CanvasLayer/GUI")
 minerals = 1000
 fuel_capacity = 1000
@@ -58,5 +58,11 @@ fuel_value = 100
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
+
+script = ExtResource( 4 )
+solar_system_scene = ExtResource( 5 )
+grid_size = 1250
+min_distance = 6000
+max_distance = 16000
 
 

@@ -47,6 +47,10 @@ func _input(ev):
 				buy_fuel()
 			else:
 				GUI.update_value('Tooltip', 'Not enough minerals')
+	
+	
+
+func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT) and not collision:
 		accelerate()
 		$Particles2D.emitting = true
@@ -54,11 +58,9 @@ func _input(ev):
 	else:
 		velocity -= velocity.normalized() * friction
 		$Particles2D.emitting = false
-	
+		
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
 		shoot()
-
-func _process(delta):
 	move(delta)
 		
 func buy_fuel():
@@ -103,12 +105,16 @@ func move(delta):
 func shoot():
 	can_shoot = false
 	$ShootTimer.start()
+
 	var bullet = Bullet.instance()
 	bullet.set_damage(damage)
 	bullet.position = position
+	
 	get_parent().add_child(bullet)
+
 	var bullet_velocity =  velocity + (get_global_mouse_position() - bullet.global_position).normalized() * bullet_speed
-	bullet.set_velocity(bullet_velocity)		
+	bullet.set_velocity(bullet_velocity)
+
 	$ShootSoundPlayer.play(0)
 
 func _on_ShootTimer_timeout():
