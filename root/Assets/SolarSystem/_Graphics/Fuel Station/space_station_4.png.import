@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_sprite.png-b900dec277f368d63ea5bd358ed03254.stex"
+path="res://.import/space_station_4.png-7faccf761a31afc0261b06a92debb2db.stex"
 
 [deps]
 
-source_file="res://Assets/Enemy/_Graphics/enemy_sprite.png"
-dest_files=[ "res://.import/enemy_sprite.png-b900dec277f368d63ea5bd358ed03254.stex" ]
+source_file="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station_4.png"
+dest_files=[ "res://.import/space_station_4.png-7faccf761a31afc0261b06a92debb2db.stex" ]
 
 [params]
 
@@ -26,4 +26,4 @@ process/HDR_as_SRGB=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=3.0
+svg/scale=1.0
