@@ -3,12 +3,17 @@
 [ext_resource path="res://Assets/PauseMenu/_Scripts/PauseShop.gd" type="Script" id=1]
 [ext_resource path="res://Assets/PauseMenu/_Graphics/Fonts/SmallFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/LocationGUI/GUILocationFont.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Assets/Main menu/home.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Main menu/instructions.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Main menu/exit.png" type="Texture" id=6]
+[ext_resource path="res://Assets/MainMenu/_Graphics/home.png" type="Texture" id=4]
+[ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=5]
+[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=6]
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/MineralsGUI/MineralsGUIFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/BottomGUI/GUIBottomFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Assets/PauseMenu/_Scenes/Upgrade.tscn" type="PackedScene" id=9]
+
+
+
+
+
 
 [node name="PauseShop" type="MarginContainer" index="0"]
 
