@@ -204,7 +204,7 @@ func stop_mining(mined):
 	mining = false
 	if mined:
 		change_minerals(mine.get_minerals())
-		mine.mined(levels["MineSpeed"] - 1)
+		mine.mined(levels["MineSpeed"] )
 		if levels["MineSpeed"] == 8:
 			$MineSoundPlayer2.play()
 		else:

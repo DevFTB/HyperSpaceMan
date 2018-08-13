@@ -78,7 +78,7 @@ _sections_unfolded = [ "Region" ]
 z_index = 1
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 GUI = NodePath("../CanvasLayer/GUI")
-minerals = 200
+minerals = 100
 friction = 6
 regen_per_second = 2
 
