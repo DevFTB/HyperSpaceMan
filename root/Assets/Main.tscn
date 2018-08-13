@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=8]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 game_time = 1000
