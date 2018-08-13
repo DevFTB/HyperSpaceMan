@@ -24,32 +24,44 @@ var start_pos
 var game_time
 var planet_sprite_array
 var sun_sprite_array
-var sun_names = ["A", "B"]
-var planet_names = ["1", "2"]
+var sun_names_temp = ["Kepler", "HD", "2MASS", "KOI", "WASP", "K2", "HIP", "EPIC", "KELT", "Sol", "CoRoT", "Gliese", "OGLE", "Qatar", "HAT", "GJ", "KELT"]
+var sun_names = []
+	
+func generate_n_digit_numbers(n, amount):
+	var result = []
+	for i in range(amount):
+		result.append(generate_number(n))
+	return result
+	
+func generate_number(length):
+	if length == 0:
+		return ""
+	return generate_number(length-1) + str(int(rand_range(0, 10)))
+
+func generate_sun_names():
+	for i in sun_names_temp:
+		for j in range(2, 5):
+			for k in generate_n_digit_numbers(j, 7):
+				sun_names.append(i + "-" + k)
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	randomize()
+	generate_sun_names()
+
 	start_pos = get_node("/root/Main/Player").position
 	game_time = get_node("/root/Main").game_time
 	planet_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Planets", 2)
 	sun_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Suns", 2)
 	explored_grid[[0,0]] = true
-#	var sun_names_file = File.new()
-#	sun_names_file.open(sun_names_path, File.READ)
-#	for line in sun_names_file.get_as_text().split("\n"):
-#		sun_names.append(line)
-#	var planet_names_file = File.new()
-#	planet_names_file.open(planet_names_path, File.READ)
-#	for line in planet_names_file.get_as_text().split("\n"):
-#		planet_names.append(line)
+	
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
 	#solar_system.get_node("Sun").spawned_enemies = true
 	solar_system.planet_enemies_mean = 1
 	solar_system.planet_enemies_randomness = 0
-	solar_system.init(10, 1500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
+	solar_system.init(10, 1500,sun_sprite_array, planet_sprite_array, "Tutorial")
 	solar_system.sun.spawned_enemies = true
 	solar_system.position = Vector2(600, 600)
 	start_spawn()
@@ -83,7 +95,7 @@ func build_animations(path, i):
 func create_solar_system(x, y, n, spread):
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
-	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)], planet_names)
+	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)])
 	solar_system.position.x = x
 	solar_system.position.y = y
 	

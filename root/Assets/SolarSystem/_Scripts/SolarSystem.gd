@@ -21,7 +21,7 @@ var spread
 var sun_sprites
 var planet_sprites
 var sun_name
-var planet_names
+var planet_names = "abcdefghijklmnopqrstuvqxyz"
 var planet_width
 var sun_width
 var sun_to_planet
@@ -29,12 +29,11 @@ var sun
 
 var planet_grid = {}
 
-func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
+func init(n, spread, sun_sprites, planet_sprites, sun_name):
 	self.spread = spread
 	self.sun_sprites = sun_sprites
 	self.planet_sprites = planet_sprites
 	self.sun_name = sun_name
-	self.planet_names = planet_names
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
 	planet_width = load(planet_sprites[0][0]).get_width() * planet_max
 	#*1.5 for clear radius around sun
@@ -47,7 +46,7 @@ func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
 	spawn_fuel_station()
 		
 	for x in range(0, n):
-		spawn_planet()
+		spawn_planet(x)
 		
 func spawn_fuel_station():
 	var spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
@@ -63,7 +62,7 @@ func spawn_fuel_station():
 		fuel_station.position = spawn_grid_pos * (planet_width + (planet_width * (planet_randomness)))
 		fuel_station.position += Vector2(get_random(planet_width, planet_randomness), get_random(planet_width, planet_randomness))
 			
-func spawn_planet():
+func spawn_planet(n):
 	var spawn_pos = Vector2(rand_range(-1 * spread, spread), rand_range(-1 * spread, spread))
 	var spawn_grid_pos = (spawn_pos/((planet_width) + (planet_width * planet_randomness))).floor()
 	if not planet_grid.has(spawn_grid_pos):
@@ -79,9 +78,10 @@ func spawn_planet():
 		var amount_of_minerals = int(get_random_from_mean(planet_minerals_mean, planet_minerals_randomness))
 		
 		planet.init(planet_scale, sprite, amount_of_enemies, sun_name, amount_of_minerals)
+		planet.set_sun_position(sun.get_sun_position())
 		planet.position = spawn_grid_pos * (planet_width + (planet_width * planet_randomness))
 		planet.position += Vector2(get_random(planet_width, planet_randomness), get_random(planet_width, planet_randomness))
-		planet.planet_name = planet_names[randi()%len(planet_names)]
+		planet.planet_name = planet_names[n]
 
 func spawn_sun():
 	sun = sun_scene.instance()

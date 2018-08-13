@@ -1,7 +1,6 @@
 extends Area2D
 
 export (NodePath) var GUI
-export (NodePath) var main
 var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 150, "MineSpeed": 5}
 var level_multiplier = {"MaxSpeed": 15, "Acceleration": 10, "Damage": 5, "FuelTank": 20, "Health": 30, "MineSpeed": 1.5}
 export (int) var minerals
@@ -14,7 +13,7 @@ export var speed_multiplier = 100
 var mine_strength = ["dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on"]
 
 var tooltip = ""
-var location = [ 'Earth', 'Sol' ]
+var space_location = "Uncharted"
 var acceleration
 var velocity = Vector2(0,0)
 var health
@@ -30,19 +29,19 @@ var f_pressed = false
 var space_pressed = false
 var enemies_killed = 0
 var fuel_value = 0.25
+var sun_position = false
 var total_minerals = 0
 
 signal end_game
 
 func _ready():
 	stats = initial
-	print(stats)
 	fuel = stats["FuelTank"]
 	health = stats["Health"]
 	GUI = get_node(GUI)
 	GUI.init_labels()
-	main = get_node(main)
-	GUI.reset_all([location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length(), main.game_time])
+	var main = get_parent()
+	GUI.reset_all([space_location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length(), main.game_time])
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:
@@ -84,7 +83,11 @@ func _process(delta):
 		$Sprite.play("Move")
 		
 	move(delta)
-	reduce_health(-regen_per_second * delta)
+	
+	if sun_position and (global_position - sun_position).length() > 1750:
+		sun_position = false
+		update_location(space_location)
+	change_health(regen_per_second * delta)
 		
 func mine_step(delta):
 	velocity -= velocity.normalized() * friction
@@ -138,7 +141,7 @@ func win_game():
 	emit_signal("end_game", "You have run out of space!")
 
 func move(delta):
-	var speed = int(velocity.length() * speed_multiplier)
+	var speed = int(velocity.length()) * speed_multiplier
 	GUI.update_value('Speed', speed)
 	if speed >= 300000:
 		win_game()
@@ -180,8 +183,10 @@ func get_mine_strength():
 	return mine_strength[levels["MineSpeed"]]
 
 func mine_area_entered(area):
+	sun_position = false
 	GUI.update_value('Tooltip', area.get_tooltip(get_mine_strength()))
 	GUI.update_value('PlanetMinerals', area.get_minerals())
+	update_location(area.get_sun_name(), area.get_planet_name())
 	mine = area
 
 func mine_area_exited(area):
@@ -189,6 +194,8 @@ func mine_area_exited(area):
 	if mining:
 		stop_mining(false)
 	GUI.update_value('Tooltip', "")
+	sun_position = area.get_sun_position()
+	update_location(area.get_sun_name())
 	
 func start_mining():
 	mining = true
@@ -207,14 +214,18 @@ func stop_mining(mined):
 		
 func fuel_area_entered(area):
 	GUI.update_value('Tooltip', area.get_tooltip())
+	sun_position = false
+	update_location("Fuel Station")
+
 	fuel_station = area
 
 func fuel_area_exited(area):
+	update_location(space_location)
 	GUI.update_value('Tooltip', "")
 	fuel_station = false
 	
-func reduce_health(damage):
-	health = clamp(health - damage, 0, stats["Health"])
+func change_health(amount):
+	health = clamp(health + amount, 0, stats["Health"])
 	if health <= 0:
 		die()
 	GUI.update_value('Health', [int(health), stats["Health"]])
@@ -234,3 +245,7 @@ func buy_upgrade(upgrade, cost):
 func _on_PauseMenu_pause():
 	if mining:
 		stop_mining(false)
+		
+func update_location(sun_name, planet_name=""):
+	GUI.update_value("Location", sun_name + " " + planet_name)
+

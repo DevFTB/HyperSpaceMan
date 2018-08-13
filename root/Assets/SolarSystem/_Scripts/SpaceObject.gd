@@ -117,3 +117,10 @@ func _on_TerminatorSprite_animation_finished():
 	$Explode.emitting = true
 	fade($TerminatorSprite, 0)
 	$Sprite.play("debris")
+
+func get_sun_name():
+	return sun_name
+
+func get_planet_name():
+	return ""
+
