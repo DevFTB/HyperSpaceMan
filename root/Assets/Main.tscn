@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=5]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=7]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -28,17 +28,17 @@ margin_top = 4.0
 margin_right = 1919.0
 margin_bottom = 1084.0
 
-[node name="PauseMenu" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
-
-pause_mode = 2
-_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
-player = NodePath("../../Player")
-
-[node name="EndGame" parent="CanvasLayer" index="2" instance=ExtResource( 4 )]
+[node name="EndGame" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
 
 player = NodePath("/root/Main/Player")
 timer_object = NodePath("/root/Main")
 PauseMenu = NodePath("/root/Main/CanvasLayer/PauseMenu")
+
+[node name="PauseMenu" parent="CanvasLayer" index="2" instance=ExtResource( 4 )]
+
+pause_mode = 2
+_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+player = NodePath("../../Player")
 
 [node name="SolarSystemSpawner" type="Node" parent="." index="1"]
 
