@@ -89,16 +89,16 @@ func mined(mine_level):
 	minerals = 0
 
 	match mine_level:
-		7:
+		8:
 			$IDontFeelSoGood.emitting = true
 			no_minerals_tooltip = "Thanos waz here"
 			fade($Sprite, 0)
-		6:
+		7:
 			no_minerals_tooltip = "TARGET TERMINATED"
 			$TerminatorSprite.visible = true
 			$TerminatorSprite.play()
 			
-		4, 5: 
+		5, 6: 
 			$Explode.emitting = true
 			$Sprite.play("debris")
 		_:

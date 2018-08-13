@@ -10,6 +10,7 @@ export (NodePath) var mineral_label
 export (PackedScene) var instruction_scene
 
 var costs = [50, 100, 200, 500, 1000, 2000, 5000, 8000, "Max"]
+var costs = [20, 50, 100, 200, 500, 1000, 2000, 3000,  5000, "Max"]
 var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health", "MineSpeed"]
 var upgrades
 var enabled = false
