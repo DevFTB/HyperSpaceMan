@@ -55,6 +55,17 @@ fuel_cost = 0.05
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
+script = ExtResource( 4 )
+solar_system_scene = ExtResource( 5 )
+grid_size = 1250
+min_distance = 6000
+max_distance = 16000
+min_planets = 5
+max_planets = 8
+min_solar_range = 1150
+max_solar_range = 1750
+solar_system_randomness = 0.7
+sun_names_path = "res://Assets/SolarSystem/sun_names.txt"
+planet_names_path = "res://Assets/SolarSystem/planet_names.txt"
 
 
