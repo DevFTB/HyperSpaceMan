@@ -10,6 +10,8 @@ export (int) var min_solar_range
 export (int) var max_solar_range
 #solar system randomness within grid cells
 export (float) var solar_system_randomness
+#export(String, FILE, "*.txt") var sun_names_path
+#export(String, FILE, "*.txt") var planet_names_path
 #export (Texture) var sprite6
 #var planet_sprites
 #var sun_sprites
@@ -22,6 +24,8 @@ var start_pos
 var game_time
 var planet_sprite_array
 var sun_sprite_array
+var sun_names = ["A", "B"]
+var planet_names = ["1", "2"]
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -32,6 +36,22 @@ func _ready():
 	planet_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Planets", 2)
 	sun_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Suns", 2)
 	explored_grid[[0,0]] = true
+#	var sun_names_file = File.new()
+#	sun_names_file.open(sun_names_path, File.READ)
+#	for line in sun_names_file.get_as_text().split("\n"):
+#		sun_names.append(line)
+#	var planet_names_file = File.new()
+#	planet_names_file.open(planet_names_path, File.READ)
+#	for line in planet_names_file.get_as_text().split("\n"):
+#		planet_names.append(line)
+	var solar_system = solar_system_scene.instance()
+	add_child(solar_system)
+	solar_system.planet_enemies_mean = 1
+	solar_system.planet_enemies_randomness = 0
+	solar_system.sun_enemies_mean = 2
+	solar_system.sun_enemies_randomness = 0
+	solar_system.init(1000, 2500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
+	solar_system.position = Vector2(600, 600)
 	start_spawn()
 
 func _process(delta):
@@ -63,7 +83,7 @@ func build_animations(path, i):
 func create_solar_system(x, y, n, spread):
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
-	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array)
+	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)], planet_names)
 	solar_system.position.x = x
 	solar_system.position.y = y
 	
@@ -81,11 +101,11 @@ func spawn(n, pos, origin, dist):
 			sun_grid[[goal_x_grid, goal_y_grid]] = true
 	
 func start_spawn():
-	spawn(1, Vector2(1, 0), Vector2(0, 0), 4000)
-	spawn(1, Vector2(-1, 0), Vector2(0, 0),5000)
-	spawn(1, Vector2(0, 1), Vector2(0, 0), 5000)
-	spawn(1, Vector2(0,-1), Vector2(0, 0), 5000)
-	spawn(1, Vector2(1, 0), Vector2(0, 0), 8000)
-	spawn(1, Vector2(-1, 0), Vector2(0, 0),8000)
-	spawn(2, Vector2(0, 1), Vector2(0, 0), 8000)
-	spawn(2, Vector2(0,-1), Vector2(0, 0), 8000)
+	spawn(1, Vector2(1, 0), Vector2(0, 0), 7000)
+	spawn(1, Vector2(-1, 0), Vector2(0, 0),7000)
+	spawn(1, Vector2(0, 1), Vector2(0, 0), 7000)
+	spawn(1, Vector2(0,-1), Vector2(0, 0), 7000)
+	spawn(1, Vector2(1, 0), Vector2(0, 0), 7000)
+	spawn(1, Vector2(-1, 0), Vector2(0, 0),7000)
+	spawn(1, Vector2(0, 1), Vector2(0, 0), 7000)
+	spawn(1, Vector2(0,-1), Vector2(0, 0), 7000)

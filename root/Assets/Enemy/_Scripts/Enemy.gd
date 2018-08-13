@@ -8,10 +8,6 @@ var vector_to_player
 var seperation_velocity
 var follow_velocity
 
-var player_delta_vector
-
-var player
-
 var dead
 
 func init(_preset, _position, _scale):
@@ -29,8 +25,12 @@ func _ready():
 	seperation_velocity = Vector2(0, 0)
 	health = preset.max_health
 	
-	$"Life Bar".value = preset.max_health
 	$Enemy/FireTimer.wait_time = 1/ preset.fire_rate
+	
+	health = max_health
+	
+	$"Life Bar".max_value = max_health
+	$"Life Bar".value = max_health
 	
 	seperate()
 
@@ -72,7 +72,6 @@ func die():
 	
 	$Enemy/CollisionShape2D.disabled = true
 	$Enemy/AnimatedSprite.play("Die")
-	
 
 func init_sprite():
 	var index = int(rand_range(0, preset.sprite_frames_paths.size()))
