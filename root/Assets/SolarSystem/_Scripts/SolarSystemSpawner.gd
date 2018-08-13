@@ -27,6 +27,8 @@ var sun_sprite_array
 var sun_names = []
 var planet_names = []
 
+#WTF IS HAPPENING AND HOW DO I CHANGE SOMETHING!!?!?!??!?!?!?
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -75,6 +77,7 @@ func build_animations(path, i):
 func create_solar_system(x, y, n, spread):
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
+
 	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)], planet_names)
 	solar_system.position.x = x
 	solar_system.position.y = y
