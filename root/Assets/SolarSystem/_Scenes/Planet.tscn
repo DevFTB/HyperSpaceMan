@@ -12,7 +12,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Planet" groups=[
+[node name="Planet" index="0" groups=[
 "Collider",
 ] instance=ExtResource( 1 )]
 
@@ -27,7 +27,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="Sprite" parent="." index="1"]
 
 frames = SubResource( 1 )
-animation = "rotate"
 _sections_unfolded = [ "Transform" ]
+
+[node name="Path2D" parent="." index="3"]
+
+position = Vector2( -5.30211, -0.0809422 )
+scale = Vector2( 1.55573, 1.44882 )
 
 

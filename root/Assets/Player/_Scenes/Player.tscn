@@ -7,23 +7,23 @@
 [ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=6]
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=2]
 
 offsets = PoolRealArray( 0, 0.875676 )
 colors = PoolColorArray( 1, 0.078125, 0.078125, 1, 1, 0.539063, 0, 1 )
 
-[sub_resource type="GradientTexture" id=10]
+[sub_resource type="GradientTexture" id=3]
 
 flags = 4
-gradient = SubResource( 9 )
+gradient = SubResource( 2 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=4]
 
 render_priority = 0
 trail_divisor = 1
@@ -53,7 +53,7 @@ angle = 0.0
 angle_random = 1.0
 scale = 0.3
 scale_random = 0.0
-color_ramp = SubResource( 10 )
+color_ramp = SubResource( 3 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -63,7 +63,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Scale", "Trail" ]
 
-[node name="Player" type="Area2D" index="0"]
+[node name="Player" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -76,18 +76,28 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
-minerals = 0
-fuel = 0.0
-fuel_capacity = 0
-mining_time = 0
-bullet_speed = 750
-damage = 50
-engine_acceleration = 200
-max_speed = 1000
-max_health = null
+initial = {
+"Acceleration": 100,
+"Damage": 15,
+"FuelTank": 100,
+"Health": 100,
+"MaxSpeed": 500,
+"MiningSpeed": 10
+}
+level_multiplier = {
+"Acceleration": 25,
+"Damage": 25,
+"FuelTank": 50,
+"Health": 100,
+"MaxSpeed": 150,
+"MiningSpeed": 5
+}
+minerals = null
 friction = null
+bullet_speed = null
 fuel_value = null
 collision_damage = 10
+fuel_cost = 0.05
 Bullet = ExtResource( 2 )
 shoot_sound = ExtResource( 3 )
 move_sound = ExtResource( 4 )
@@ -127,10 +137,10 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -5.15636, -0.31697 )
+position = Vector2( -3.37963, -1.0678 )
 rotation = 1.5708
-scale = Vector2( 4.26913, 4.99802 )
-shape = SubResource( 8 )
+scale = Vector2( 4.21499, 5.26406 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ShootTimer" type="Timer" parent="." index="3"]
@@ -153,6 +163,7 @@ area_mask = 1
 
 [node name="MoveSoundPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 
+position = Vector2( 0.237823, -0.38168 )
 stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
@@ -179,7 +190,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 11 )
+process_material = SubResource( 4 )
 texture = ExtResource( 6 )
 normal_map = null
 h_frames = 1

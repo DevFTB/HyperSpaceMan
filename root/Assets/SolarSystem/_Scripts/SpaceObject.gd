@@ -4,8 +4,7 @@ extends Area2D
 # var b = "textvar"
 export (float) var min_animation_speed
 export (float) var max_animation_speed
-
-var enemy = preload("res://Assets/Enemy/_Scenes/Enemy.tscn")
+export (PackedScene) var enemy
 
 var _amount_of_enemies
 
@@ -50,8 +49,7 @@ func _spawn_enemies():
 		new_enemy.position = $Path2D.curve.get_point_position(rand_range(0 , $Path2D.curve.get_point_count()))
 		add_child(new_enemy)
 				
-	spawned_enemies = true;
-	
+	spawned_enemies = true	
 
 func _on_EnemySpawnArea_area_entered(area):
 	if(area.get_name() == "Player" && not spawned_enemies):
