@@ -13,7 +13,7 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="Sun" index="0" groups=[
+[node name="Sun" groups=[
 "Collider",
 ] instance=ExtResource( 1 )]
 

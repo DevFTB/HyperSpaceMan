@@ -5,8 +5,6 @@
 [ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station_4.png" type="Texture" id=3]
 [ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station_3.png" type="Texture" id=4]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -22,7 +20,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 radius = 108.356
 
-[node name="Fuel Station" type="Area2D" index="0" groups=[
+[node name="Fuel Station" type="Area2D" groups=[
 "Fuel Station",
 ]]
 
@@ -49,7 +47,7 @@ no_fuel_tooltip = "Out of fuel"
 z_index = -1
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
