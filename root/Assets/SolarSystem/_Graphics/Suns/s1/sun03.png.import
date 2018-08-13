@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sun00.png-23bd30c05012696ce7adf0b999eee8df.stex"
+path="res://.import/sun03.png-5719eed62547b4632745bb7cde6d0e0d.stex"
 
 [deps]
 
-source_file="res://Assets/SolarSystem/_Graphics/Suns/placeholde/sun00.png"
-dest_files=[ "res://.import/sun00.png-23bd30c05012696ce7adf0b999eee8df.stex" ]
+source_file="res://Assets/SolarSystem/_Graphics/Suns/s1/sun03.png"
+dest_files=[ "res://.import/sun03.png-5719eed62547b4632745bb7cde6d0e0d.stex" ]
 
 [params]
 
