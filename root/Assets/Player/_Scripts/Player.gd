@@ -12,7 +12,7 @@ export var speed_multiplier = 100
 var mine_strength = ["dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on"]
 
 var tooltip = ""
-var location = [ 'Earth', 'Sol' ]
+var space_location = "Uncharted"
 var acceleration
 var velocity = Vector2(0,0)
 var health
@@ -28,6 +28,7 @@ var f_pressed = false
 var space_pressed = false
 var enemies_killed = 0
 var fuel_value = 0.25
+var sun_position = false
 
 signal end_game
 
@@ -38,7 +39,7 @@ func _ready():
 	health = stats["Health"]
 	GUI = get_node(GUI)
 	GUI.init_labels()
-	GUI.reset_all([location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length()])
+	GUI.reset_all([space_location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length()])
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:
@@ -73,6 +74,10 @@ func _process(delta):
 		mine_step(delta)
 		
 	move(delta)
+	
+	if sun_position and (global_position - sun_position).length() > 1750:
+		sun_position = false
+		update_location(space_location)
 		
 func mine_step(delta):
 	velocity -= velocity.normalized() * friction
@@ -167,8 +172,10 @@ func get_mine_strength():
 	return mine_strength[levels["MineSpeed"]]
 
 func mine_area_entered(area):
+	sun_position = false
 	GUI.update_value('Tooltip', area.get_tooltip(get_mine_strength()))
 	GUI.update_value('PlanetMinerals', area.get_minerals())
+	update_location(area.get_sun_name(), area.get_planet_name())
 	mine = area
 
 func mine_area_exited(area):
@@ -176,6 +183,8 @@ func mine_area_exited(area):
 	if mining:
 		stop_mining(false)
 	GUI.update_value('Tooltip', "")
+	sun_position = area.get_sun_position()
+	update_location(area.get_sun_name())
 	
 func start_mining():
 	mining = true
@@ -194,9 +203,13 @@ func stop_mining(mined):
 		
 func fuel_area_entered(area):
 	GUI.update_value('Tooltip', area.get_tooltip())
+	sun_position = false
+	update_location("Fuel Station")
+
 	fuel_station = area
 
 func fuel_area_exited(area):
+	update_location(space_location)
 	GUI.update_value('Tooltip', "")
 	fuel_station = false
 	
@@ -221,3 +234,8 @@ func buy_upgrade(upgrade, cost):
 func _on_PauseMenu_pause():
 	if mining:
 		stop_mining(false)
+		
+func update_location(sun_name, planet_name=""):
+	print(planet_name)	
+	GUI.update_value("Location", sun_name + " " + planet_name)
+

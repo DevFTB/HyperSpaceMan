@@ -23,7 +23,6 @@ tooltip = null
 [node name="CollisionShape2D" parent="." index="0"]
 
 position = Vector2( 0, 0 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" parent="." index="1"]
 

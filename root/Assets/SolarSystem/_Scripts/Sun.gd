@@ -12,3 +12,6 @@ func _spawn_enemies():
 	
 	spawned_enemies = true;
 	
+func get_sun_position():
+	return self.global_position
+	

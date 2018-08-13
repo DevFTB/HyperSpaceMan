@@ -100,3 +100,9 @@ func _on_TerminatorSprite_animation_finished():
 	$Explode.emitting = true
 	fade($TerminatorSprite, 0)
 	fade($Sprite, 0.3)
+
+func get_sun_name():
+	return sun_name
+
+func get_planet_name():
+	return ""
