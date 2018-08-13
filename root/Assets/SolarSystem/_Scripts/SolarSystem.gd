@@ -23,7 +23,7 @@ func _ready():
 	# Initialization here
 	pass
 
-func init(n, spread, sun_sprites, planet_sprites, sun_name):
+func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
 	var planet_width = load(planet_sprites[0][0]).get_width() * planet_max
 	var planet_grid ={}
@@ -72,6 +72,7 @@ func init(n, spread, sun_sprites, planet_sprites, sun_name):
 			planet.position = spawn_grid_pos * (planet_width + (planet_width * planet_randomness))
 			planet.position.x += rand_range(-1 * planet_width * planet_randomness, planet_width * planet_randomness)
 			planet.position.y += rand_range(-1 * planet_width * planet_randomness, planet_width * planet_randomness)
+			planet.planet_name = planet_names[randi()%len(planet_names)]
 		
 
 #func _process(delta):

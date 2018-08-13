@@ -11,6 +11,7 @@ export (int) var max_solar_range
 #solar system randomness within grid cells
 export (float) var solar_system_randomness
 export(String, FILE, "*.txt") var sun_names_path
+export(String, FILE, "*.txt") var planet_names_path
 #export (Texture) var sprite6
 #var planet_sprites
 #var sun_sprites
@@ -24,6 +25,7 @@ var game_time
 var planet_sprite_array
 var sun_sprite_array
 var sun_names = []
+var planet_names = []
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -38,6 +40,10 @@ func _ready():
 	sun_names_file.open(sun_names_path, File.READ)
 	for line in sun_names_file.get_as_text().split("\n"):
 		sun_names.append(line)
+	var planet_names_file = File.new()
+	planet_names_file.open(planet_names_path, File.READ)
+	for line in planet_names_file.get_as_text().split("\n"):
+		planet_names.append(line)
 	start_spawn()
 
 func _process(delta):
@@ -69,7 +75,7 @@ func build_animations(path, i):
 func create_solar_system(x, y, n, spread):
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
-	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)])
+	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)], planet_names)
 	solar_system.position.x = x
 	solar_system.position.y = y
 	
