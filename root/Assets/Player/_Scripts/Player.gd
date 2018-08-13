@@ -1,8 +1,8 @@
 extends Area2D
 
 export (NodePath) var GUI
-var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 5}
-var level_multiplier = {"MaxSpeed": 10, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
+var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 10}
+var level_multiplier = {"MaxSpeed": 40, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed
@@ -47,7 +47,7 @@ func _input(ev):
 		if ev.scancode == KEY_F:
 			f_pressed = !f_pressed
 			if fuel_station and f_pressed:
-				if minerals >= fuel_station.get_price():
+				if minerals >= fuel_station.get_price() and fuel < stats["FuelTank"]:
 					buy_fuel()
 				else:
 					GUI.update_value('Tooltip', 'Not enough minerals')
@@ -65,7 +65,7 @@ func _process(delta):
 		$Particles2D.emitting = true
 		$Particles2D.speed_scale = stats["Acceleration"]/15
 	else:
-		velocity -= velocity.normalized() * friction
+		velocity -= velocity.normalized() * friction * delta
 		$Particles2D.emitting = false
 		
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
@@ -110,7 +110,7 @@ func change_minerals(amount):
 	GUI.update_value('Minerals', minerals)
 
 func accelerate(delta):
-	acceleration = (get_global_mouse_position() - position).normalized() * stats["Acceleration"]
+	acceleration = (get_global_mouse_position() - position).normalized() * stats["Acceleration"] * delta
 	velocity += acceleration
 	if velocity.length() >= stats["MaxSpeed"]:
 		velocity = velocity.normalized() * stats["MaxSpeed"]
@@ -119,12 +119,9 @@ func accelerate(delta):
     	$MoveSoundPlayer.play()
 
 func die():
+	$DeathSoundPlayer.play()
 	emit_signal("end_game", "You Died!")
-#	hide()
-#	$CollisionShape2D.disabled = true
-#	can_shoot = false
-#	$ShootTimer.stop()
-
+	
 func out_of_fuel():
 	emit_signal("end_game", "Out of Fuel!")
 	
@@ -179,10 +176,10 @@ func mine_area_entered(area):
 	mine = area
 
 func mine_area_exited(area):
-	GUI.update_value('Tooltip', "")
 	GUI.update_value('PlanetMinerals', "None")
 	if mining:
 		stop_mining(false)
+	GUI.update_value('Tooltip', "")
 	
 func start_mining():
 	mining = true
@@ -221,7 +218,10 @@ func buy_upgrade(upgrade, cost):
 	levels[upgrade] += 1
 	var level_mod = levels[upgrade]
 	$UpgradeSoundPlayer.play()
-	if upgrade == "FuelTank" or upgrade == "MineSpeed":
+	if upgrade == "FuelTank" or upgrade == "MineSpeed" or upgrade == "MaxSpeed":
 		level_mod = pow(level_mod, 2)
 	stats[upgrade] = initial[upgrade] + level_mod * level_multiplier[upgrade]
 		
+func _on_PauseMenu_pause():
+	if mining:
+		stop_mining(false)

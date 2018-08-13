@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Player/_Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/_Scenes/PlayerBullet.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://Assets/Player/_Sounds/upgrade3.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Player/_Sounds/mine.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Player/_Sounds/mine2.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player/_Sounds/Minecraft - Damage Sound.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -184,7 +185,16 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Particles2D" type="Particles2D" parent="." index="9"]
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 9 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Particles2D" type="Particles2D" parent="." index="10"]
 
 position = Vector2( -39.7289, -2.42705 )
 rotation = 1.5708
@@ -202,7 +212,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
 process_material = SubResource( 4 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 normal_map = null
 h_frames = 1
 v_frames = 1

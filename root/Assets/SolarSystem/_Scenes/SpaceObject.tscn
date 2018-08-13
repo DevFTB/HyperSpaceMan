@@ -1,7 +1,29 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SpaceObject.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SolarSystem/_Sounds/deploy.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/6.png" type="Texture" id=8]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/7.png" type="Texture" id=9]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/8.png" type="Texture" id=10]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/9.png" type="Texture" id=11]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/10.png" type="Texture" id=12]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/11.png" type="Texture" id=13]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/12.png" type="Texture" id=14]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/13.png" type="Texture" id=15]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/14.png" type="Texture" id=16]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/15.png" type="Texture" id=17]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/16.png" type="Texture" id=18]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/17.png" type="Texture" id=19]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/18.png" type="Texture" id=20]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/19.png" type="Texture" id=21]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/20.png" type="Texture" id=22]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/21.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -80,7 +102,86 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Animation", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Orbit Velocity", "Scale", "Spread", "Tangential Accel", "Trail" ]
 
-[node name="SpaceObject" type="Area2D" groups=[
+[sub_resource type="StreamTexture" id=8]
+
+flags = 0
+load_path = "res://.import/22.png-81dfa4d0aae9bad1b43c8382275b8f3b.stex"
+
+[sub_resource type="SpriteFrames" id=9]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), SubResource( 8 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="Gradient" id=10]
+
+offsets = PoolRealArray( 0, 0.00361011, 0.703971 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.964844, 0.150757, 0.150757, 1, 0.9375, 0.545454, 0.230713, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+
+flags = 4
+gradient = SubResource( 10 )
+width = 2048
+
+[sub_resource type="Curve" id=12]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0.145508 ), 0.0, 10.6706, 0, 0, Vector2( 0.184695, 0.661133 ), 1.26737, 1.26737, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+
+flags = 4
+width = 2048
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 20.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 2.0
+radial_accel_random = 1.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 25.0
+damping_random = 0.0
+angle = 180.0
+angle_random = 0.0
+scale = 0.75
+scale_random = 0.0
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Radial Accel", "Scale", "Trail" ]
+
+[node name="SpaceObject" type="Area2D" index="0" groups=[
 "Mineable",
 ]]
 
@@ -126,7 +227,6 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea" index="0"]
 
-position = Vector2( 0, 1 )
 shape = SubResource( 3 )
 
 [node name="Path2D" type="Path2D" parent="." index="3" groups=[
@@ -159,7 +259,7 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Particles2D" type="Particles2D" parent="." index="6"]
+[node name="IDontFeelSoGood" type="Particles2D" parent="." index="6"]
 
 position = Vector2( 3.8147e-006, 2.86102e-006 )
 scale = Vector2( 2.1875, 2.1875 )
@@ -183,6 +283,40 @@ h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
 
+[node name="TerminatorSprite" type="AnimatedSprite" parent="." index="7"]
+
+visible = false
+frames = SubResource( 9 )
+animation = "default"
+frame = 9
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Explode" type="Particles2D" parent="." index="8"]
+
+position = Vector2( -5, 4.76837e-007 )
+scale = Vector2( 2.03125, 1.875 )
+emitting = false
+amount = 15
+lifetime = 4.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 14 )
+texture = ExtResource( 24 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Textures", "Time" ]
+
 [connection signal="area_entered" from="EnemySpawnArea" to="." method="_on_EnemySpawnArea_area_entered"]
+
+[connection signal="animation_finished" from="TerminatorSprite" to="." method="_on_TerminatorSprite_animation_finished"]
 
 
