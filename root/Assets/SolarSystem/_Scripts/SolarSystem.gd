@@ -13,6 +13,7 @@ export (PackedScene) var sun_scene
 export (PackedScene) var planet_scene
 export (PackedScene) var fuel_station_scene
 
+var planet_grid ={}
 	
 # class member variables go here, for example:
 # var a = 2
@@ -26,7 +27,6 @@ func _ready():
 func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
 	var planet_width = load(planet_sprites[0][0]).get_width() * planet_max
-	var planet_grid ={}
 	#*1.5 for clear radius around sun
 	var sun_width = (load(sun_sprites[0][0]).get_width() * sun_max) * 2
 	var sun_to_planet = sun_width/(planet_width + (planet_width * (planet_randomness/2)))

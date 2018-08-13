@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Hyper Space Man"
-run/main_scene="res://Assets/Main menu/Main Menu.tscn"
+run/main_scene="res://Assets/MainMenu/MainMenu.tscn"
 
 [display]
 
