@@ -35,6 +35,7 @@ func init(scale, sprites, amount_of_enemies, solar_name, minerals):
 	for i in range(0, len(debris_texture_paths)):
 		new_frames.add_frame("debris", load(debris_texture_paths[i]), i)
 		
+	new_frames.set_animation_speed("debris", 1)	
 	$Sprite.frames = new_frames
 	$Sprite.set_frame(randi()%($Sprite.frames.get_frame_count("rotate")))
 	$Sprite.play("rotate")

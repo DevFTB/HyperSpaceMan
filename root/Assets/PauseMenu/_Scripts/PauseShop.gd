@@ -3,7 +3,7 @@ extends MarginContainer
 signal pause
 signal unpause
 
-export var max_level = 7
+export var max_level = 8
 export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
@@ -99,11 +99,12 @@ func upgrade(upgrade):
 		var current = levels[upgrade]
 		if current < max_level:
 			var cost = costs[current]
-			if minerals >= cost:
-				player.buy_upgrade(upgrade, cost)
-				get_player_vars()
-				update_minerals(minerals)
-				update_level_up(upgrade)
+			if cost[current] == "Max":
+				if minerals >= cost:
+					player.buy_upgrade(upgrade, cost)
+					get_player_vars()
+					update_minerals(minerals)
+					update_level_up(upgrade)
 
 func _on_MaxSpeed_upgrade_pressed():
 	upgrade("MaxSpeed")
