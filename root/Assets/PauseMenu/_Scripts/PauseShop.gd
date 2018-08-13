@@ -117,11 +117,13 @@ func _on_Health_upgrade_pressed():
 	upgrade("Health")
 
 func _on_InstructionsButton_down():
-	get_tree().change_scene_to(instruction_scene)
+	if get_tree().paused:
+		get_tree().change_scene_to(instruction_scene)
 
 func _on_ExitButton_down():
-	get_tree().quit()
-
+	if get_tree().paused:
+		get_tree().quit()
 
 func _on_HomeButton_down():
-	get_tree().change_scene_to(home_scene)
+	if get_tree().paused:
+		get_tree().change_scene_to(home_scene)
