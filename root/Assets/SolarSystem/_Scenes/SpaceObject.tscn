@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SpaceObject.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Enemy/_Scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/SolarSystem/_Sounds/deploy.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/SolarSystem/_Sounds/deploy.wav" type="AudioStream" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -30,7 +29,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 41.5258, -105.547, 0, 0, 0, 0, 78.1014, -84.577, 0, 0, 0, 0, 96.633, -46.5383, 0, 0, 0, 0, 108.825, 5.6429, 0, 0, 0, 0, 99.0714, 48.5583, 0, 0, 0, 0, 65.9095, 94.3998, 0, 0, 0, 0, -9.3176, 100.137, 0, 0, 0, 0, -79.024, 68.7965, 0, 0, 0, 0, -110.365, 0.711121, 0, 0, 0, 0, -83.3469, -80.3429, 0, 0, 0, 0, -24.988, -96.0134, 0, 0, 0, 0, 41.5258, -105.547 )
 }
 
-[node name="SpaceObject" type="Area2D" index="0"]
+[node name="SpaceObject" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -44,7 +43,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 min_animation_speed = 2.0
 max_animation_speed = 3.0
-enemy = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -76,14 +74,12 @@ shape = SubResource( 3 )
 [node name="Path2D" type="Path2D" parent="." index="3"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
-position = Vector2( -2.80642, 4.66955 )
-scale = Vector2( 1.49145, 1.47003 )
 curve = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
