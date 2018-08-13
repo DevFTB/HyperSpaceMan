@@ -51,7 +51,6 @@ minerals = 1000
 friction = 1
 bullet_speed = 1000
 fuel_value = 10
-fuel_cost = 0.05
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
