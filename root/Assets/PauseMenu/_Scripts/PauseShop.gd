@@ -7,7 +7,6 @@ export var max_level = 8
 export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
-export (PackedScene) var home_scene
 export (PackedScene) var instruction_scene
 
 var costs = [20, 50, 100, 200, 500, 1000, 2000, 5000]
@@ -17,6 +16,9 @@ var enabled = false
 var button_down = false
 var minerals
 var levels
+
+onready var home_scene = preload("res://Assets/MainMenu/MainMenu.tscn")
+
 
 func _ready():
 	init_labels()
@@ -118,13 +120,16 @@ func _on_Health_upgrade_pressed():
 
 func _on_InstructionsButton_down():
 	if get_tree().paused:
+		get_tree().paused = false	
 		get_tree().change_scene_to(instruction_scene)
 
 func _on_ExitButton_down():
 	if get_tree().paused:
+		get_tree().paused = false		
 		get_tree().quit()
 
 
 func _on_HomeButton_down():
 	if get_tree().paused:
+		get_tree().paused = false
 		get_tree().change_scene_to(home_scene)

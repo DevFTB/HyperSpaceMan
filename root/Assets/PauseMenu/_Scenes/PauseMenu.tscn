@@ -10,12 +10,7 @@
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/BottomGUI/GUIBottomFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Assets/PauseMenu/_Scenes/Upgrade.tscn" type="PackedScene" id=9]
 
-
-
-
-
-
-[node name="PauseShop" type="MarginContainer" index="0"]
+[node name="PauseShop" type="MarginContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -39,7 +34,6 @@ max_level = 8
 player = null
 upgrade_paths = [ NodePath("HBox/Menu/Upgrades/VBox/MaxSpeed"), NodePath("HBox/Menu/Upgrades/VBox/Acceleration"), NodePath("HBox/Menu/Upgrades/VBox/Damage"), NodePath("HBox/Menu/Upgrades/VBox/FuelTank"), NodePath("HBox/Menu/Upgrades/VBox/Health") ]
 mineral_label = NodePath("HBox/Menu/Upgrades/VBox/MarginContainer/Minerals")
-home_scene = null
 instruction_scene = null
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
