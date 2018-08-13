@@ -20,7 +20,7 @@ func move(delta):
 	
 	if (not dead):
 		follow_velocity = (vector_to_player.normalized()) * preset.movement_speed
-		rotate(PI * delta)
+		$Enemy.rotate(PI * delta)
 	
 	position += (follow_velocity + seperation_velocity) * delta 
 
@@ -29,7 +29,7 @@ func shoot(direction):
 		
 		var new_bullet = preset.bullet.instance()
 		
-		var angle = i * ((2 * PI)/(preset.amount_of_bullets)) + get_transform().get_rotation()	
+		var angle = i * ((2 * PI)/(preset.amount_of_bullets)) + get_node("Enemy").get_transform().get_rotation()	
 		
 		
 		var bullet_position = position
