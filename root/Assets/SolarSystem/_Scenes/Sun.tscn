@@ -19,6 +19,7 @@ _sections_unfolded = [ "Resource" ]
 
 script = ExtResource( 2 )
 tooltip = null
+sun_spawn_area_scale = 0.7
 
 [node name="Sprite" parent="." index="1"]
 

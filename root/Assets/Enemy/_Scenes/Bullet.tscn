@@ -39,7 +39,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 [node name="BulletTimer" type="Timer" parent="." index="0"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 20.0
 one_shot = false
 autostart = true
 
@@ -48,6 +48,7 @@ autostart = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 playing = true
 _sections_unfolded = [ "Transform" ]
 

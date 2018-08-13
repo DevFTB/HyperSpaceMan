@@ -1,4 +1,6 @@
 extends "res://Assets/Enemy/_Scripts/Enemy.gd"
+export (int) var angle_change
+var current_dir = 0
 
 func init(_preset, _position, _scale):
 	preset = _preset
@@ -18,7 +20,8 @@ func shoot(direction):
 		
 		var new_bullet = preset.bullet.instance()
 		
-		var angle = i * ((2 * PI)/(preset.amount_of_bullets)) + get_node("Enemy").get_transform().get_rotation()	
+		var angle = (i * ((2 * PI)/(preset.amount_of_bullets))) + (current_dir * angle_change)
+		current_dir += 1
 		
 		var bullet_position = position
 		new_bullet.position = bullet_position
