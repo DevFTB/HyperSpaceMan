@@ -10,10 +10,10 @@
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/game music.wav" type="AudioStream" id=9]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
-game_time = 1000
+game_time = 600
 GUI = NodePath("/root/Main/CanvasLayer/GUI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
@@ -87,9 +87,8 @@ solar_system_randomness = 0.3
 ] instance=ExtResource( 8 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
-main = NodePath("/root/Main")
+minerals = 200
 friction = 6
-regen_per_second = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
@@ -102,9 +101,9 @@ bus = "Master"
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
-[connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
-
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
+
+[connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
