@@ -8,6 +8,8 @@ var vector_to_player
 var seperation_velocity
 var follow_velocity
 
+var player
+
 var dead
 
 func init(_preset, _position, _scale):
@@ -27,10 +29,8 @@ func _ready():
 	
 	$Enemy/FireTimer.wait_time = 1/ preset.fire_rate
 	
-	health = max_health
-	
-	$"Life Bar".max_value = max_health
-	$"Life Bar".value = max_health
+	$"Life Bar".max_value = preset.max_health
+	$"Life Bar".value = preset.max_health
 	
 	seperate()
 
