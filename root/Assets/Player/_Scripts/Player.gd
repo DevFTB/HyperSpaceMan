@@ -74,6 +74,13 @@ func _process(delta):
 	if mining:
 		mine_step(delta)
 		
+	if velocity.length() * speed_multiplier >= 200000 && $Sprite.animation != "Lightspeed":
+		print("ran ls ")
+		$Sprite.play("Lightspeed")
+	elif velocity.length() * speed_multiplier < 200000 && $Sprite.animation != "Move":
+		print("ran move")
+		$Sprite.play("Move")
+		
 	move(delta)
 	reduce_health(-regen_per_second * delta)
 		
