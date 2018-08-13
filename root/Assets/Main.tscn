@@ -48,5 +48,6 @@ max_planets = 8
 min_solar_range = 1150
 max_solar_range = 1750
 solar_system_randomness = 0.7
+sun_names_path = "res://Assets/SolarSystem/sun_names.txt"
 
 

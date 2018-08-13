@@ -8,7 +8,6 @@ export (float) var sun_enemies_randomness
 export (int) var planet_enemies_mean
 export (float) var planet_enemies_randomness
 export (float) var planet_randomness
-#export (String) var sun_names_path
 
 export (PackedScene) var sun_scene
 export (PackedScene) var planet_scene
@@ -18,16 +17,13 @@ export (PackedScene) var fuel_station_scene
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var sun_names = ["1", "2", "3"]
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
 
-func init(n, spread, sun_sprites, planet_sprites):
-	#print(load(sun_names_path).get_as_text)
-	var sun_name = sun_names[randi()%len(sun_names)]
+func init(n, spread, sun_sprites, planet_sprites, sun_name):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
 	var planet_width = load(planet_sprites[0][0]).get_width() * planet_max
 	var planet_grid ={}
