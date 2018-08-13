@@ -36,7 +36,6 @@ signal end_game
 
 func _ready():
 	stats = initial
-	print(stats)
 	fuel = stats["FuelTank"]
 	health = stats["Health"]
 	GUI = get_node(GUI)
@@ -248,6 +247,5 @@ func _on_PauseMenu_pause():
 		stop_mining(false)
 		
 func update_location(sun_name, planet_name=""):
-	print(planet_name)	
 	GUI.update_value("Location", sun_name + " " + planet_name)
 
