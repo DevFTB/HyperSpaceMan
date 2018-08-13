@@ -149,12 +149,12 @@ animations = [ {
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 movement_speed = 50
-damage = 30
-max_health = 100
-bullet_speed = 750.0
-fire_rate = 0.5
-seperation_speed = 800.0
-seperation_drag = 40.0
+damage = 10
+max_health = 25
+bullet_speed = 600.0
+fire_rate = 0.25
+seperation_speed = 500.0
+seperation_drag = 20.0
 bullet = ExtResource( 2 )
 
 [node name="Life Bar" type="TextureProgress" parent="." index="0"]

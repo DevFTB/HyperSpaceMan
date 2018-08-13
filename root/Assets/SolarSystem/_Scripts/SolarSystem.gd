@@ -16,6 +16,9 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
+	
+
+#WTF IS HAPPENING AND HOW DO I CHANGE SOMETHING!!?!?!??!?!?!?
 
 func init(n, spread, sun_sprites, planet_sprites):
 	#comment grid code out if sprites format changes or this spefic code no longer applies to format
@@ -54,14 +57,11 @@ func init(n, spread, sun_sprites, planet_sprites):
 			var planet_scale = rand_range(planet_min, planet_max)
 			var sprite = planet_sprites[randi()%len(planet_sprites)]
 			
-			var amount_of_enemies =  planet_enemies_mean + int(rand_range(-1 * planet_enemies_randomness, planet_enemies_randomness) * planet_enemies_mean)
+			var amount_of_enemies =  int(rand_range(0.8, 1.2) * n)
 			
-			planet.init(planet_scale, sprite, amount_of_enemies, sun_name)
-			planet.position = spawn_grid_pos * (planet_width + (planet_width * planet_randomness))
-			planet.position.x += rand_range(-1 * planet_width * planet_randomness, planet_width * planet_randomness)
-			planet.position.y += rand_range(-1 * planet_width * planet_randomness, planet_width * planet_randomness)
-			planet.planet_name = planet_names[randi()%len(planet_names)]
-
+			planet.init(planet_scale, sprite, amount_of_enemies)
+			
+			planet.position = (spawn_pos/planet_width).floor() * planet_width
 		
 
 #func _process(delta):
