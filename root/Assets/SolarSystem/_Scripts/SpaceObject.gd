@@ -9,7 +9,7 @@ var enemy = preload("res://Assets/Enemy/_Scenes/Enemy.tscn")
 
 var _amount_of_enemies
 
-var spawned_enemies
+var spawned_enemies = false
 
 var sun_name
 
@@ -35,7 +35,6 @@ func init(scale, sprites, amount_of_enemies, solar_name):
 	$Path2D.apply_scale(Vector2(scale, scale))
 	
 	_amount_of_enemies = amount_of_enemies 
-	spawned_enemies = false
 	
 	sun_name = solar_name
 
