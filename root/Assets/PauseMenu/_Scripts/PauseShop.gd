@@ -3,7 +3,7 @@ extends MarginContainer
 signal pause
 signal unpause
 
-export var max_level = 8
+export var max_level = 7
 export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label

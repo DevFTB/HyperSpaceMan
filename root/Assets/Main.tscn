@@ -41,6 +41,7 @@ PauseMenu = NodePath("/root/Main/CanvasLayer/PauseMenu")
 
 pause_mode = 2
 _sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+max_level = 7
 player = NodePath("../../Player")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" index="3"]
