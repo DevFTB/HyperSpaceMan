@@ -89,6 +89,7 @@ solar_system_randomness = 0.3
 GUI = NodePath("../CanvasLayer/GUI")
 minerals = 200
 friction = 6
+regen_per_second = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 

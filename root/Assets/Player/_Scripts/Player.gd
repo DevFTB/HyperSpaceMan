@@ -6,7 +6,7 @@ var level_multiplier = {"MaxSpeed": 14, "Acceleration": 35, "Damage": 4, "FuelTa
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed
-export (float) var regen_per_second = 1.5
+export (float) var regen_per_second = 2
 export var fuel_cost = 0.05
 export (PackedScene) var Bullet
 export var speed_multiplier = 100
