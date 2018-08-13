@@ -14,6 +14,7 @@ export (PackedScene) var planet_scene
 export (PackedScene) var fuel_station_scene
 
 var planet_grid ={}
+var sun
 	
 # class member variables go here, for example:
 # var a = 2
@@ -35,7 +36,7 @@ func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
 			planet_grid[Vector2(i, j)] = true
 	
 	#
-	var sun = sun_scene.instance()
+	sun = sun_scene.instance()
 	add_child(sun)
 	sun.init(rand_range(sun_min, sun_max), sun_sprites[randi()%len(sun_sprites)], sun_enemies_mean + int(rand_range(-1 * sun_enemies_randomness, sun_enemies_randomness) * sun_enemies_mean), sun_name)
 	sun.position = Vector2(0,0)
