@@ -43,5 +43,10 @@ solar_system_scene = ExtResource( 5 )
 grid_size = 1250
 min_distance = 6000
 max_distance = 16000
+min_planets = 5
+max_planets = 8
+min_solar_range = 1500
+max_solar_range = 3250
+solar_system_randomness = 0.7
 
 
