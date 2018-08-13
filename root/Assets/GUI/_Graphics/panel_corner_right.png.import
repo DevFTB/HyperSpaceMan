@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t1p3.png-4a280b2d97feacf6b48f5a452340636e.stex"
+path="res://.import/panel_corner_right.png-0b66a1421f9cb780bd57d5248d5ab1f1.stex"
 
 [deps]
 
-source_file="res://Assets/SolarSystem/_Graphics/t1p3.png"
-dest_files=[ "res://.import/t1p3.png-4a280b2d97feacf6b48f5a452340636e.stex" ]
+source_file="res://Assets/GUI/_Graphics/panel_corner_right.png"
+dest_files=[ "res://.import/panel_corner_right.png-0b66a1421f9cb780bd57d5248d5ab1f1.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

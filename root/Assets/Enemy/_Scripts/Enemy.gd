@@ -31,12 +31,13 @@ func _ready():
 	
 	health = max_health
 	
+	$"Life Bar".max_value = max_health
 	$"Life Bar".value = max_health
 	
 	seperate()
 
 func _process(delta):
-	vector_to_player =  player.global_position - global_position
+	vector_to_player = player.global_position - global_position
 	seperation_velocity -= seperation_velocity.normalized() * seperation_drag * delta
 	move(delta)
 	$"Life Bar".set_rotation(-get_transform().get_rotation())
@@ -72,10 +73,8 @@ func die():
 	
 	$Enemy/CollisionShape2D.disabled = true
 	$Enemy/AnimatedSprite.play("Die")
-	
 
 func _on_FireTimer_timeout():
-	
 	shoot(vector_to_player.normalized())
 
 

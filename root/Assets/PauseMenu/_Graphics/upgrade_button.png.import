@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t1p1.png-3371e3bd075c007fa6806081ae8c6276.stex"
+path="res://.import/upgrade_button.png-d85f4f1f4e09cdbcf45a3032ebc7ba89.stex"
 
 [deps]
 
-source_file="res://Assets/SolarSystem/_Graphics/t1p1.png"
-dest_files=[ "res://.import/t1p1.png-3371e3bd075c007fa6806081ae8c6276.stex" ]
+source_file="res://Assets/PauseMenu/_Graphics/upgrade_button.png"
+dest_files=[ "res://.import/upgrade_button.png-d85f4f1f4e09cdbcf45a3032ebc7ba89.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

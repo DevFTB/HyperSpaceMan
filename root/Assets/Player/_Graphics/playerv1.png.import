@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t1p2.png-7df8354d05c9e9052b19ed68f0034f95.stex"
+path="res://.import/playerv1.png-3d1e303f11ae340d3b68de947d0c9e5b.stex"
 
 [deps]
 
-source_file="res://Assets/SolarSystem/_Graphics/t1p2.png"
-dest_files=[ "res://.import/t1p2.png-7df8354d05c9e9052b19ed68f0034f95.stex" ]
+source_file="res://Assets/Player/_Graphics/playerv1.png"
+dest_files=[ "res://.import/playerv1.png-3d1e303f11ae340d3b68de947d0c9e5b.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
