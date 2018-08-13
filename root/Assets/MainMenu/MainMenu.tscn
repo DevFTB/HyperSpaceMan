@@ -1,69 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/MainMenu/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Main.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/MainMenu/_Graphics/Comp_1.ogv" type="VideoStream" id=3]
-[ext_resource path="res://Assets/MainMenu/_Graphics/FontTitle.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Assets/MainMenu/_Graphics/play_game.png" type="Texture" id=5]
-[ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=6]
-[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=7]
+[ext_resource path="res://Assets/MainMenu/_Graphics/FontTitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/MainMenu/_Graphics/play_game.png" type="Texture" id=3]
+[ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=4]
+[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=5]
 
 [node name="MainMenu" type="Node" index="0"]
 
 script = ExtResource( 1 )
-game_scene = ExtResource( 2 )
 instruction_scene = null
 
-[node name="VideoPlayer" type="VideoPlayer" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-audio_track = 0
-stream = ExtResource( 3 )
-volume_db = 0.0
-autoplay = true
-paused = false
-expand = true
-buffering_msec = 500
-bus = "Master"
-_sections_unfolded = [ "Rect" ]
-
-[node name="Camera2D" type="Camera2D" parent="VideoPlayer" index="0"]
-
-anchor_mode = 0
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -116,16 +64,18 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1886.0
-margin_bottom = 468.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 400 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 custom_constants/margin_right = 400
+custom_constants/margin_top = 0
 custom_constants/margin_left = 400
-_sections_unfolded = [ "Size Flags", "custom_constants" ]
+_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
 [node name="Title" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" index="0"]
 
@@ -135,14 +85,14 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 400.0
 margin_right = 1486.0
-margin_bottom = 468.0
+margin_bottom = 400.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 text = "Hyper Space Man"
 align = 1
 valign = 1
@@ -157,9 +107,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 472.0
+margin_top = 404.0
 margin_right = 1886.0
-margin_bottom = 1020.0
+margin_bottom = 952.0
 rect_min_size = Vector2( 0, 500 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -229,9 +179,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 10.0
 margin_right = 632.0
-margin_bottom = 168.0
+margin_bottom = 170.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -243,7 +193,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Margin", "Textures" ]
 
 [node name="Instructions" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="1"]
@@ -287,7 +237,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 4 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Exit" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="2"]
@@ -331,7 +281,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 5 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Right" type="Container" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom" index="2"]
