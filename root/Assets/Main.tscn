@@ -51,16 +51,17 @@ min_planets = 5
 max_planets = 8
 min_solar_range = 1150
 max_solar_range = 1750
-solar_system_randomness = 0.7
+solar_system_randomness = 0.3
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
 ] instance=ExtResource( 7 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
-friction = 6
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
+
+[connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 

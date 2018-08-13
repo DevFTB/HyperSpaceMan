@@ -1,23 +1,5 @@
 extends "res://Assets/SolarSystem/_Scripts/SpaceObject.gd"
 
-func init(scale, sprites, amount_of_enemies, solar_name, minerals):
-	$Sprite.frames = SpriteFrames.new()
-	$Sprite.frames.add_animation("rotate")
-	$Sprite.frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
-	for i in range(0, len(sprites)):
-		$Sprite.frames.add_frame("rotate", load(sprites[i]), i)
-	$Sprite.set_frame(randi()%($Sprite.frames.get_frame_count("rotate")))
-	$Sprite.play()
-	$Sprite.apply_scale(Vector2(scale, scale))
-	$CollisionShape2D.apply_scale(Vector2(scale, scale))
-	$EnemySpawnArea.apply_scale(Vector2(scale, scale))
-	$Path2D.apply_scale(Vector2(scale, scale))
-	sun_name = solar_name
-	$Particles2D.apply_scale(Vector2(scale, scale))
-	
-	self.minerals = minerals
-	
-
 func _spawn_enemies():
 	var new_boss = preload("res://Assets/Enemy/_Scenes/Boss.tscn").instance()
 	
