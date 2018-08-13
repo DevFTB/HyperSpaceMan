@@ -69,7 +69,7 @@ _sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 27.3591, 28.2188 )
+extents = Vector2( 32.2958, 31.546 )
 
 [node name="Enemy" type="Node2D"]
 

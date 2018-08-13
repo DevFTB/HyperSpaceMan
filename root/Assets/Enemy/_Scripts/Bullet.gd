@@ -5,7 +5,6 @@ var speed
 var damage
 
 
-
 func set_damage(damage):
 	self.damage = damage
 

@@ -8,9 +8,18 @@ var vector_to_player
 var seperation_velocity
 var follow_velocity
 
+var player_delta_vector
+
 var player
 
 var dead
+
+func init(_preset, _position, _scale):
+	preset = _preset
+	position = _position
+	$Enemy/CollisionShape2D.apply_scale(Vector2(_scale,_scale))
+	$Enemy/AnimatedSprite.apply_scale(Vector2(_scale,_scale))
+	
 
 func _ready():
 	init_sprite()
@@ -21,7 +30,7 @@ func _ready():
 	health = preset.max_health
 	
 	$"Life Bar".value = preset.max_health
-	$Enemy/FireTimer.wait_time = preset.fire_rate
+	$Enemy/FireTimer.wait_time = 1/ preset.fire_rate
 	
 	seperate()
 
@@ -41,12 +50,13 @@ func move(delta):
 	position += (follow_velocity + seperation_velocity) * delta 
 
 func shoot(direction):
-	var new_bullet = preset.bullet.instance()
-	new_bullet.position = position
-	new_bullet.set_damage(preset.damage)
-
-	new_bullet.set_direction_and_speed(direction, preset.bullet_speed + follow_velocity.length())
-	get_parent().add_child(new_bullet)
+	for i in range (0, preset.amount_of_bullets):
+		var new_bullet = preset.bullet.instance()
+		new_bullet.position = position
+		new_bullet.set_damage(preset.damage)
+	
+		new_bullet.set_direction_and_speed(direction, preset.bullet_speed + follow_velocity.length())
+		get_parent().add_child(new_bullet)
 
 func seperate():
 	seperation_velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1))  * preset.seperation_speed
@@ -66,13 +76,10 @@ func die():
 
 func init_sprite():
 	var index = int(rand_range(0, preset.sprite_frames_paths.size()))
-	print(index)
-	
+
 	var sprite_frames_path = preset.sprite_frames_paths[index]
-	print(sprite_frames_path)
 	
 	var loaded_sprite_frames = load(sprite_frames_path)
-	print(loaded_sprite_frames.get_frame("Move", 0).load_path)
 	$Enemy/AnimatedSprite.frames = loaded_sprite_frames
 
 func _on_FireTimer_timeout():

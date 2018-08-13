@@ -11,6 +11,8 @@ export (float) var fire_rate
 export (float) var seperation_speed
 export (float) var seperation_drag
 
+export (int) var amount_of_bullets
+
 export (PackedScene) var bullet
 
 export(Array, String) var sprite_frames_paths

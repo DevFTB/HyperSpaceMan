@@ -6,14 +6,14 @@
 [resource]
 
 script = ExtResource( 2 )
-movement_speed = 52
-damage = 15
-max_health = 50
-bullet_speed = 700.0
-fire_rate = 1.0
+movement_speed = 10
+damage = 30
+max_health = 1000
+bullet_speed = 750.0
+fire_rate = 6.0
 seperation_speed = 200.0
-seperation_drag = 100.0
-amount_of_bullets = 1
+seperation_drag = 20.0
+amount_of_bullets = 8
 bullet = ExtResource( 1 )
-sprite_frames_paths = [ "res://Assets/Enemy/Resources/Presets/Weak Enemies/weak_enemy_sprfrms.tres", "res://Assets/Enemy/Resources/Presets/Weak Enemies/weak_enemy_sprfrms_2.tres" ]
+sprite_frames_paths = [ "res://Assets/Enemy/Resources/Presets/Boss/Boss_1_sprfrms.tres" ]
 
