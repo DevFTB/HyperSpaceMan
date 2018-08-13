@@ -249,3 +249,7 @@ func _on_PauseMenu_pause():
 func update_location(sun_name, planet_name=""):
 	GUI.update_value("Location", sun_name + " " + planet_name)
 
+
+
+func _on_PauseMenu_unpause():
+	space_pressed = false

@@ -107,6 +107,8 @@ bus = "Master"
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_unpause"]
+
 [connection signal="end_game" from="Player" to="CanvasLayer/EndGame" method="_on_Player_end_game"]
 
 
