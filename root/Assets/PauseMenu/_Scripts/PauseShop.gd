@@ -47,6 +47,7 @@ func unpause():
 	get_tree().paused = false
 
 func pause():
+	minerals = player.get_minerals()
 	update_minerals(minerals)
 	emit_signal('pause')
 	fade_in()

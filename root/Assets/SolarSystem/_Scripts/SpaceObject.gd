@@ -73,8 +73,8 @@ func get_mine_time(mine_speed):
 func mined(mine_level):
 	minerals = 0
 	var start_colour = Color(1.0, 1.0, 1.0, 1.0)
-	var end_colour = Color(0.35, 0.35, 0.35, 1 - 0.15 * mine_level)
-	$Tween.interpolate_property($Sprite, "modulate", start_colour, end_colour, 4.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	var end_colour = Color(0.35, 0.35, 0.35, 1 - 0.13 * mine_level)
+	$Tween.interpolate_property($Sprite, "modulate", start_colour, end_colour, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 	$Particles2D.emitting = false
 	if mine_level == 8:

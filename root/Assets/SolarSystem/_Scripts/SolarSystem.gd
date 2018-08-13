@@ -27,11 +27,6 @@ var sun_width
 var sun_to_planet
 var sun
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
->>>>>>> master
-
 var planet_grid = {}
 
 func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
@@ -48,7 +43,8 @@ func init(n, spread, sun_sprites, planet_sprites, sun_name, planet_names):
 	for i in range(-ceil(sun_to_planet/2), ceil(sun_to_planet/2)):
 		for j in range(-ceil(sun_to_planet/2), ceil(sun_to_planet/2)):
 			planet_grid[Vector2(i, j)] = true
-	
+	spawn_sun()
+	spawn_fuel_station()
 		
 	for x in range(0, n):
 		spawn_planet()
@@ -94,7 +90,7 @@ func spawn_sun():
 	var sprite = sun_sprites[randi()%len(sun_sprites)]
 	var amount_of_enemies = int(get_random_from_mean(sun_enemies_mean, sun_enemies_randomness))
 	var amount_of_minerals = int(get_random_from_mean(sun_minerals_mean, sun_minerals_randomness))
-	sun.init(sun_scale, sprite, amount_of_enemies, sun_name, amount_of_enemies)
+	sun.init(sun_scale, sprite, amount_of_enemies, sun_name, amount_of_minerals)
 	sun.position = Vector2(0,0)
 			
 func get_random(mean, randomness):

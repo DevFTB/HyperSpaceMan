@@ -58,30 +58,7 @@ solar_system_randomness = 0.7
 ] instance=ExtResource( 7 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
-initial = {
-"Acceleration": 100,
-"Damage": 15,
-"FuelTank": 100,
-"Health": 1000,
-"MaxSpeed": 100,
-"MineSpeed": 5
-}
-level_multiplier = {
-"Acceleration": 10,
-"Damage": 25,
-"FuelTank": 20,
-"Health": 100,
-"MaxSpeed": 10,
-"MineSpeed": 1.5
-}
-minerals = 10000
 friction = 6
-bullet_speed = 1000
-fuel_value = 10
-speed_multiplier = 100
-mine_strength = [ "dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on" ]
-mine_sound = null
-upgrade_sound = null
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 

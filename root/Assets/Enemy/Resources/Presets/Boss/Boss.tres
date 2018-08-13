@@ -6,14 +6,14 @@
 [resource]
 
 script = ExtResource( 2 )
-movement_speed = 1
-damage = 1
-max_health = 1
-bullet_speed = 1.0
-fire_rate = 0.1
-seperation_speed = 1.0
-seperation_drag = 1.0
-amount_of_bullets = 2
+movement_speed = 100
+damage = 10
+max_health = 200
+bullet_speed = 100.0
+fire_rate = 1.0
+seperation_speed = 600.0
+seperation_drag = 200.0
+amount_of_bullets = 4
 bullet = ExtResource( 1 )
 sprite_frames_paths = [ "res://Assets/Enemy/Resources/Presets/Boss/Boss_1_sprfrms.tres" ]
 

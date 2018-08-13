@@ -33,4 +33,9 @@ func shoot(direction):
 		
 		get_parent().add_child(new_bullet)
 		
-
+func die():
+	dead = true
+	player.enemies_killed += 1
+	$Enemy/CollisionShape2D.disabled = true
+	$Enemy/AnimatedSprite.play("Die")
+	$AudioStreamPlayer2D.stop()

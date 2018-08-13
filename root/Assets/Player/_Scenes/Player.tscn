@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Assets/Player/_Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/_Scenes/PlayerBullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Player/_Sounds/shoot.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Player/_Sounds/move.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/_Sounds/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Player/_Sounds/move.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Player/_Sounds/upgrade3.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Player/_Sounds/mine.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Player/_Sounds/mine2.wav" type="AudioStream" id=8]
@@ -79,40 +79,18 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
-initial = {
-"Acceleration": 100,
-"Damage": 15,
-"FuelTank": 100,
-"Health": 100,
-"MaxSpeed": 500,
-"MiningSpeed": 10
-}
-level_multiplier = {
-"Acceleration": 25,
-"Damage": 25,
-"FuelTank": 50,
-"Health": 100,
-"MaxSpeed": 150,
-"MiningSpeed": 5
-}
-minerals = null
-friction = null
-bullet_speed = null
-fuel_value = null
-fuel_cost = 0.05
+minerals = 10000
+friction = 1
+bullet_speed = 1000
+fuel_cost = 0.01
 Bullet = ExtResource( 2 )
 speed_multiplier = 100
-mine_strength = [ "dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on" ]
-shoot_sound = ExtResource( 3 )
-move_sound = ExtResource( 4 )
-mine_sound = null
-upgrade_sound = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Camera" type="Camera2D" parent="." index="1"]
@@ -158,7 +136,7 @@ autostart = false
 
 [node name="ShootSoundPlayer" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -170,7 +148,7 @@ area_mask = 1
 [node name="MoveSoundPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 
 position = Vector2( 0.237823, -0.38168 )
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false

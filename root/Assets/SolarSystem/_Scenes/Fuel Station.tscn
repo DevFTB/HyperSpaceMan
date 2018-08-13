@@ -34,9 +34,9 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
-fuel_amount = 3
-fuel_price = 20
-randomness = 0.2
+fuel_amount = 10
+fuel_price = 200
+randomness = 0.4
 tooltip = "Press F to buy fuel for %s minerals"
 no_fuel_tooltip = "No fuel remaining"
 

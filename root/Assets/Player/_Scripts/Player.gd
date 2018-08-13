@@ -1,16 +1,15 @@
 extends Area2D
 
 export (NodePath) var GUI
-export var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 5}
-export var level_multiplier = {"MaxSpeed": 10, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
+var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 5}
+var level_multiplier = {"MaxSpeed": 10, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed
-export (int) var fuel_value
 export var fuel_cost = 0.05
 export (PackedScene) var Bullet
 export var speed_multiplier = 100
-export var mine_strength = ["dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on"]
+var mine_strength = ["dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on"]
 
 var tooltip = ""
 var location = [ 'Earth', 'Sol' ]
@@ -28,11 +27,7 @@ var levels = {"MaxSpeed": 0, "Acceleration": 0, "Damage": 0, "FuelTank": 0, "Hea
 var f_pressed = false
 var space_pressed = false
 var enemies_killed = 0
-
-export (AudioStream) var shoot_sound
-export (AudioStream) var move_sound
-export (AudioStream) var mine_sound
-export (AudioStream) var upgrade_sound
+var fuel_value = 0.25
 
 signal end_game
 
@@ -60,7 +55,6 @@ func _input(ev):
 				stop_mining(false)
 			else:
 				if mine and mine.get_mine_time(stats["MineSpeed"]) and space_pressed:
-					print(mine.get_mine_time(stats["MineSpeed"]))
 					start_mining()
 
 func _process(delta):
@@ -84,17 +78,18 @@ func mine_step(delta):
 	velocity -= velocity.normalized() * friction
 	mine_timer += delta
 	var mine_time = mine.get_mine_time(stats["MineSpeed"])
-	var progress_text = ""
-	for i in range(0, int(20 * mine_timer/mine_time)):
-		progress_text += " ."
-	GUI.update_value("Tooltip", "Mining" + progress_text)
-	if int(mine_timer) >= mine_time:
-		stop_mining(true)		
-
+	if mine_timer >= mine_time:
+		stop_mining(true)
+	else:
+		var progress_text = ""
+		for i in range(0, int(10 * mine_timer/mine_time)):
+			progress_text += " ."
+		GUI.update_value("Tooltip", "Mining" + progress_text)	
+	
 func buy_fuel():
 	if fuel_station.buy_fuel():
 		change_minerals(-fuel_station.get_price())
-		change_fuel(fuel_value)
+		change_fuel(int(fuel_value * stats["FuelTank"]))
 		GUI.update_value('Tooltip', fuel_station.get_tooltip())
 	
 func change_fuel(amount):
