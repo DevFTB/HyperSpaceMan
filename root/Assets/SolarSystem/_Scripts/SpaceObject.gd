@@ -30,10 +30,12 @@ func init(scale, sprites, amount_of_enemies, solar_name, minerals):
 	$Sprite.set_frame(randi()%($Sprite.frames.get_frame_count("rotate")))
 	$Sprite.play()
 	$Sprite.apply_scale(Vector2(scale, scale))
+	$TerminatorSprite.apply_scale(Vector2(scale, scale))
 	$CollisionShape2D.apply_scale(Vector2(scale, scale))
 	$EnemySpawnArea.apply_scale(Vector2(scale, scale))
 	$Path2D.apply_scale(Vector2(scale, scale))
-	$Particles2D.apply_scale(Vector2(scale, scale))
+	$IDontFeelSoGood.apply_scale(Vector2(scale, scale))
+	$Explode.apply_scale(Vector2(scale, scale))
 	
 	_amount_of_enemies = amount_of_enemies 
 	
@@ -72,17 +74,29 @@ func get_mine_time(mine_speed):
 
 func mined(mine_level):
 	minerals = 0
-	var start_colour = Color(1.0, 1.0, 1.0, 1.0)
-	var end_colour = Color(0.35, 0.35, 0.35, 1 - 0.13 * mine_level)
-	$Tween.interpolate_property($Sprite, "modulate", start_colour, end_colour, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$Tween.start()
-	$Particles2D.emitting = false
-	if mine_level == 8:
-		$Particles2D.emitting = true
-		no_minerals_tooltip = "Thanos waz here"
 	if mine_level == 7:
 		no_minerals_tooltip = "TARGET TERMINATED"
+		$TerminatorSprite.visible = true		
+		$TerminatorSprite.play()
+	else:
+		if mine_level == 8:
+			$IDontFeelSoGood.emitting = true
+			no_minerals_tooltip = "Thanos waz here"
+		elif mine_level >= 5:
+			$Explode.emitting = true
+		fade($Sprite, 1 - 0.1 * mine_level)
+		
+func fade(sprite, alpha):
+	var start_colour = Color(1.0, 1.0, 1.0, 1.0)
+	var end_colour = Color(0.35, 0.35, 0.35, alpha)
+	$Tween.interpolate_property(sprite, "modulate", start_colour, end_colour, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
 
 func _on_EnemySpawnArea_area_entered(area):
 	if(area.get_name() == "Player" && not spawned_enemies):
 		_spawn_enemies()
+
+func _on_TerminatorSprite_animation_finished():
+	$Explode.emitting = true
+	fade($TerminatorSprite, 0)
+	fade($Sprite, 0.3)

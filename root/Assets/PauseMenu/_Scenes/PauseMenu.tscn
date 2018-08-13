@@ -432,7 +432,7 @@ upgrade_name = "Max speed"
 margin_top = 167.0
 margin_right = 670.0
 margin_bottom = 272.0
-upgrade_name = "Acceleration"
+upgrade_name = "Thrusters"
 
 [node name="Damage" parent="HBox/Menu/Upgrades/VBox" index="3" instance=ExtResource( 9 )]
 
