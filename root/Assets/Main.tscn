@@ -1,47 +1,56 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
-[ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/background.png" type="Texture" id=5]
-[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=6]
-[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/background.png" type="Texture" id=6]
+[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=7]
+[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/game music.wav" type="AudioStream" id=9]
 
 [node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
-game_time = 600
+game_time = 1000
 GUI = NodePath("/root/Main/CanvasLayer/GUI")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+[node name="Player" parent="." index="0" groups=[
+"Player",
+] instance=ExtResource( 2 )]
 
+GUI = NodePath("../CanvasLayer/GUI")
+minerals = 100
+friction = 6
+regen_per_second = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 2 )]
+[node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 3 )]
 
 margin_left = -1.0
 margin_top = 4.0
 margin_right = 1919.0
 margin_bottom = 1084.0
 
-[node name="EndGame" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
+[node name="EndGame" parent="CanvasLayer" index="1" instance=ExtResource( 4 )]
 
 player = NodePath("/root/Main/Player")
 timer_object = NodePath("/root/Main")
 PauseMenu = NodePath("/root/Main/CanvasLayer/PauseMenu")
 
-[node name="PauseMenu" parent="CanvasLayer" index="2" instance=ExtResource( 4 )]
+[node name="PauseMenu" parent="CanvasLayer" index="2" instance=ExtResource( 5 )]
 
 pause_mode = 2
 _sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
-max_level = 7
 player = NodePath("../../Player")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" index="3"]
@@ -67,13 +76,13 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxBackground/ParallaxLayer" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Region" ]
 
-[node name="SolarSystemSpawner" type="Node" parent="." index="1"]
+[node name="SolarSystemSpawner" type="Node" parent="." index="2"]
 
-script = ExtResource( 6 )
-solar_system_scene = ExtResource( 7 )
+script = ExtResource( 7 )
+solar_system_scene = ExtResource( 8 )
 grid_size = 1250
 min_distance = 6000
 max_distance = 16000
@@ -82,15 +91,6 @@ max_planets = 8
 min_solar_range = 1150
 max_solar_range = 1750
 solar_system_randomness = 0.3
-
-[node name="Player" parent="." index="2" groups=[
-"Player",
-] instance=ExtResource( 8 )]
-
-GUI = NodePath("../CanvasLayer/GUI")
-minerals = 200
-friction = 6
-regen_per_second = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
@@ -103,14 +103,12 @@ bus = "Master"
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
+[connection signal="end_game" from="Player" to="CanvasLayer/EndGame" method="_on_Player_end_game"]
+
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
-
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_unpause"]
-
-[connection signal="end_game" from="Player" to="CanvasLayer/EndGame" method="_on_Player_end_game"]
 
 
