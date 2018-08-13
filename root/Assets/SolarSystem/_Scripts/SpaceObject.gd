@@ -45,6 +45,7 @@ func _spawn_enemies():
 	
 	for i in range(_amount_of_enemies):
 		var new_enemy = enemy.instance()
+		new_enemy.preset = preload("res://Assets/Enemy/Resources/Presets/Weak Enemies/Weak_enemy.tres")
 		new_enemy.position = $Path2D.curve.get_point_position(rand_range(0 , $Path2D.curve.get_point_count()))
 		add_child(new_enemy)
 				

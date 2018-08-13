@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Enemy/_Scenes/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Enemy/Resources/Presets/EnemyPreset.gd" type="Script" id=2]
+
+[resource]
+
+script = ExtResource( 2 )
+movement_speed = 52
+damage = 15
+max_health = 50
+bullet_speed = 700.0
+fire_rate = 1.0
+seperation_speed = 200.0
+seperation_drag = 100.0
+bullet = ExtResource( 1 )
+sprite_frames_paths = [ "res://Assets/Enemy/Resources/Presets/Weak Enemies/weak_enemy_sprfrms.tres", "res://Assets/Enemy/Resources/Presets/Weak Enemies/weak_enemy_sprfrms_2.tres" ]
+
