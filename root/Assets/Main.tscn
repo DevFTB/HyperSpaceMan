@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=5]
-[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/background.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=6]
+[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=8]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -40,10 +41,36 @@ pause_mode = 2
 _sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 player = NodePath("../../Player")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" index="3"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 0.001, 0.001 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxBackground/ParallaxLayer" index="0"]
+
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Region" ]
+
 [node name="SolarSystemSpawner" type="Node" parent="." index="1"]
 
-script = ExtResource( 5 )
-solar_system_scene = ExtResource( 6 )
+script = ExtResource( 6 )
+solar_system_scene = ExtResource( 7 )
 grid_size = 1250
 min_distance = 6000
 max_distance = 16000
@@ -55,9 +82,12 @@ solar_system_randomness = 0.3
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 8 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
+friction = 6
+regen_per_second = 1
+speed_multiplier = 100
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 

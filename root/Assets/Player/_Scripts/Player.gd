@@ -1,11 +1,12 @@
 extends Area2D
 
 export (NodePath) var GUI
-var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 10}
-var level_multiplier = {"MaxSpeed": 40, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
+var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 150, "MineSpeed": 5}
+var level_multiplier = {"MaxSpeed": 15, "Acceleration": 10, "Damage": 5, "FuelTank": 20, "Health": 30, "MineSpeed": 1.5}
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed
+export (float) var regen_per_second = 1
 export var fuel_cost = 0.05
 export (PackedScene) var Bullet
 export var speed_multiplier = 100
@@ -29,6 +30,7 @@ var space_pressed = false
 var enemies_killed = 0
 var fuel_value = 0.25
 var sun_position = false
+var total_minerals = 0
 
 signal end_game
 
@@ -78,6 +80,7 @@ func _process(delta):
 	if sun_position and (global_position - sun_position).length() > 1750:
 		sun_position = false
 		update_location(space_location)
+	change_health(regen_per_second * delta)
 		
 func mine_step(delta):
 	velocity -= velocity.normalized() * friction
@@ -107,6 +110,7 @@ func get_minerals():
 	return minerals
 	
 func change_minerals(amount):
+	total_minerals += max(0, amount)
 	minerals += amount
 	GUI.update_value('Minerals', minerals)
 
@@ -213,11 +217,11 @@ func fuel_area_exited(area):
 	GUI.update_value('Tooltip', "")
 	fuel_station = false
 	
-func reduce_health(damage):
-	health = clamp(health - damage, 0, INF)
+func change_health(amount):
+	health = clamp(health + amount, 0, stats["Health"])
 	if health <= 0:
 		die()
-	GUI.update_value('Health', [health, stats["Health"]])
+	GUI.update_value('Health', [int(health), stats["Health"]])
 
 func get_levels():
 	return levels

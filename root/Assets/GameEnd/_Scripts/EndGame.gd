@@ -56,11 +56,12 @@ func _on_Main_end_game(message):
 	
 func end_game(message):
 	game_ended = true
-	get_node(PauseMenu).free()
+	if has_node(PauseMenu):
+		get_node(PauseMenu).free()
 	fade_in()
 	get_node(message_display).text = message
 	get_node(enemies_killed_box).text = "Enemies Killed: " + str(get_node(player).enemies_killed)
 	get_node(time_spent_box).text = "Time Spent: " + str(int(get_node(timer_object).game_time - get_node(timer_object).time_left)) + " trillion years"
-	get_node(max_speed_box).text = "Max Speed: " + str(get_node(player).stats["MaxSpeed"] * 100) + "km/s"
-	#get_node(minerals_collected_box) = total minerals collected
+	get_node(max_speed_box).text = "Max Speed: " + str(get_node(player).stats["MaxSpeed"] * get_node(player).speed_multiplier) + "km/s"
+	get_node(minerals_collected_box).text = "Total Minerals Collected: " + str(get_node(player).total_minerals)
 	get_tree().paused = true
