@@ -46,8 +46,7 @@ func _spawn_enemies():
 		new_enemy.position = $Path2D.curve.get_point_position(rand_range(0 , $Path2D.curve.get_point_count()))
 		add_child(new_enemy)
 				
-	spawned_enemies = true;
-	
+	spawned_enemies = true	
 
 func _on_EnemySpawnArea_area_entered(area):
 	if(area.get_name() == "Player" && not spawned_enemies):

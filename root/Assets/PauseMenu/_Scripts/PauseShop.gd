@@ -3,10 +3,13 @@ extends MarginContainer
 signal pause
 signal unpause
 
-var max_level = 8
+export var max_level = 8
 export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
+export (PackedScene) var home_scene
+export (PackedScene) var instruction_scene
+
 var costs = [20, 50, 100, 200, 500, 1000, 2000, 5000]
 var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health"]
 var upgrades
@@ -24,6 +27,8 @@ func init_labels():
 	upgrades = {}
 	for i in upgrade_names.size():
 		upgrades[upgrade_names[i]] = get_node(upgrade_paths[i])
+	get_player_vars()
+	reset_all()
 	
 func _input(ev):
 	if ev is InputEventKey and ev.scancode == KEY_ESCAPE and not ev.echo:
@@ -40,9 +45,7 @@ func unpause():
 	get_tree().paused = false
 
 func pause():
-	get_player_vars()
 	update_minerals(minerals)
-	reset_all()
 	emit_signal('pause')
 	fade_in()
 	get_tree().paused = true
@@ -89,13 +92,14 @@ func update_minerals(value):
 	mineral_label.text = "Minerals: " + str(value)
 	
 func upgrade(upgrade):
-	var current = levels[upgrade]
-	var cost = costs[current]
-	if current < max_level and minerals >= cost:
-		player.buy_upgrade(upgrade, cost)
-	get_player_vars()
-	update_minerals(minerals)
-	update_level_up(upgrade)
+	if get_tree().paused:
+		var current = levels[upgrade]
+		var cost = costs[current]
+		if current < max_level and minerals >= cost:
+			player.buy_upgrade(upgrade, cost)
+		get_player_vars()
+		update_minerals(minerals)
+		update_level_up(upgrade)
 
 func _on_MaxSpeed_upgrade_pressed():
 	upgrade("MaxSpeed")
@@ -112,3 +116,12 @@ func _on_FuelTank_upgrade_pressed():
 func _on_Health_upgrade_pressed():
 	upgrade("Health")
 
+func _on_InstructionsButton_down():
+	get_tree().change_scene_to(instruction_scene)
+
+func _on_ExitButton_down():
+	get_tree().quit()
+
+
+func _on_HomeButton_down():
+	get_tree().change_scene_to(home_scene)

@@ -31,7 +31,7 @@ margin_bottom = 1084.0
 
 pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
-_sections_unfolded = [ "Material", "Pause", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 player = NodePath("../../Player")
 
 [node name="SolarSystemSpawner" type="Node" parent="." index="1"]
@@ -48,16 +48,12 @@ max_distance = 60000
 
 GUI = NodePath("../CanvasLayer/GUI")
 minerals = 1000
-fuel_capacity = 500
-mining_time = 5
-damage = 25
-engine_acceleration = 150
-max_health = 1000
 friction = 1
+bullet_speed = 1000
 fuel_value = 10
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="." method="_on_unpause"]
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
 

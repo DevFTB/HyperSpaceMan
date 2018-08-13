@@ -30,7 +30,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 41.5258, -105.547, 0, 0, 0, 0, 78.1014, -84.577, 0, 0, 0, 0, 96.633, -46.5383, 0, 0, 0, 0, 108.825, 5.6429, 0, 0, 0, 0, 99.0714, 48.5583, 0, 0, 0, 0, 65.9095, 94.3998, 0, 0, 0, 0, -9.3176, 100.137, 0, 0, 0, 0, -79.024, 68.7965, 0, 0, 0, 0, -110.365, 0.711121, 0, 0, 0, 0, -83.3469, -80.3429, 0, 0, 0, 0, -24.988, -96.0134, 0, 0, 0, 0, 41.5258, -105.547 )
 }
 
-[node name="SpaceObject" type="Area2D"]
+[node name="SpaceObject" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -76,6 +76,8 @@ shape = SubResource( 3 )
 [node name="Path2D" type="Path2D" parent="." index="3"]
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( -2.80642, 4.66955 )
+scale = Vector2( 1.49145, 1.47003 )
 curve = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
