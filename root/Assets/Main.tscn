@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=4]
-[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/GameEnd/_Scenes/EndGame.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=5]
+[ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 
@@ -27,17 +28,22 @@ margin_top = 4.0
 margin_right = 1919.0
 margin_bottom = 1084.0
 
-[node name="PauseMenu" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
+[node name="EndGame" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
+
+player = NodePath("/root/Main/Player")
+timer_object = NodePath("/root/Main")
+PauseMenu = NodePath("/root/Main/CanvasLayer/PauseMenu")
+
+[node name="PauseMenu" parent="CanvasLayer" index="2" instance=ExtResource( 4 )]
 
 pause_mode = 2
-modulate = Color( 1, 1, 1, 0 )
 _sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 player = NodePath("../../Player")
 
 [node name="SolarSystemSpawner" type="Node" parent="." index="1"]
 
-script = ExtResource( 4 )
-solar_system_scene = ExtResource( 5 )
+script = ExtResource( 5 )
+solar_system_scene = ExtResource( 6 )
 grid_size = 1250
 min_distance = 6000
 max_distance = 16000
@@ -49,7 +55,7 @@ solar_system_randomness = 0.7
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 7 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
 initial = {
@@ -77,8 +83,12 @@ mine_strength = [ "dig", "mine", "excavate", "extract", "harvest", "vaporize", "
 mine_sound = null
 upgrade_sound = null
 
+[connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
+
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
+
+[connection signal="end_game" from="Player" to="CanvasLayer/EndGame" method="_on_Player_end_game"]
 
 

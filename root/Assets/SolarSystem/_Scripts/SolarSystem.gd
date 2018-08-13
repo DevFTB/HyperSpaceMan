@@ -25,6 +25,12 @@ var planet_names
 var planet_width
 var sun_width
 var sun_to_planet
+var sun
+
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
+>>>>>>> master
 
 var planet_grid = {}
 
@@ -82,7 +88,7 @@ func spawn_planet():
 		planet.planet_name = planet_names[randi()%len(planet_names)]
 
 func spawn_sun():
-	var sun = sun_scene.instance()
+	sun = sun_scene.instance()
 	add_child(sun)
 	var sun_scale = rand_range(sun_min, sun_max)
 	var sprite = sun_sprites[randi()%len(sun_sprites)]

@@ -1,0 +1,492 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/GameEnd/_Scripts/EndGame.gd" type="Script" id=1]
+[ext_resource path="res://Assets/PauseMenu/_Graphics/Fonts/SmallFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/GUI/_Graphics/Fonts/LocationGUI/GUILocationFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/MainMenu/_Graphics/home.png" type="Texture" id=4]
+[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GUI/_Graphics/Fonts/DynamicFontData/8bitWonder.tres" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[node name="EndGame" type="MarginContainer"]
+
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+script = ExtResource( 1 )
+_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Theme", "Visibility", "custom_constants" ]
+time_spent_box = NodePath("HBox/Menu/Stats/VBoxContainer/TimeSpent")
+enemies_killed_box = NodePath("HBox/Menu/Stats/VBoxContainer/EnemiesKilled")
+max_speed_box = NodePath("HBox/Menu/Stats/VBoxContainer/MaxSpeed")
+minerals_collected_box = NodePath("HBox/Menu/Stats/VBoxContainer/MineralsMined")
+message_display = NodePath("HBox/Message")
+player = null
+timer_object = null
+PauseMenu = null
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1890.0
+margin_bottom = 1050.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Margin", "Rect", "Theme" ]
+
+[node name="HBox" type="VBoxContainer" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1890.0
+margin_bottom = 1050.0
+rect_min_size = Vector2( 0, 150 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
+
+[node name="Margin" type="Label" parent="HBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1860.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="Message" type="Label" parent="HBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 38.0
+margin_right = 1860.0
+margin_bottom = 121.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = ExtResource( 3 )
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="Menu" type="HSplitContainer" parent="HBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 125.0
+margin_right = 1860.0
+margin_bottom = 1020.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 204
+collapsed = false
+dragger_visibility = 0
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
+
+[node name="Options" type="MarginContainer" parent="HBox/Menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1128.0
+margin_bottom = 895.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 110
+custom_constants/margin_top = 50
+custom_constants/margin_left = -10
+custom_constants/margin_bottom = 225
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
+
+[node name="VBox" type="VBoxContainer" parent="HBox/Menu/Options" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -10.0
+margin_top = 50.0
+margin_right = 1018.0
+margin_bottom = 670.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Home" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1028.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 0
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Mouse", "Size Flags", "custom_constants" ]
+
+[node name="HomeButton" type="TextureButton" parent="HBox/Menu/Options/VBox/Home" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_right = 928.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Rect", "Size Flags", "Textures" ]
+
+[node name="Instructions" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 208.0
+margin_right = 1028.0
+margin_bottom = 412.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 0
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Mouse", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="Exit" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 416.0
+margin_right = 1028.0
+margin_bottom = 620.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 0
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Mouse", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="ExitButton" type="TextureButton" parent="HBox/Menu/Options/VBox/Exit" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_right = 928.0
+margin_bottom = 204.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Focus", "Rect", "Size Flags", "Theme" ]
+
+[node name="Stats" type="MarginContainer" parent="HBox/Menu" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1140.0
+margin_right = 1860.0
+margin_bottom = 895.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 25
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "custom_constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox/Menu/Stats" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 670.0
+margin_bottom = 895.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="StatLabel" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 645.0
+margin_bottom = 83.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = ExtResource( 3 )
+text = "Stats"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="TimeSpent" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 87.0
+margin_right = 645.0
+margin_bottom = 152.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 1 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="EnemiesKilled" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 156.0
+margin_right = 645.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 2 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="MaxSpeed" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 225.0
+margin_right = 645.0
+margin_bottom = 290.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 3 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="MineralsMined" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 294.0
+margin_right = 645.0
+margin_bottom = 359.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 4 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="Tween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="button_down" from="HBox/Menu/Options/VBox/Home/HomeButton" to="." method="_on_HomeButton_button_down"]
+
+[connection signal="button_down" from="HBox/Menu/Options/VBox/Exit/ExitButton" to="." method="_on_ExitButton_button_down"]
+
+

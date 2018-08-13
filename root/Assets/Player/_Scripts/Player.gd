@@ -27,11 +27,14 @@ var stats
 var levels = {"MaxSpeed": 0, "Acceleration": 0, "Damage": 0, "FuelTank": 0, "Health": 0, "MineSpeed": 0}
 var f_pressed = false
 var space_pressed = false
+var enemies_killed = 0
 
 export (AudioStream) var shoot_sound
 export (AudioStream) var move_sound
 export (AudioStream) var mine_sound
 export (AudioStream) var upgrade_sound
+
+signal end_game
 
 func _ready():
 	stats = initial
@@ -96,6 +99,8 @@ func buy_fuel():
 	
 func change_fuel(amount):
 	fuel = clamp(fuel + amount, 0, stats["FuelTank"])
+	if fuel <= 0:
+		out_of_fuel()
 	GUI.update_value('Fuel', [int(fuel), stats["FuelTank"]])
 	
 func get_minerals():
@@ -115,13 +120,23 @@ func accelerate(delta):
     	$MoveSoundPlayer.play()
 
 func die():
-	hide()
-	$CollisionShape2D.disabled = true
-	can_shoot = false
-	$ShootTimer.stop()
+	emit_signal("end_game", "You Died!")
+#	hide()
+#	$CollisionShape2D.disabled = true
+#	can_shoot = false
+#	$ShootTimer.stop()
+
+func out_of_fuel():
+	emit_signal("end_game", "Out of Fuel!")
+	
+func win_game():
+	emit_signal("end_game", "You have run out of space!")
 
 func move(delta):
-	GUI.update_value('Speed', int(velocity.length() * speed_multiplier))
+	var speed = int(velocity.length() * speed_multiplier)
+	GUI.update_value('Speed', speed)
+	if speed >= 300000:
+		win_game()
 	position += velocity * delta
 	look_at(get_global_mouse_position())
 
@@ -194,7 +209,7 @@ func fuel_area_exited(area):
 	fuel_station = false
 	
 func reduce_health(damage):
-	health -= damage
+	health = clamp(health - damage, 0, INF)
 	if health <= 0:
 		die()
 	GUI.update_value('Health', [health, stats["Health"]])

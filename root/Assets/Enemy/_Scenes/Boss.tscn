@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Enemy/_Scenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Enemy/_Scripts/Boss.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Enemy/_Graphics/boss theme.wav" type="AudioStream" id=3]
 
-[node name="Boss" instance=ExtResource( 1 )]
+[node name="Boss" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
@@ -14,5 +15,16 @@ editor/display_folded = true
 [node name="AnimatedSprite" parent="Enemy" index="2"]
 
 scale = Vector2( 1, 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 

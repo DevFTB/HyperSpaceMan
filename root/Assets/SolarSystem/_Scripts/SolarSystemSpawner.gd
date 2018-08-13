@@ -49,9 +49,8 @@ func _ready():
 	#solar_system.get_node("Sun").spawned_enemies = true
 	solar_system.planet_enemies_mean = 1
 	solar_system.planet_enemies_randomness = 0
-	solar_system.sun_enemies_mean = 2
-	solar_system.sun_enemies_randomness = 0
-	solar_system.init(10, 2500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
+	solar_system.init(10, 1500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
+	solar_system.sun.spawned_enemies = true
 	solar_system.position = Vector2(600, 600)
 	start_spawn()
 
@@ -102,11 +101,7 @@ func spawn(n, pos, origin, dist):
 			sun_grid[[goal_x_grid, goal_y_grid]] = true
 	
 func start_spawn():
-	spawn(1, Vector2(1, 0), Vector2(0, 0), 7000)
-	spawn(1, Vector2(-1, 0), Vector2(0, 0),7000)
-	spawn(1, Vector2(0, 1), Vector2(0, 0), 7000)
-	spawn(1, Vector2(0,-1), Vector2(0, 0), 7000)
-	spawn(1, Vector2(1, 0), Vector2(0, 0), 7000)
-	spawn(1, Vector2(-1, 0), Vector2(0, 0),7000)
-	spawn(1, Vector2(0, 1), Vector2(0, 0), 7000)
-	spawn(1, Vector2(0,-1), Vector2(0, 0), 7000)
+	spawn(3, Vector2(1, 0), Vector2(0, 0), 5500)
+	spawn(3, Vector2(-1, 0), Vector2(0, 0),5500)
+	spawn(3, Vector2(0, 1), Vector2(0, 0), 5500)
+	spawn(3, Vector2(0,-1), Vector2(0, 0), 5500)
