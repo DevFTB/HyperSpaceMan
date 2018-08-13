@@ -20,7 +20,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 200.202
+radius = 130.529
 
 [sub_resource type="Curve2D" id=4]
 
@@ -128,6 +128,7 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 0, 1 )
 shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Path2D" type="Path2D" parent="." index="3" groups=[
 "Mineable",

@@ -1,8 +1,8 @@
 extends Area2D
 
 export (NodePath) var GUI
-var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 1000, "MineSpeed": 5}
-var level_multiplier = {"MaxSpeed": 10, "Acceleration": 10, "Damage": 25, "FuelTank": 20, "Health": 100, "MineSpeed": 1.5}
+var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 150, "MineSpeed": 5}
+var level_multiplier = {"MaxSpeed": 15, "Acceleration": 10, "Damage": 5, "FuelTank": 20, "Health": 30, "MineSpeed": 1.5}
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed

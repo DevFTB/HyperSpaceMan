@@ -13,12 +13,13 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="Sun" index="0" groups=[
+[node name="Sun" groups=[
 "Collider",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 tooltip = null
+sun_spawn_area_scale = 0.7
 
 [node name="Sprite" parent="." index="1"]
 
