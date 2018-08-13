@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Enemy/_Scenes/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Enemy/Resources/Presets/EnemyPreset.gd" type="Script" id=2]
+
+[resource]
+
+script = ExtResource( 2 )
+movement_speed = 10
+damage = 30
+max_health = 1000
+bullet_speed = 750.0
+fire_rate = 6.0
+seperation_speed = 200.0
+seperation_drag = 20.0
+amount_of_bullets = 8
+bullet = ExtResource( 1 )
+sprite_frames_paths = [ "res://Assets/Enemy/Resources/Presets/Boss/Boss_1_sprfrms.tres" ]
+

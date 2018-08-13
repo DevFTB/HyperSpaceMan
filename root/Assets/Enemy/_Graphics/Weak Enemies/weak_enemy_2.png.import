@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_sprite.png-b900dec277f368d63ea5bd358ed03254.stex"
+path="res://.import/weak_enemy_2.png-96b8ad85b431bf78c5236f63d4e6e6d7.stex"
 
 [deps]
 
-source_file="res://Assets/Enemy/_Graphics/enemy_sprite.png"
-dest_files=[ "res://.import/enemy_sprite.png-b900dec277f368d63ea5bd358ed03254.stex" ]
+source_file="res://Assets/Enemy/_Graphics/Weak Enemies/weak_enemy_2.png"
+dest_files=[ "res://.import/weak_enemy_2.png-96b8ad85b431bf78c5236f63d4e6e6d7.stex" ]
 
 [params]
 
