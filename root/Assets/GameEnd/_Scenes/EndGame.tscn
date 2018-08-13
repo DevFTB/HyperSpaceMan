@@ -1,17 +1,51 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Assets/PauseMenu/_Scripts/PauseShop.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GameEnd/_Scripts/EndGame.gd" type="Script" id=1]
 [ext_resource path="res://Assets/PauseMenu/_Graphics/Fonts/SmallFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/LocationGUI/GUILocationFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/MainMenu/_Graphics/home.png" type="Texture" id=4]
-[ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=5]
-[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=6]
-[ext_resource path="res://Assets/GUI/_Graphics/Fonts/MineralsGUI/MineralsGUIFont.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Assets/GUI/_Graphics/Fonts/BottomGUI/GUIBottomFont.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Assets/PauseMenu/_Scenes/Upgrade.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=5]
+[ext_resource path="res://Assets/GUI/_Graphics/Fonts/DynamicFontData/8bitWonder.tres" type="DynamicFontData" id=6]
 
-[node name="PauseShop" type="MarginContainer" index="0"]
+[sub_resource type="DynamicFont" id=1]
 
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 15
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
+
+[node name="EndGame" type="MarginContainer"]
+
+pause_mode = 2
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -30,12 +64,15 @@ custom_constants/margin_top = 30
 custom_constants/margin_left = 30
 custom_constants/margin_bottom = 30
 script = ExtResource( 1 )
-_sections_unfolded = [ "Margin", "Material", "Mouse", "Rect", "Theme", "Visibility", "custom_constants" ]
-max_level = 8
+_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Theme", "Visibility", "custom_constants" ]
+time_spent_box = NodePath("HBox/Menu/Stats/VBoxContainer/TimeSpent")
+enemies_killed_box = NodePath("HBox/Menu/Stats/VBoxContainer/EnemiesKilled")
+max_speed_box = NodePath("HBox/Menu/Stats/VBoxContainer/MaxSpeed")
+minerals_collected_box = NodePath("HBox/Menu/Stats/VBoxContainer/MineralsMined")
+message_display = NodePath("HBox/Message")
 player = null
-upgrade_paths = [ NodePath("HBox/Menu/Upgrades/VBox/MaxSpeed"), NodePath("HBox/Menu/Upgrades/VBox/Acceleration"), NodePath("HBox/Menu/Upgrades/VBox/Damage"), NodePath("HBox/Menu/Upgrades/VBox/FuelTank"), NodePath("HBox/Menu/Upgrades/VBox/Health") ]
-mineral_label = NodePath("HBox/Menu/Upgrades/VBox/MarginContainer/Minerals")
-instruction_scene = null
+timer_object = null
+PauseMenu = null
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
@@ -53,7 +90,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 1, 1, 1, 0.15 )
+color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Margin", "Rect", "Theme" ]
 
 [node name="HBox" type="VBoxContainer" parent="." index="1"]
@@ -76,7 +113,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="Resume" type="Label" parent="HBox" index="0"]
+[node name="Margin" type="Label" parent="HBox" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -91,13 +128,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
-text = "Esc to resume"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Size Flags", "custom_colors", "custom_fonts" ]
 
-[node name="Paused" type="Label" parent="HBox" index="1"]
+[node name="Message" type="Label" parent="HBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -113,7 +149,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 13
 size_flags_vertical = 13
 custom_fonts/font = ExtResource( 3 )
-text = "Paused!"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -141,7 +176,7 @@ collapsed = false
 dragger_visibility = 0
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
-[node name="PauseOptions" type="MarginContainer" parent="HBox/Menu" index="0"]
+[node name="Options" type="MarginContainer" parent="HBox/Menu" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -161,7 +196,7 @@ custom_constants/margin_left = -10
 custom_constants/margin_bottom = 225
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
-[node name="VBox" type="VBoxContainer" parent="HBox/Menu/PauseOptions" index="0"]
+[node name="VBox" type="VBoxContainer" parent="HBox/Menu/Options" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -180,7 +215,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Home" type="MarginContainer" parent="HBox/Menu/PauseOptions/VBox" index="0"]
+[node name="Home" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -200,7 +235,7 @@ custom_constants/margin_left = 100
 custom_constants/margin_bottom = 0
 _sections_unfolded = [ "Mouse", "Size Flags", "custom_constants" ]
 
-[node name="HomeButton" type="TextureButton" parent="HBox/Menu/PauseOptions/VBox/Home" index="0"]
+[node name="HomeButton" type="TextureButton" parent="HBox/Menu/Options/VBox/Home" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -225,7 +260,7 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Rect", "Size Flags", "Textures" ]
 
-[node name="Instructions" type="MarginContainer" parent="HBox/Menu/PauseOptions/VBox" index="1"]
+[node name="Instructions" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -246,7 +281,28 @@ custom_constants/margin_left = 100
 custom_constants/margin_bottom = 0
 _sections_unfolded = [ "Mouse", "Size Flags", "Theme", "custom_constants" ]
 
-[node name="InstructionsButton" type="TextureButton" parent="HBox/Menu/PauseOptions/VBox/Instructions" index="0"]
+[node name="Exit" type="MarginContainer" parent="HBox/Menu/Options/VBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 416.0
+margin_right = 1028.0
+margin_bottom = 620.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 0
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Mouse", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="ExitButton" type="TextureButton" parent="HBox/Menu/Options/VBox/Exit" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -269,55 +325,9 @@ group = null
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 5
-_sections_unfolded = [ "Rect", "Size Flags", "Textures" ]
-
-[node name="Exit" type="MarginContainer" parent="HBox/Menu/PauseOptions/VBox" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 416.0
-margin_right = 1028.0
-margin_bottom = 620.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 100
-custom_constants/margin_top = 0
-custom_constants/margin_left = 100
-custom_constants/margin_bottom = 0
-_sections_unfolded = [ "Mouse", "Size Flags", "Theme", "custom_constants" ]
-
-[node name="ExitButton" type="TextureButton" parent="HBox/Menu/PauseOptions/VBox/Exit" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 100.0
-margin_right = 928.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 6 )
-expand = true
-stretch_mode = 5
 _sections_unfolded = [ "Focus", "Rect", "Size Flags", "Theme" ]
 
-[node name="Upgrades" type="MarginContainer" parent="HBox/Menu" index="1"]
+[node name="Stats" type="MarginContainer" parent="HBox/Menu" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -337,7 +347,7 @@ custom_constants/margin_top = 50
 custom_constants/margin_left = 25
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="VBox" type="VBoxContainer" parent="HBox/Menu/Upgrades" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox/Menu/Stats" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -351,150 +361,120 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-alignment = 0
-_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags" ]
-
-[node name="HBox1" type="HBoxContainer" parent="HBox/Menu/Upgrades/VBox" index="0"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 645.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="Label" type="Label" parent="HBox/Menu/Upgrades/VBox/HBox1" index="0"]
+[node name="StatLabel" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 532.0
-margin_bottom = 54.0
+margin_right = 645.0
+margin_bottom = 83.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 7 )
-text = "Upgrades"
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
-
-[node name="Cost" type="Label" parent="HBox/Menu/Upgrades/VBox/HBox1" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 536.0
-margin_right = 645.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 8 )
-text = "Cost"
-align = 2
-valign = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="MaxSpeed" parent="HBox/Menu/Upgrades/VBox" index="1" instance=ExtResource( 9 )]
-
-margin_top = 58.0
-margin_right = 645.0
-margin_bottom = 163.0
-_sections_unfolded = [ "Anchor", "Rect", "Theme", "custom_constants" ]
-upgrade_name = "Max speed"
-
-[node name="Acceleration" parent="HBox/Menu/Upgrades/VBox" index="2" instance=ExtResource( 9 )]
-
-margin_top = 167.0
-margin_right = 645.0
-margin_bottom = 272.0
-upgrade_name = "Acceleration"
-
-[node name="Damage" parent="HBox/Menu/Upgrades/VBox" index="3" instance=ExtResource( 9 )]
-
-margin_top = 276.0
-margin_right = 645.0
-margin_bottom = 381.0
-upgrade_name = "Damage"
-
-[node name="FuelTank" parent="HBox/Menu/Upgrades/VBox" index="4" instance=ExtResource( 9 )]
-
-margin_top = 385.0
-margin_right = 645.0
-margin_bottom = 490.0
-upgrade_name = "Fuel tank"
-
-[node name="Health" parent="HBox/Menu/Upgrades/VBox" index="5" instance=ExtResource( 9 )]
-
-margin_top = 494.0
-margin_right = 645.0
-margin_bottom = 599.0
-upgrade_name = "Health"
-
-[node name="MarginContainer" type="MarginContainer" parent="HBox/Menu/Upgrades/VBox" index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 603.0
-margin_right = 645.0
-margin_bottom = 845.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Minerals" type="Label" parent="HBox/Menu/Upgrades/VBox/MarginContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 645.0
-margin_bottom = 242.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 7 )
-text = "Minerals: %s"
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = ExtResource( 3 )
+text = "Stats"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme", "custom_fonts" ]
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="TimeSpent" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 87.0
+margin_right = 645.0
+margin_bottom = 152.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 1 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="EnemiesKilled" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 156.0
+margin_right = 645.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 2 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="MaxSpeed" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 225.0
+margin_right = 645.0
+margin_bottom = 290.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 3 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="MineralsMined" type="Label" parent="HBox/Menu/Stats/VBoxContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 294.0
+margin_right = 645.0
+margin_bottom = 359.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+custom_fonts/font = SubResource( 4 )
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "custom_fonts" ]
 
 [node name="Tween" type="Tween" parent="." index="2"]
 
@@ -505,20 +485,8 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[connection signal="button_down" from="HBox/Menu/PauseOptions/VBox/Home/HomeButton" to="." method="_on_HomeButton_down"]
+[connection signal="button_down" from="HBox/Menu/Options/VBox/Home/HomeButton" to="." method="_on_HomeButton_button_down"]
 
-[connection signal="button_down" from="HBox/Menu/PauseOptions/VBox/Instructions/InstructionsButton" to="." method="_on_InstructionsButton_down"]
-
-[connection signal="button_down" from="HBox/Menu/PauseOptions/VBox/Exit/ExitButton" to="." method="_on_ExitButton_down"]
-
-[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/MaxSpeed" to="." method="_on_MaxSpeed_upgrade_pressed"]
-
-[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/Acceleration" to="." method="_on_Acceleration_upgrade_pressed"]
-
-[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/Damage" to="." method="_on_Damage_upgrade_pressed"]
-
-[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/FuelTank" to="." method="_on_FuelTank_upgrade_pressed"]
-
-[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/Health" to="." method="_on_Health_upgrade_pressed"]
+[connection signal="button_down" from="HBox/Menu/Options/VBox/Exit/ExitButton" to="." method="_on_ExitButton_button_down"]
 
 

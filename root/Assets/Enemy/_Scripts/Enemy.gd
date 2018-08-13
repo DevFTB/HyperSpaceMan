@@ -1,5 +1,4 @@
 extends Node2D
-
 var preset
 
 var health
@@ -69,7 +68,7 @@ func reduce_health(decrement):
 
 func die():
 	dead = true
-	
+	player.enemies_killed += 1
 	$Enemy/CollisionShape2D.disabled = true
 	$Enemy/AnimatedSprite.play("Die")
 
