@@ -46,6 +46,7 @@ func _ready():
 #		planet_names.append(line)
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
+	#solar_system.get_node("Sun").spawned_enemies = true
 	solar_system.planet_enemies_mean = 1
 	solar_system.planet_enemies_randomness = 0
 	solar_system.sun_enemies_mean = 2

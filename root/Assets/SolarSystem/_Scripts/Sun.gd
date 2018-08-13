@@ -10,7 +10,7 @@ func _ready():
 	# Initialization here
 	pass
 
-func init(scale, sprites, amount_of_enemies):
+func init(scale, sprites, amount_of_enemies, solar_name):
 	$Sprite.frames = SpriteFrames.new()
 	$Sprite.frames.add_animation("rotate")
 	$Sprite.frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
@@ -22,6 +22,7 @@ func init(scale, sprites, amount_of_enemies):
 	$CollisionShape2D.apply_scale(Vector2(scale, scale))
 	$EnemySpawnArea.apply_scale(Vector2(scale, scale))
 	$Path2D.apply_scale(Vector2(scale, scale))
+	sun_name = solar_name
 	
 
 func _spawn_enemies():
