@@ -20,7 +20,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 radius = 108.356
 
-[node name="Fuel Station" type="Area2D" index="0" groups=[
+[node name="Fuel Station" type="Area2D" groups=[
 "Fuel Station",
 ]]
 
@@ -34,9 +34,9 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
-fuel_amount = 10
-fuel_price = 20
-randomness = 0.2
+fuel_amount = 100
+fuel_price = 10
+randomness = 5.0
 tooltip = "Press F to buy fuel for %s minerals"
 no_fuel_tooltip = "Out of fuel"
 
@@ -47,7 +47,7 @@ no_fuel_tooltip = "Out of fuel"
 z_index = -1
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

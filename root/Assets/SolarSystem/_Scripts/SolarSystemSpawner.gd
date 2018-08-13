@@ -17,8 +17,6 @@ var game_time
 var planet_sprite_array
 var sun_sprite_array
 
-#WTF IS HAPPENING AND HOW DO I CHANGE SOMETHING!!?!?!??!?!?!?
-
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -59,7 +57,7 @@ func build_animations(path, i):
 func create_solar_system(x, y, n, spread, sun_sprites, planet_sprites):
 	var solar_system = solar_system_scene.instance()
 	add_child(solar_system)
-	solar_system.init(n, spread, sun_sprites, planet_sprites)
+	solar_system.init(n, spread, sun_sprite_array,planet_sprite_array, sun_names[randi()%len(sun_names)], planet_names)
 	solar_system.position.x = x
 	solar_system.position.y = y
 	
