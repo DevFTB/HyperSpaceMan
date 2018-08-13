@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 export (Array, NodePath) var label_paths
-var label_names = ['Location', 'PlanetMinerals', 'Tooltip', 'Health', 'Minerals', 'Fuel', 'Speed']
+var label_names = ['Location', 'PlanetMinerals', 'Tooltip', 'Health', 'Minerals', 'Fuel', 'Speed', 'TimeLeft']
 var labels
 
 func _ready():
