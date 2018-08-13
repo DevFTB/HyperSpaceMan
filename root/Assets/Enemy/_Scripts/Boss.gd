@@ -1,20 +1,9 @@
 extends "res://Assets/Enemy/_Scripts/Enemy.gd"
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func init(_preset, _position, _scale):
 	preset = _preset
 	position = _position
 	apply_scale(Vector2(_scale, _scale))
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	
-	
-	pass
 
 func move(delta):
 	
@@ -31,7 +20,6 @@ func shoot(direction):
 		
 		var angle = i * ((2 * PI)/(preset.amount_of_bullets)) + get_node("Enemy").get_transform().get_rotation()	
 		
-		
 		var bullet_position = position
 		new_bullet.position = bullet_position
 		
@@ -45,4 +33,9 @@ func shoot(direction):
 		
 		get_parent().add_child(new_bullet)
 		
-
+func die():
+	dead = true
+	player.enemies_killed += 1
+	$Enemy/CollisionShape2D.disabled = true
+	$Enemy/AnimatedSprite.play("Die")
+	$AudioStreamPlayer2D.stop()

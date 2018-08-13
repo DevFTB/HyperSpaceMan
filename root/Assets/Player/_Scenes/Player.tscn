@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Player/_Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/_Scenes/PlayerBullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Player/_Sounds/shoot.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Player/_Sounds/move.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/_Graphics/player.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/_Sounds/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Player/_Sounds/move.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Player/_Sounds/upgrade3.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Player/_Sounds/mine.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Player/_Sounds/mine2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=9]
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
@@ -76,37 +79,18 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
 GUI = null
-initial = {
-"Acceleration": 100,
-"Damage": 15,
-"FuelTank": 100,
-"Health": 100,
-"MaxSpeed": 500,
-"MiningSpeed": 10
-}
-level_multiplier = {
-"Acceleration": 25,
-"Damage": 25,
-"FuelTank": 50,
-"Health": 100,
-"MaxSpeed": 150,
-"MiningSpeed": 5
-}
-minerals = null
-friction = null
-bullet_speed = null
-fuel_value = null
-collision_damage = 10
-fuel_cost = 0.05
+minerals = 10000
+friction = 1
+bullet_speed = 1000
+fuel_cost = 0.01
 Bullet = ExtResource( 2 )
-shoot_sound = ExtResource( 3 )
-move_sound = ExtResource( 4 )
+speed_multiplier = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Camera" type="Camera2D" parent="." index="1"]
@@ -140,7 +124,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 position = Vector2( -3.37963, -1.0678 )
 rotation = 1.5708
 scale = Vector2( 4.21499, 5.26406 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ShootTimer" type="Timer" parent="." index="3"]
@@ -152,8 +136,8 @@ autostart = false
 
 [node name="ShootSoundPlayer" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 3 )
-volume_db = 0.0
+stream = ExtResource( 4 )
+volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
@@ -164,8 +148,8 @@ area_mask = 1
 [node name="MoveSoundPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 
 position = Vector2( 0.237823, -0.38168 )
-stream = ExtResource( 4 )
-volume_db = 0.0
+stream = ExtResource( 5 )
+volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
@@ -173,7 +157,34 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="Particles2D" type="Particles2D" parent="." index="6"]
+[node name="UpgradeSoundPlayer" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 6 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MineSoundPlayer1" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 7 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="MineSoundPlayer2" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 8 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Particles2D" type="Particles2D" parent="." index="9"]
 
 position = Vector2( -39.7289, -2.42705 )
 rotation = 1.5708
@@ -191,7 +202,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
 process_material = SubResource( 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 normal_map = null
 h_frames = 1
 v_frames = 1

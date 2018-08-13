@@ -69,7 +69,7 @@ _sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape
 [sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32.2958, 31.546 )
+extents = Vector2( 27.3591, 28.2188 )
 
 [node name="Enemy" type="Node2D"]
 
@@ -108,8 +108,8 @@ nine_patch_stretch = true
 _sections_unfolded = [ "Size Flags", "Textures" ]
 
 [node name="Enemy" type="Area2D" parent="." index="1" groups=[
-"Collider",
 "Enemy",
+"Collider",
 ]]
 
 z_index = 1
@@ -162,7 +162,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="FireTimer" type="Timer" parent="Enemy" index="3"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 3.0
 one_shot = false
 autostart = true
 script = ExtResource( 3 )

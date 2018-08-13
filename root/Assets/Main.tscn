@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=7]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -58,18 +58,7 @@ solar_system_randomness = 0.7
 ] instance=ExtResource( 7 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
-initial = {
-"Acceleration": 100,
-"Damage": 15,
-"FuelTank": 100,
-"Health": 100,
-"MaxSpeed": 500,
-"MiningSpeed": 10
-}
-minerals = 1000
-friction = 1
-bullet_speed = 1000
-fuel_value = 10
+friction = 6
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
