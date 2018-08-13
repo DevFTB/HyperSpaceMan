@@ -50,7 +50,7 @@ func _ready():
 	solar_system.planet_enemies_randomness = 0
 	solar_system.sun_enemies_mean = 2
 	solar_system.sun_enemies_randomness = 0
-	solar_system.init(1000, 2500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
+	solar_system.init(10, 2500,sun_sprite_array,planet_sprite_array, "Tutorial", planet_names)
 	solar_system.position = Vector2(600, 600)
 	start_spawn()
 
