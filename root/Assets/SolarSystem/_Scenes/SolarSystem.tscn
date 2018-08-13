@@ -5,13 +5,18 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/Fuel Station.tscn" type="PackedScene" id=4]
 
-[node name="SolarSystem" type="Node2D" index="0"]
+[node name="SolarSystem" type="Node2D"]
 
 script = ExtResource( 1 )
 planet_min = 1.5
 planet_max = 2.0
 sun_min = 4.0
 sun_max = 5.0
+sun_enemies_mean = 10
+sun_enemies_randomness = 0.5
+planet_enemies_mean = 4
+planet_enemies_randomness = 0.5
+planet_randomness = 0.1
 sun_scene = ExtResource( 2 )
 planet_scene = ExtResource( 3 )
 fuel_station_scene = ExtResource( 4 )
