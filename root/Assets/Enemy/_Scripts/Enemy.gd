@@ -1,6 +1,6 @@
 extends Node2D
 #end game stats vs start game stats
-export (float) var time_scale_factor
+export (float) var time_scale_factor = 2
 var preset
 
 var health
