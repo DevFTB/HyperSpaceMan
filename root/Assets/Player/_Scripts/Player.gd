@@ -28,6 +28,7 @@ var f_pressed = false
 var space_pressed = false
 var enemies_killed = 0
 var fuel_value = 0.25
+var total_minerals = 0
 
 signal end_game
 
@@ -102,6 +103,7 @@ func get_minerals():
 	return minerals
 	
 func change_minerals(amount):
+	total_minerals += max(0, amount)
 	minerals += amount
 	GUI.update_value('Minerals', minerals)
 
