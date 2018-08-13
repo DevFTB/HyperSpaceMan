@@ -1,29 +1,33 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SpaceObject.gd" type="Script" id=1]
-[ext_resource path="res://Assets/SolarSystem/_Sounds/deploy.wav" type="AudioStream" id=2]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/2.png" type="Texture" id=4]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/3.png" type="Texture" id=5]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/4.png" type="Texture" id=6]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/5.png" type="Texture" id=7]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/6.png" type="Texture" id=8]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/7.png" type="Texture" id=9]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/8.png" type="Texture" id=10]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/9.png" type="Texture" id=11]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/10.png" type="Texture" id=12]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/11.png" type="Texture" id=13]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/12.png" type="Texture" id=14]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/13.png" type="Texture" id=15]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/14.png" type="Texture" id=16]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/15.png" type="Texture" id=17]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/16.png" type="Texture" id=18]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/17.png" type="Texture" id=19]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/18.png" type="Texture" id=20]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/19.png" type="Texture" id=21]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/20.png" type="Texture" id=22]
-[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/21.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=24]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Debris/1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Debris/2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Debris/4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Debris/3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SolarSystem/_Sounds/deploy.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/5.png" type="Texture" id=11]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/6.png" type="Texture" id=12]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/7.png" type="Texture" id=13]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/8.png" type="Texture" id=14]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/9.png" type="Texture" id=15]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/10.png" type="Texture" id=16]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/11.png" type="Texture" id=17]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/12.png" type="Texture" id=18]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/13.png" type="Texture" id=19]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/14.png" type="Texture" id=20]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/15.png" type="Texture" id=21]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/16.png" type="Texture" id=22]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/17.png" type="Texture" id=23]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/18.png" type="Texture" id=24]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/19.png" type="Texture" id=25]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/20.png" type="Texture" id=26]
+[ext_resource path="res://Assets/SolarSystem/_Graphics/Terminate/21.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Enemy/_Graphics/puff.png" type="Texture" id=28]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -33,11 +37,12 @@ radius = 5.24904
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "rotate",
+"name": "debris",
 "speed": 5.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CircleShape2D" id=3]
 
@@ -105,12 +110,12 @@ _sections_unfolded = [ "Animation", "Color", "Damping", "Emission Shape", "Flags
 [sub_resource type="StreamTexture" id=8]
 
 flags = 0
-load_path = "res://.import/22.png-81dfa4d0aae9bad1b43c8382275b8f3b.stex"
+load_path = ""
 
 [sub_resource type="SpriteFrames" id=9]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), SubResource( 8 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), SubResource( 8 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "default",
 "speed": 10.0
@@ -199,6 +204,7 @@ min_animation_speed = 2.0
 max_animation_speed = 3.0
 tooltip = "Press SPACE to %s planet"
 no_minerals_tooltip = "RIP Planet"
+debris_texture_paths = [ "res://Assets/SolarSystem/_Graphics/Debris/1.png", "res://Assets/SolarSystem/_Graphics/Debris/2.png", "res://Assets/SolarSystem/_Graphics/Debris/3.png", "res://Assets/SolarSystem/_Graphics/Debris/4.png" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -242,7 +248,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 2 )
+stream = ExtResource( 6 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -310,7 +316,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
 process_material = SubResource( 14 )
-texture = ExtResource( 24 )
+texture = ExtResource( 28 )
 normal_map = null
 h_frames = 1
 v_frames = 1

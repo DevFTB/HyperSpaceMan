@@ -7,6 +7,8 @@ export (float) var max_animation_speed
 export (String) var tooltip
 export (String) var no_minerals_tooltip
 
+export (Array, String) var debris_texture_paths
+
 var enemy = preload("res://Assets/Enemy/_Scenes/Enemy.tscn")
 
 var _amount_of_enemies
@@ -22,13 +24,21 @@ var mine_time
 var mined_level
 
 func init(scale, sprites, amount_of_enemies, solar_name, minerals):
-	$Sprite.frames = SpriteFrames.new()
-	$Sprite.frames.add_animation("rotate")
-	$Sprite.frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
+	var new_frames = $Sprite.frames.duplicate()
+	new_frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
 	for i in range(0, len(sprites)):
-		$Sprite.frames.add_frame("rotate", load(sprites[i]), i)
+		new_frames.add_frame("rotate", load(sprites[i]), i)
+		
+	
+	new_frames.add_animation("debris")
+	
+	for i in range(0, len(debris_texture_paths)):
+		new_frames.add_frame("debris", load(debris_texture_paths[i]), i)
+		
+	$Sprite.frames = new_frames
 	$Sprite.set_frame(randi()%($Sprite.frames.get_frame_count("rotate")))
-	$Sprite.play()
+	$Sprite.play("rotate")
+	
 	$Sprite.apply_scale(Vector2(scale, scale))
 	$TerminatorSprite.apply_scale(Vector2(scale, scale))
 	$CollisionShape2D.apply_scale(Vector2(scale, scale))
@@ -41,6 +51,8 @@ func init(scale, sprites, amount_of_enemies, solar_name, minerals):
 	
 	sun_name = solar_name
 	self.minerals = minerals
+	
+		
 
 func set_amount_of_enemies(amount):
 	_amount_of_enemies = amount
@@ -74,17 +86,22 @@ func get_mine_time(mine_speed):
 
 func mined(mine_level):
 	minerals = 0
-	if mine_level == 7:
-		no_minerals_tooltip = "TARGET TERMINATED"
-		$TerminatorSprite.visible = true		
-		$TerminatorSprite.play()
-	else:
-		if mine_level == 8:
+
+	match mine_level:
+		8:
 			$IDontFeelSoGood.emitting = true
 			no_minerals_tooltip = "Thanos waz here"
-		elif mine_level >= 5:
+			fade($Sprite, 0)
+		7:
+			no_minerals_tooltip = "TARGET TERMINATED"
+			$TerminatorSprite.visible = true
+			$TerminatorSprite.play()
+			
+		5, 6: 
 			$Explode.emitting = true
-		fade($Sprite, 1 - 0.1 * mine_level)
+			$Sprite.play("debris")
+		_:
+			fade($Sprite, 1 - 0.1 * mine_level)
 		
 func fade(sprite, alpha):
 	var start_colour = Color(1.0, 1.0, 1.0, 1.0)
@@ -99,4 +116,4 @@ func _on_EnemySpawnArea_area_entered(area):
 func _on_TerminatorSprite_animation_finished():
 	$Explode.emitting = true
 	fade($TerminatorSprite, 0)
-	fade($Sprite, 0.3)
+	$Sprite.play("debris")
