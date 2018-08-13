@@ -1,4 +1,6 @@
 extends Node2D
+#end game stats vs start game stats
+export (float) var time_scale_factor
 var preset
 
 var health
@@ -8,6 +10,7 @@ var seperation_velocity
 var follow_velocity
 
 var player
+var main
 
 var dead
 
@@ -22,9 +25,10 @@ func _ready():
 	init_sprite()
 	
 	player = get_node("/root/Main/Player")
+	main = get_node("/root/Main")
 
 	seperation_velocity = Vector2(0, 0)
-	health = preset.max_health
+	health = preset.max_health +  (preset.max_health * (time_scale_factor-1)  * (1- (main.time_left/main.game_time)))
 	
 	$Enemy/FireTimer.wait_time = 1/ preset.fire_rate
 	
@@ -52,7 +56,8 @@ func shoot(direction):
 	for i in range (0, preset.amount_of_bullets):
 		var new_bullet = preset.bullet.instance()
 		new_bullet.position = position
-		new_bullet.set_damage(preset.damage)
+		new_bullet.set_damage(preset.damage +  (preset.damage * (time_scale_factor-1)  * (1- (main.time_left/main.game_time))))
+		print(preset.damage +  (preset.damage * (time_scale_factor-1)  * (1- (main.time_left/main.game_time))))
 	
 		new_bullet.set_direction_and_speed(direction, preset.bullet_speed + follow_velocity.length())
 		get_parent().add_child(new_bullet)
