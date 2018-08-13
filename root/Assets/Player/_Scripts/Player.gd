@@ -6,6 +6,7 @@ var level_multiplier = {"MaxSpeed": 10, "Acceleration": 10, "Damage": 25, "FuelT
 export (int) var minerals
 export (int) var friction
 export (int) var bullet_speed
+export (float) var regen_per_second = 1
 export var fuel_cost = 0.05
 export (PackedScene) var Bullet
 export var speed_multiplier = 100
@@ -74,6 +75,7 @@ func _process(delta):
 		mine_step(delta)
 		
 	move(delta)
+	reduce_health(-regen_per_second * delta)
 		
 func mine_step(delta):
 	velocity -= velocity.normalized() * friction
@@ -206,10 +208,10 @@ func fuel_area_exited(area):
 	fuel_station = false
 	
 func reduce_health(damage):
-	health = clamp(health - damage, 0, INF)
+	health = clamp(health - damage, 0, stats["Health"])
 	if health <= 0:
 		die()
-	GUI.update_value('Health', [health, stats["Health"]])
+	GUI.update_value('Health', [int(health), stats["Health"]])
 
 func get_levels():
 	return levels
