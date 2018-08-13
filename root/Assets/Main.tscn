@@ -85,7 +85,9 @@ solar_system_randomness = 0.3
 ] instance=ExtResource( 8 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
+friction = 6
 regen_per_second = 1
+speed_multiplier = 100
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
