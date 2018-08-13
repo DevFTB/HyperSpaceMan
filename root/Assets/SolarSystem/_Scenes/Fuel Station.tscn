@@ -24,7 +24,7 @@ radius = 108.356
 "Fuel Station",
 ]]
 
-scale = Vector2( 2.53961, 2.53961 )
+scale = Vector2( 3.14398, 3.14398 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -34,16 +34,17 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
-fuel_amount = 10
+fuel_amount = 3
 fuel_price = 20
 randomness = 0.2
 tooltip = "Press F to buy fuel for %s minerals"
-no_fuel_tooltip = "Out of fuel"
+no_fuel_tooltip = "No fuel remaining"
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0" groups=[
 "Fuel Station",
 ]]
 
+scale = Vector2( 1.63387, 1.63387 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "default"

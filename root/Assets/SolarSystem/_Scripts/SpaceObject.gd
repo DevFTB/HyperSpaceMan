@@ -4,6 +4,8 @@ extends Area2D
 # var b = "textvar"
 export (float) var min_animation_speed
 export (float) var max_animation_speed
+export (String) var tooltip
+export (String) var no_minerals_tooltip
 
 var enemy = preload("res://Assets/Enemy/_Scenes/Enemy.tscn")
 
@@ -13,15 +15,13 @@ var spawned_enemies
 
 var sun_name
 
+var minerals 
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-	
+var mine_time
 
+var mined_level
 
-func init(scale, sprites, amount_of_enemies, solar_name):
+func init(scale, sprites, amount_of_enemies, solar_name, minerals):
 	$Sprite.frames = SpriteFrames.new()
 	$Sprite.frames.add_animation("rotate")
 	$Sprite.frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
@@ -33,11 +33,13 @@ func init(scale, sprites, amount_of_enemies, solar_name):
 	$CollisionShape2D.apply_scale(Vector2(scale, scale))
 	$EnemySpawnArea.apply_scale(Vector2(scale, scale))
 	$Path2D.apply_scale(Vector2(scale, scale))
+	$Particles2D.apply_scale(Vector2(scale, scale))
 	
 	_amount_of_enemies = amount_of_enemies 
 	spawned_enemies = false
 	
 	sun_name = solar_name
+	self.minerals = minerals
 
 func set_amount_of_enemies(amount):
 	_amount_of_enemies = amount
@@ -57,6 +59,30 @@ func _spawn_enemies():
 				
 	spawned_enemies = true;
 	
+func get_minerals():
+	return minerals
+
+func get_tooltip(mine_strength):
+	if minerals > 0:
+		return "Press SPACE to %s planet" % mine_strength
+	else:
+		return no_minerals_tooltip
+
+func get_mine_time(mine_speed):
+	return minerals/mine_speed
+
+func mined(mine_level):
+	minerals = 0
+	var start_colour = Color(1.0, 1.0, 1.0, 1.0)
+	var end_colour = Color(0.35, 0.35, 0.35, 1 - 0.15 * mine_level)
+	$Tween.interpolate_property($Sprite, "modulate", start_colour, end_colour, 4.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+	$Particles2D.emitting = false
+	if mine_level == 8:
+		$Particles2D.emitting = true
+		no_minerals_tooltip = "Thanos waz here"
+	if mine_level == 7:
+		no_minerals_tooltip = "TARGET TERMINATED"
 
 func _on_EnemySpawnArea_area_entered(area):
 	if(area.get_name() == "Player" && not spawned_enemies):

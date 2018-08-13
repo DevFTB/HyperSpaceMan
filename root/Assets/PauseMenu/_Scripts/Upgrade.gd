@@ -24,5 +24,5 @@ func update_cost(cost):
 	
 
 func _on_UpgradeButton_button_down():
-	if get_tree().paused():
+	if get_tree().paused:
 		emit_signal("upgrade_pressed")

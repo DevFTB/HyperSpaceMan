@@ -9,8 +9,8 @@ export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
 export (PackedScene) var instruction_scene
 
-var costs = [20, 50, 100, 200, 500, 1000, 2000, 5000]
-var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health"]
+var costs = [20, 50, 100, 200, 500, 1000, 2000, 5000, "Max"]
+var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health", "MineSpeed"]
 var upgrades
 var enabled = false
 var button_down = false
@@ -63,9 +63,9 @@ func fade_out():
 	fade($ColorRect, "color", 0.15, 0.0)
 	$Tween.start()
 
-func fade(object, property, initial_a, final_a):
-	var start_color = Color(1.0, 1.0, 1.0, initial_a)
-	var end_color = Color(1.0, 1.0, 1.0, final_a)
+func fade(object, property, start_a, end_a):
+	var start_color = Color(1.0, 1.0, 1.0, start_a)
+	var end_color = Color(1.0, 1.0, 1.0, end_a)
 	$Tween.interpolate_property(object, property, start_color, end_color, 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN)
 
 	
@@ -96,12 +96,13 @@ func update_minerals(value):
 func upgrade(upgrade):
 	if get_tree().paused:
 		var current = levels[upgrade]
-		var cost = costs[current]
-		if current < max_level and minerals >= cost:
-			player.buy_upgrade(upgrade, cost)
-		get_player_vars()
-		update_minerals(minerals)
-		update_level_up(upgrade)
+		if current < max_level:
+			var cost = costs[current]
+			if minerals >= cost:
+				player.buy_upgrade(upgrade, cost)
+				get_player_vars()
+				update_minerals(minerals)
+				update_level_up(upgrade)
 
 func _on_MaxSpeed_upgrade_pressed():
 	upgrade("MaxSpeed")
@@ -117,6 +118,9 @@ func _on_FuelTank_upgrade_pressed():
 
 func _on_Health_upgrade_pressed():
 	upgrade("Health")
+	
+func _on_MineSpeed_upgrade_pressed():
+	upgrade("MineSpeed")
 
 func _on_InstructionsButton_down():
 	if get_tree().paused:
@@ -128,8 +132,8 @@ func _on_ExitButton_down():
 		get_tree().paused = false		
 		get_tree().quit()
 
-
 func _on_HomeButton_down():
 	if get_tree().paused:
 		get_tree().paused = false
 		get_tree().change_scene_to(home_scene)
+

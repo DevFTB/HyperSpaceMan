@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -52,10 +52,30 @@ solar_system_randomness = 0.7
 ] instance=ExtResource( 6 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
-minerals = 1000
-friction = 10
+initial = {
+"Acceleration": 100,
+"Damage": 15,
+"FuelTank": 100,
+"Health": 1000,
+"MaxSpeed": 100,
+"MineSpeed": 5
+}
+level_multiplier = {
+"Acceleration": 10,
+"Damage": 25,
+"FuelTank": 20,
+"Health": 100,
+"MaxSpeed": 10,
+"MineSpeed": 1.5
+}
+minerals = 10000
+friction = 6
 bullet_speed = 1000
 fuel_value = 10
+speed_multiplier = 100
+mine_strength = [ "dig", "mine", "excavate", "extract", "harvest", "vaporize", "annihilate", "terminate", "unleash infinity guantlet on" ]
+mine_sound = null
+upgrade_sound = null
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 

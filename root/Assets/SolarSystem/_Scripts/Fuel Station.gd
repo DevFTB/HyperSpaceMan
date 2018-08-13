@@ -24,11 +24,6 @@ func get_tooltip():
 func get_price():
 	return fuel_price
 
-func _process(delta):
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
-	pass
-
 func buy_fuel():
 	if fuel_amount > 0:
 		fuel_amount -= 1

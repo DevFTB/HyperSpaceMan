@@ -32,7 +32,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Margin", "Material", "Mouse", "Rect", "Theme", "Visibility", "custom_constants" ]
 max_level = 8
 player = null
-upgrade_paths = [ NodePath("HBox/Menu/Upgrades/VBox/MaxSpeed"), NodePath("HBox/Menu/Upgrades/VBox/Acceleration"), NodePath("HBox/Menu/Upgrades/VBox/Damage"), NodePath("HBox/Menu/Upgrades/VBox/FuelTank"), NodePath("HBox/Menu/Upgrades/VBox/Health") ]
+upgrade_paths = [ NodePath("HBox/Menu/Upgrades/VBox/MaxSpeed"), NodePath("HBox/Menu/Upgrades/VBox/Acceleration"), NodePath("HBox/Menu/Upgrades/VBox/Damage"), NodePath("HBox/Menu/Upgrades/VBox/FuelTank"), NodePath("HBox/Menu/Upgrades/VBox/Health"), NodePath("HBox/Menu/Upgrades/VBox/MineSpeed") ]
 mineral_label = NodePath("HBox/Menu/Upgrades/VBox/MarginContainer/Minerals")
 instruction_scene = null
 
@@ -135,7 +135,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offset = 204
+split_offset = 179
 collapsed = false
 dragger_visibility = 0
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
@@ -146,7 +146,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1128.0
+margin_right = 1103.0
 margin_bottom = 895.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -168,7 +168,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -10.0
 margin_top = 50.0
-margin_right = 1018.0
+margin_right = 993.0
 margin_bottom = 670.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -185,7 +185,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1028.0
+margin_right = 1003.0
 margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -206,7 +206,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 100.0
-margin_right = 928.0
+margin_right = 903.0
 margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -231,7 +231,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 208.0
-margin_right = 1028.0
+margin_right = 1003.0
 margin_bottom = 412.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -252,7 +252,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 100.0
-margin_right = 928.0
+margin_right = 903.0
 margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -277,7 +277,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 416.0
-margin_right = 1028.0
+margin_right = 1003.0
 margin_bottom = 620.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -298,7 +298,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 100.0
-margin_right = 928.0
+margin_right = 903.0
 margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -322,7 +322,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1140.0
+margin_left = 1115.0
 margin_right = 1860.0
 margin_bottom = 895.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -344,7 +344,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 25.0
 margin_top = 50.0
-margin_right = 670.0
+margin_right = 695.0
 margin_bottom = 895.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -362,7 +362,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -378,7 +378,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 532.0
+margin_right = 557.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -400,8 +400,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 536.0
-margin_right = 645.0
+margin_left = 561.0
+margin_right = 670.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -421,7 +421,7 @@ _sections_unfolded = [ "Size Flags", "custom_constants", "custom_fonts", "custom
 [node name="MaxSpeed" parent="HBox/Menu/Upgrades/VBox" index="1" instance=ExtResource( 9 )]
 
 margin_top = 58.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 163.0
 _sections_unfolded = [ "Anchor", "Rect", "Theme", "custom_constants" ]
 upgrade_name = "Max speed"
@@ -429,39 +429,46 @@ upgrade_name = "Max speed"
 [node name="Acceleration" parent="HBox/Menu/Upgrades/VBox" index="2" instance=ExtResource( 9 )]
 
 margin_top = 167.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 272.0
 upgrade_name = "Acceleration"
 
 [node name="Damage" parent="HBox/Menu/Upgrades/VBox" index="3" instance=ExtResource( 9 )]
 
 margin_top = 276.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 381.0
 upgrade_name = "Damage"
 
 [node name="FuelTank" parent="HBox/Menu/Upgrades/VBox" index="4" instance=ExtResource( 9 )]
 
 margin_top = 385.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 490.0
 upgrade_name = "Fuel tank"
 
 [node name="Health" parent="HBox/Menu/Upgrades/VBox" index="5" instance=ExtResource( 9 )]
 
 margin_top = 494.0
-margin_right = 645.0
+margin_right = 670.0
 margin_bottom = 599.0
 upgrade_name = "Health"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBox/Menu/Upgrades/VBox" index="6"]
+[node name="MineSpeed" parent="HBox/Menu/Upgrades/VBox" index="6" instance=ExtResource( 9 )]
+
+margin_top = 603.0
+margin_right = 670.0
+margin_bottom = 708.0
+upgrade_name = "Mine speed"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBox/Menu/Upgrades/VBox" index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 603.0
-margin_right = 645.0
+margin_top = 712.0
+margin_right = 670.0
 margin_bottom = 845.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -478,8 +485,8 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
-margin_right = 645.0
-margin_bottom = 242.0
+margin_right = 670.0
+margin_bottom = 133.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -519,5 +526,7 @@ playback/speed = 1.0
 [connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/FuelTank" to="." method="_on_FuelTank_upgrade_pressed"]
 
 [connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/Health" to="." method="_on_Health_upgrade_pressed"]
+
+[connection signal="upgrade_pressed" from="HBox/Menu/Upgrades/VBox/MineSpeed" to="." method="_on_MineSpeed_upgrade_pressed"]
 
 

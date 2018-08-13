@@ -1,20 +1,9 @@
 extends "res://Assets/Enemy/_Scripts/Enemy.gd"
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func init(_preset, _position, _scale):
 	preset = _preset
 	position = _position
 	apply_scale(Vector2(_scale, _scale))
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	
-	
-	pass
 
 func move(delta):
 	
@@ -30,7 +19,6 @@ func shoot(direction):
 		var new_bullet = preset.bullet.instance()
 		
 		var angle = i * ((2 * PI)/(preset.amount_of_bullets)) + get_transform().get_rotation()	
-		
 		
 		var bullet_position = position
 		new_bullet.position = bullet_position

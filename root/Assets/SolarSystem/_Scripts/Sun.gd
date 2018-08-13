@@ -31,7 +31,7 @@ func _spawn_enemies():
 	var new_preset = preload("res://Assets/Enemy/Resources/Presets/Boss/Boss.tres")
 	var new_pos = $Path2D.curve.get_point_position(rand_range(0 , $Path2D.curve.get_point_count()))
 	
-	new_boss.init(new_preset, new_pos, 3)
+	new_boss.init(new_preset, new_pos, 0.3)
 	
 	add_child(new_boss)
 				
