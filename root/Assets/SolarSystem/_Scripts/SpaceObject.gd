@@ -10,8 +10,6 @@ var _amount_of_enemies
 
 var spawned_enemies
 
-var sun_name
-
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -20,7 +18,7 @@ func _ready():
 	
 
 
-func init(scale, sprites, amount_of_enemies, solar_name):
+func init(scale, sprites, amount_of_enemies):
 	$Sprite.frames = SpriteFrames.new()
 	$Sprite.frames.add_animation("rotate")
 	$Sprite.frames.set_animation_speed("rotate", rand_range(min_animation_speed, max_animation_speed))
@@ -35,8 +33,7 @@ func init(scale, sprites, amount_of_enemies, solar_name):
 	
 	_amount_of_enemies = amount_of_enemies 
 	spawned_enemies = false
-	
-	sun_name = solar_name
+
 
 func set_amount_of_enemies(amount):
 	_amount_of_enemies = amount

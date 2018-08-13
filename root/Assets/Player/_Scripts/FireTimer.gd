@@ -6,6 +6,7 @@ extends Timer
 
 func _ready():
 	wait_time = 1 / get_parent().get_parent().fire_rate
+	print(wait_time)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
