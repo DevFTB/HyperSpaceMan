@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=4]
 [ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=5]
 
-[node name="MainMenu" type="Control" index="0"]
+[node name="MainMenu" type="Control"]
 
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0

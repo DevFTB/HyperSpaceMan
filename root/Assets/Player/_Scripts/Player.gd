@@ -180,7 +180,7 @@ func _on_Player_area_exited(area):
 		mine_area_exited(area)
 
 func get_mine_strength():
-	return mine_strength[levels["MineSpeed"] + 1]
+	return mine_strength[levels["MineSpeed"]]
 
 func mine_area_entered(area):
 	sun_position = false

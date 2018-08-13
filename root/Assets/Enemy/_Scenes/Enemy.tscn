@@ -75,7 +75,7 @@ extents = Vector2( 27.3591, 28.2188 )
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-time_scale_factor = 2.0
+time_scale_factor = 2
 
 [node name="Life Bar" type="TextureProgress" parent="." index="0"]
 
