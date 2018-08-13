@@ -7,7 +7,6 @@ export var max_level = 8
 export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
-export (PackedScene) var instruction_scene
 
 var costs = [20, 50, 100, 200, 500, 1000, 2000, 5000, "Max"]
 var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health", "MineSpeed"]
@@ -17,6 +16,7 @@ var button_down = false
 var minerals
 var levels
 
+onready var instruction_scene = preload("res://Assets/Instructions/Instructions.tscn")
 onready var home_scene = preload("res://Assets/MainMenu/MainMenu.tscn")
 
 

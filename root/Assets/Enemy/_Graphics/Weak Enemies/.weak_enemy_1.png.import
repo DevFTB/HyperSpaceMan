@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy1.png-00022194e32d13e2d9f5a6ac8dc65902.stex"
+path="res://.import/.weak_enemy_1.png-2f8e6db246978d886d08090290135603.stex"
 
 [deps]
 
-source_file="res://Assets/Enemy/_Graphics/enemy1.png"
-dest_files=[ "res://.import/enemy1.png-00022194e32d13e2d9f5a6ac8dc65902.stex" ]
+source_file="res://Assets/Enemy/_Graphics/Weak Enemies/.weak_enemy_1.png"
+dest_files=[ "res://.import/.weak_enemy_1.png-2f8e6db246978d886d08090290135603.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

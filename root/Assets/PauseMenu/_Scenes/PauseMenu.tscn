@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/GUI/_Graphics/Fonts/BottomGUI/GUIBottomFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Assets/PauseMenu/_Scenes/Upgrade.tscn" type="PackedScene" id=9]
 
-[node name="PauseShop" type="MarginContainer" index="0"]
+[node name="PauseShop" type="MarginContainer"]
 
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -35,7 +35,6 @@ max_level = 8
 player = null
 upgrade_paths = [ NodePath("HBox/Menu/Upgrades/VBox/MaxSpeed"), NodePath("HBox/Menu/Upgrades/VBox/Acceleration"), NodePath("HBox/Menu/Upgrades/VBox/Damage"), NodePath("HBox/Menu/Upgrades/VBox/FuelTank"), NodePath("HBox/Menu/Upgrades/VBox/Health"), NodePath("HBox/Menu/Upgrades/VBox/MineSpeed") ]
 mineral_label = NodePath("HBox/Menu/Upgrades/VBox/MarginContainer/Minerals")
-instruction_scene = null
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
@@ -74,7 +73,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
 [node name="Resume" type="Label" parent="HBox" index="0"]
 

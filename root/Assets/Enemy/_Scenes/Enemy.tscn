@@ -71,7 +71,7 @@ _sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Emission Shape
 custom_solver_bias = 0.0
 extents = Vector2( 27.3591, 28.2188 )
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

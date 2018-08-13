@@ -6,20 +6,23 @@
 [ext_resource path="res://Assets/MainMenu/_Graphics/instructions.png" type="Texture" id=4]
 [ext_resource path="res://Assets/MainMenu/_Graphics/exit.png" type="Texture" id=5]
 
-[node name="MainMenu" type="Node" index="0"]
+[node name="MainMenu" type="Control" index="0"]
 
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
-instruction_scene = null
+_sections_unfolded = [ "Pause", "Visibility" ]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -38,7 +41,7 @@ custom_constants/margin_top = 30
 custom_constants/margin_bottom = 30
 _sections_unfolded = [ "Margin", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -57,7 +60,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -77,7 +80,7 @@ custom_constants/margin_top = 0
 custom_constants/margin_left = 400
 _sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" index="0"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -101,7 +104,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="Bottom" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" index="1"]
+[node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -120,7 +123,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="Left" type="Container" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom" index="0"]
+[node name="Left" type="Container" parent="MarginContainer/VBoxContainer/Bottom" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -136,7 +139,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bottom" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -154,7 +157,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Play" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="0"]
+[node name="Play" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -172,7 +175,7 @@ custom_constants/margin_top = 10
 custom_constants/margin_bottom = 10
 _sections_unfolded = [ "Anchor", "Size Flags", "custom_constants" ]
 
-[node name="PlayButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play" index="0"]
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -196,7 +199,7 @@ group = null
 texture_normal = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Margin", "Textures" ]
 
-[node name="Instructions" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="1"]
+[node name="Instructions" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -216,7 +219,7 @@ custom_constants/margin_top = 10
 custom_constants/margin_bottom = 10
 _sections_unfolded = [ "Size Flags", "Visibility", "custom_constants" ]
 
-[node name="InstructionButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions" index="0"]
+[node name="InstructionButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -240,7 +243,7 @@ group = null
 texture_normal = ExtResource( 4 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="Exit" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="2"]
+[node name="Exit" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -260,7 +263,7 @@ custom_constants/margin_top = 10
 custom_constants/margin_bottom = 10
 _sections_unfolded = [ "Size Flags", "Visibility", "custom_constants" ]
 
-[node name="ExitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit" index="0"]
+[node name="ExitButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -284,7 +287,7 @@ group = null
 texture_normal = ExtResource( 5 )
 _sections_unfolded = [ "Textures" ]
 
-[node name="Right" type="Container" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom" index="2"]
+[node name="Right" type="Container" parent="MarginContainer/VBoxContainer/Bottom" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -301,10 +304,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play/PlayButton" to="." method="_on_PlayButton_down"]
+[node name="Tween" type="Tween" parent="." index="1"]
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions/InstructionButton" to="." method="_on_InstructionButton_down"]
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit/ExitButton" to="." method="_on_ExitButton_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play/PlayButton" to="." method="_on_PlayButton_down"]
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions/InstructionButton" to="." method="_on_InstructionButton_down"]
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit/ExitButton" to="." method="_on_ExitButton_down"]
 
 

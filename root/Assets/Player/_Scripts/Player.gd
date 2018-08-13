@@ -134,7 +134,7 @@ func win_game():
 	emit_signal("end_game", "You have run out of space!")
 
 func move(delta):
-	var speed = int(velocity.length() * speed_multiplier)
+	var speed = int(velocity.length()) * speed_multiplier
 	GUI.update_value('Speed', speed)
 	if speed >= 300000:
 		win_game()
