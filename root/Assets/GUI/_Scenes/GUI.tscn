@@ -18,6 +18,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_top = 30.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -29,7 +30,7 @@ size_flags_vertical = 1
 alignment = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Margin", "Material", "Pause", "Rect", "Visibility" ]
-label_paths = [ NodePath("VBoxContainer/Top/Margin/TopGUI/VSplitContainer/TextureRect/VSplitContainer/HBoxContainer/LocationLabel"), NodePath("VBoxContainer/Top/Margin/TopGUI/VSplitContainer/TextureRect/VSplitContainer/HBoxContainer2/PlanetMineralLabel"), NodePath("VBoxContainer/Tooltip"), NodePath("Bottom/Margin/Texture/HealthLabel"), NodePath("Bottom/Margin/Texture/MineralLabel"), NodePath("Bottom/Margin2/Texture/RightVBox/FuelLabel"), NodePath("Bottom/Margin2/Texture/RightVBox/SpeedLabel") ]
+label_paths = [ NodePath("VBoxContainer/Top/Margin/TopGUI/VSplitContainer/TextureRect/VSplitContainer/HBoxContainer/LocationLabel"), NodePath("VBoxContainer/Top/Margin/TopGUI/VSplitContainer/TextureRect/VSplitContainer/HBoxContainer2/PlanetMineralLabel"), NodePath("VBoxContainer/Tooltip"), NodePath("Bottom/Margin/Texture/HealthLabel"), NodePath("Bottom/Margin/Texture/MineralLabel"), NodePath("Bottom/Margin2/Texture/RightVBox/FuelLabel"), NodePath("Bottom/Margin2/Texture/RightVBox/SpeedLabel"), NodePath("VBoxContainer/Top/MarginR/TimeLeft") ]
 
 [node name="Tween" type="Tween" parent="." index="0"]
 
@@ -302,14 +303,41 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1336.0
 margin_right = 1920.0
-margin_bottom = 200.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-_sections_unfolded = [ "Grow Direction", "Margin", "Size Flags" ]
+size_flags_vertical = 0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 50
+_sections_unfolded = [ "Grow Direction", "Margin", "Size Flags", "custom_constants" ]
+
+[node name="TimeLeft" type="Label" parent="VBoxContainer/Top/MarginR" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 30.0
+margin_right = 356.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "%s Trillion Years"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 5 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Size Flags", "custom_constants", "custom_fonts" ]
 
 [node name="Tooltip" type="Label" parent="VBoxContainer" index="1"]
 
@@ -345,7 +373,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 242.0
 margin_right = 1920.0
-margin_bottom = 876.0
+margin_bottom = 846.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -360,9 +388,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 880.0
+margin_top = 850.0
 margin_right = 1920.0
-margin_bottom = 1080.0
+margin_bottom = 1050.0
 rect_min_size = Vector2( 0, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false

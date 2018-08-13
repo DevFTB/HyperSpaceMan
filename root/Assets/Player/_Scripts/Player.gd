@@ -1,6 +1,7 @@
 extends Area2D
 
 export (NodePath) var GUI
+export (NodePath) var main
 var initial = {"MaxSpeed": 100, "Acceleration": 100, "Damage": 15, "FuelTank": 100, "Health": 150, "MineSpeed": 5}
 var level_multiplier = {"MaxSpeed": 15, "Acceleration": 10, "Damage": 5, "FuelTank": 20, "Health": 30, "MineSpeed": 1.5}
 export (int) var minerals
@@ -40,7 +41,8 @@ func _ready():
 	health = stats["Health"]
 	GUI = get_node(GUI)
 	GUI.init_labels()
-	GUI.reset_all([location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length()])
+	main = get_node(main)
+	GUI.reset_all([location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length(), main.game_time])
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:

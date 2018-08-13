@@ -5,6 +5,8 @@ extends Node
 # var b = "textvar"
 
 export (int) var game_time
+export (NodePath) var GUI
+
 signal end_game
 
 var time_left
@@ -15,6 +17,7 @@ func _ready():
 
 func _process(delta):
 	time_left = clamp(time_left - delta, 0, INF)
+	get_node(GUI).update_value("TimeLeft", str(int(time_left) + 1))
 	if time_left <= 0:
 		out_of_time()
 
