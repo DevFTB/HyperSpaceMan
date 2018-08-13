@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/PauseMenu/_Scenes/PauseMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=4]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node" index="0"]
 
@@ -22,25 +21,28 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="GUI" parent="CanvasLayer" index="0" instance=ExtResource( 2 )]
 
-margin_left = -1.0
-margin_top = 4.0
-margin_right = 1919.0
-margin_bottom = 1084.0
+[node name="Player" parent="." index="1" groups=[
+"Player",
+] instance=ExtResource( 3 )]
 
-[node name="PauseMenu" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
+GUI = NodePath("../CanvasLayer/GUI")
+minerals = 1000
+fuel = 100.0
+fuel_capacity = 1000
+mining_time = 5
+engine_acceleration = 50
+max_speed = 500
+max_health = 8888888
+friction = 1
+fuel_value = 100
 
-pause_mode = 2
-modulate = Color( 1, 1, 1, 0 )
-_sections_unfolded = [ "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
-player = NodePath("../../Player")
-
-[node name="SolarSystemSpawner" type="Node" parent="." index="1"]
+[node name="SolarSystemSpawner" type="Node" parent="." index="2"]
 
 script = ExtResource( 4 )
 solar_system_scene = ExtResource( 5 )
-grid_size = 2000
-min_distance = 15000
-max_distance = 60000
+grid_size = 1250
+min_distance = 6000
+max_distance = 16000
 min_planets = 5
 max_planets = 8
 min_solar_range = 1150
@@ -48,35 +50,5 @@ max_solar_range = 1750
 solar_system_randomness = 0.7
 sun_names_path = "res://Assets/SolarSystem/sun_names.txt"
 planet_names_path = "res://Assets/SolarSystem/planet_names.txt"
-
-[node name="Player" parent="." index="2" groups=[
-"Player",
-] instance=ExtResource( 6 )]
-
-GUI = NodePath("../CanvasLayer/GUI")
-initial = {
-"Acceleration": 100,
-"Damage": 15,
-"FuelTank": 100,
-"Health": 100,
-"MaxSpeed": 500,
-"MiningSpeed": 10
-}
-level_multiplier = {
-"Acceleration": 25,
-"Damage": 25,
-"FuelTank": 50,
-"Health": 100,
-"MaxSpeed": 150,
-"MiningSpeed": 5
-}
-minerals = 1000
-friction = 1
-bullet_speed = 1000
-fuel_value = 10
-
-[connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
-
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
 

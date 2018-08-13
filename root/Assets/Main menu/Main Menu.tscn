@@ -1,18 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Main menu/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Main.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Main menu/_Graphics/Comp_1.ogv" type="VideoStream" id=3]
-[ext_resource path="res://Assets/Main menu/_Graphics/FontTitle.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Assets/Main menu/play_game.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Main menu/instructions.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Main menu/exit.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Main menu/_Graphics/namecardspaceman.png" type="Texture" id=4]
+[ext_resource path="res://Assets/GUI/_Graphics/Fonts/BottomGUI/GUIBottomFont.tres" type="DynamicFont" id=5]
 
 [node name="Main Menu" type="Node"]
 
 script = ExtResource( 1 )
 game_scene = ExtResource( 2 )
-instruction_scene = null
 
 [node name="VideoPlayer" type="VideoPlayer" parent="." index="0"]
 
@@ -77,7 +74,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1924.0
+margin_right = 1919.0
 margin_bottom = 1080.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -98,7 +95,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
 margin_top = 30.0
-margin_right = 1894.0
+margin_right = 1889.0
 margin_bottom = 1050.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -115,41 +112,35 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1886.0
-margin_bottom = 468.0
+margin_right = 1881.0
+margin_bottom = 516.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 400
-custom_constants/margin_left = 400
+custom_constants/margin_right = 200
+custom_constants/margin_left = 200
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
-[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" index="0"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 400.0
-margin_right = 1486.0
-margin_bottom = 468.0
+margin_left = 200.0
+margin_right = 1681.0
+margin_bottom = 516.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
-text = "Hyper Space Man"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+size_flags_horizontal = 1
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Axis Stretch", "Margin", "Size Flags" ]
 
 [node name="Bottom" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" index="1"]
 
@@ -157,8 +148,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 472.0
-margin_right = 1886.0
+margin_top = 520.0
+margin_right = 1881.0
 margin_bottom = 1020.0
 rect_min_size = Vector2( 0, 500 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -176,8 +167,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 623.0
-margin_bottom = 548.0
+margin_right = 624.0
+margin_bottom = 500.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -192,9 +183,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 627.0
-margin_right = 1259.0
-margin_bottom = 548.0
+margin_left = 628.0
+margin_right = 1252.0
+margin_bottom = 500.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -204,34 +195,15 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Play" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="0"]
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 632.0
-margin_bottom = 180.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_top = 10
-custom_constants/margin_bottom = 10
-_sections_unfolded = [ "Anchor", "Size Flags", "custom_constants" ]
-
-[node name="PlayButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 10.0
-margin_right = 632.0
-margin_bottom = 170.0
+margin_right = 624.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -239,43 +211,26 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-_sections_unfolded = [ "Anchor", "Margin", "Textures" ]
+text = "Play Game"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="Instructions" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 184.0
-margin_right = 632.0
-margin_bottom = 364.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_top = 10
-custom_constants/margin_bottom = 10
-_sections_unfolded = [ "Size Flags", "Visibility", "custom_constants" ]
-
-[node name="InstructionButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions" index="0"]
+[node name="Instructions" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 10.0
-margin_right = 632.0
-margin_bottom = 170.0
+margin_top = 154.0
+margin_right = 624.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 150 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -283,43 +238,26 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-_sections_unfolded = [ "Textures" ]
+text = "Instructions"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="Exit" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="2"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 368.0
-margin_right = 632.0
-margin_bottom = 548.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_top = 10
-custom_constants/margin_bottom = 10
-_sections_unfolded = [ "Size Flags", "Visibility", "custom_constants" ]
-
-[node name="ExitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit" index="0"]
+[node name="Exit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_top = 10.0
-margin_right = 632.0
-margin_bottom = 170.0
+margin_top = 308.0
+margin_right = 624.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 150 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -327,12 +265,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-_sections_unfolded = [ "Textures" ]
+text = "Exit"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "Size Flags", "Theme", "custom_fonts" ]
 
 [node name="Right" type="Container" parent="CanvasLayer/MarginContainer/VBoxContainer/Bottom" index="2"]
 
@@ -340,9 +281,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1263.0
-margin_right = 1886.0
-margin_bottom = 548.0
+margin_left = 1256.0
+margin_right = 1881.0
+margin_bottom = 500.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -351,10 +292,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play/PlayButton" to="." method="_on_PlayButton_down"]
-
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Instructions/InstructionButton" to="." method="_on_InstructionButton_down"]
-
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Exit/ExitButton" to="." method="_on_ExitButton_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/Bottom/VBoxContainer/Play" to="." method="_on_Play_button_down"]
 
 

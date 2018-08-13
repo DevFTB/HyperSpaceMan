@@ -23,9 +23,4 @@ script = ExtResource( 2 )
 
 frames = SubResource( 1 )
 
-[node name="Path2D" parent="." index="3"]
-
-position = Vector2( -5.83799, 2.97585 )
-scale = Vector2( 1.44228, 1.39726 )
-
 
