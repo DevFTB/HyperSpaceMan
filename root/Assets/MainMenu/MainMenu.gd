@@ -8,6 +8,7 @@ onready var game_scene = preload("res://Assets/Main.tscn")
 onready var instruction_scene = preload("res://Assets/Instructions/Instructions.tscn")
 
 func _ready():
+	OS.set_window_maximized(true)
 	fade_in()
 
 func _on_ExitButton_down():
