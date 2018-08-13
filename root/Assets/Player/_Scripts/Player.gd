@@ -41,7 +41,8 @@ func _ready():
 	health = stats["Health"]
 	GUI = get_node(GUI)
 	GUI.init_labels()
-	GUI.reset_all([space_location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length()])
+	var main = get_parent()
+	GUI.reset_all([space_location, "None", tooltip, [health, stats["Health"]], minerals, [fuel, stats["FuelTank"]], velocity.length(), main.game_time])
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:
@@ -74,6 +75,13 @@ func _process(delta):
 	
 	if mining:
 		mine_step(delta)
+		
+	if velocity.length() * speed_multiplier >= 200000 && $Sprite.animation != "Lightspeed":
+		print("ran ls ")
+		$Sprite.play("Lightspeed")
+	elif velocity.length() * speed_multiplier < 200000 && $Sprite.animation != "Move":
+		print("ran move")
+		$Sprite.play("Move")
 		
 	move(delta)
 	

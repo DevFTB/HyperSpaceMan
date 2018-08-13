@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/GUI/_Scenes/GUI.tscn" type="PackedScene" id=2]
@@ -8,11 +8,13 @@
 [ext_resource path="res://Assets/SolarSystem/_Scripts/SolarSystemSpawner.gd" type="Script" id=6]
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Player/_Scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/game music.wav" type="AudioStream" id=9]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 game_time = 1000
+GUI = NodePath("/root/Main/CanvasLayer/GUI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
@@ -85,15 +87,24 @@ solar_system_randomness = 0.3
 ] instance=ExtResource( 8 )]
 
 GUI = NodePath("../CanvasLayer/GUI")
+main = NodePath("/root/Main")
 friction = 6
 regen_per_second = 1
-speed_multiplier = 100
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 9 )
+volume_db = 5.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
-[connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
-
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
+
+[connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
