@@ -8,16 +8,11 @@ export (int) var min_planets
 export (int) var max_planets
 export (int) var min_solar_range
 export (int) var max_solar_range
-#solar system randomness within grid cells
+
 export (float) var solar_system_randomness
 export(String, FILE, "*.txt") var sun_names_path
 export(String, FILE, "*.txt") var planet_names_path
-#export (Texture) var sprite6
-#var planet_sprites
-#var sun_sprites
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
 var sun_grid = {}
 var explored_grid = {}
 var start_pos
@@ -28,8 +23,6 @@ var sun_names = []
 var planet_names = []
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
 	randomize()
 	start_pos = get_node("/root/Main/Player").position
 	game_time = get_node("/root/Main").game_time
