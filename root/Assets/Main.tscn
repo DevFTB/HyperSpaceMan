@@ -18,7 +18,6 @@ GUI = NodePath("/root/Main/CanvasLayer/GUI")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -108,6 +107,8 @@ bus = "Master"
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
 
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
+
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_unpause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
 
