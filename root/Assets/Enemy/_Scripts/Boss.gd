@@ -30,8 +30,6 @@ func shoot(direction):
 		
 		var bullet_direction = Vector2(1,0).rotated(angle) 
 		
-		print(bullet_direction)
-		
 		new_bullet.set_direction_and_speed(bullet_direction , follow_velocity.length() + preset.bullet_speed)
 		
 		get_parent().add_child(new_bullet)

@@ -64,10 +64,12 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		accelerate(delta)
 		$Particles2D.emitting = true
-		$Particles2D.speed_scale = stats["Acceleration"]/15
+		$Particles2D.show()
+		$Particles2D.speed_scale = stats["Acceleration"]/20
 	else:
 		velocity -= velocity.normalized() * friction * delta
 		$Particles2D.emitting = false
+		$Particles2D.hide()
 		
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_shoot:
 		shoot()
@@ -76,10 +78,8 @@ func _process(delta):
 		mine_step(delta)
 		
 	if velocity.length() * speed_multiplier >= 200000 && $Sprite.animation != "Lightspeed":
-		print("ran ls ")
 		$Sprite.play("Lightspeed")
 	elif velocity.length() * speed_multiplier < 200000 && $Sprite.animation != "Move":
-		print("ran move")
 		$Sprite.play("Move")
 		
 	move(delta)
@@ -87,7 +87,7 @@ func _process(delta):
 	if sun_position and (global_position - sun_position).length() > 1750:
 		sun_position = false
 		update_location(space_location)
-	change_health(regen_per_second * delta)
+	change_health(regen_per_second * delta * (levels["Health"] + 4)/4)
 		
 func mine_step(delta):
 	velocity -= velocity.normalized() * friction
@@ -126,7 +126,7 @@ func accelerate(delta):
 	velocity += acceleration
 	if velocity.length() >= stats["MaxSpeed"]:
 		velocity = velocity.normalized() * stats["MaxSpeed"]
-	change_fuel(-fuel_cost)
+	change_fuel(-fuel_cost * delta * stats["Acceleration"])
 	if not $MoveSoundPlayer.playing:
     	$MoveSoundPlayer.play()
 
@@ -248,8 +248,3 @@ func _on_PauseMenu_pause():
 		
 func update_location(sun_name, planet_name=""):
 	GUI.update_value("Location", sun_name + " " + planet_name)
-
-
-
-func _on_PauseMenu_unpause():
-	space_pressed = false

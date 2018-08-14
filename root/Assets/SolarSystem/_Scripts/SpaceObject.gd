@@ -87,7 +87,6 @@ func get_mine_time(mine_speed):
 
 func mined(mine_level):
 	minerals = 0
-
 	match mine_level:
 		8:
 			$IDontFeelSoGood.emitting = true
@@ -101,7 +100,8 @@ func mined(mine_level):
 		5, 6: 
 			$Explode.emitting = true
 			$Sprite.play("debris")
-		_:
+		_:	
+			$Sprite.stop()
 			fade($Sprite, 1 - 0.1 * mine_level)
 		
 func fade(sprite, alpha):

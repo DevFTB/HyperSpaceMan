@@ -61,7 +61,6 @@ func _ready():
 					for k in range(0, 6):
 						building_array.append("res://Assets/SolarSystem/_Graphics/Planets/t" + str(i) + "p" + str(j) + "/t" + str(i) + "0" + str(k) + ".png")
 				planet_sprite_array.append(building_array)
-	print(planet_sprite_array)
 	sun_sprite_array = [["res://Assets/SolarSystem/_Graphics/Suns/s1/sun00.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun01.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun02.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun03.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun04.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun05.png"]]
 
 	start_pos = get_node("/root/Main/Player").position

@@ -3,7 +3,7 @@ export (float) var sun_spawn_area_scale
 
 
 func _spawn_enemies():
-	if rand_range(0, 1) < 0.2:
+	if rand_range(0, 1) < 0.35:
 		var new_boss = preload("res://Assets/Enemy/_Scenes/Boss.tscn").instance()
 	
 		var new_preset = preload("res://Assets/Enemy/Resources/Presets/Boss/Boss.tres")

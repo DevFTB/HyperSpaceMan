@@ -8,7 +8,7 @@ export (NodePath) var player
 export (Array, NodePath) var upgrade_paths
 export (NodePath) var mineral_label
 
-var costs = [20, 50, 100, 200, 500, 1000, 2000, 3000,  5000, "Max"]
+var costs = [20, 50, 100, 200, 400, 800, 1600, 3000, "Max"]
 var upgrade_names = ["MaxSpeed", "Acceleration", "Damage", "FuelTank", "Health", "MineSpeed"]
 var upgrades
 var enabled = false
@@ -33,13 +33,18 @@ func init_labels():
 	reset_all()
 	
 func _input(ev):
-	if ev is InputEventKey and ev.scancode == KEY_ESCAPE and not ev.echo:
-		button_down = !button_down
-		if button_down:
+	if ev is InputEventKey and not ev.echo:
+		if ev.scancode == KEY_ESCAPE:
+			button_down = !button_down
+			if button_down:
+				if get_tree().paused:
+					unpause()
+				else:
+					pause()
+		elif ev.scancode == KEY_SPACE:
 			if get_tree().paused:
-				unpause()
-			else:
-				pause()
+				player.space_pressed = !player.space_pressed
+			
 	
 func unpause():
 	emit_signal('unpause')	

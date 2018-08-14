@@ -21,7 +21,7 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 radius = 6.49603
 
-[node name="Bullet" type="Area2D" index="0"]
+[node name="Bullet" type="Area2D"]
 
 position = Vector2( 0, -0.0275836 )
 scale = Vector2( 0.5, 0.5 )
@@ -39,7 +39,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 [node name="BulletTimer" type="Timer" parent="." index="0"]
 
 process_mode = 1
-wait_time = 10.0
+wait_time = 7.0
 one_shot = false
 autostart = true
 
@@ -48,7 +48,6 @@ autostart = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 3
 playing = true
 _sections_unfolded = [ "Transform" ]
 

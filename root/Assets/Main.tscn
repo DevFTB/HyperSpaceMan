@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/game music.wav" type="AudioStream" id=9]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -76,7 +76,6 @@ _sections_unfolded = [ "Region" ]
 z_index = 1
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 GUI = NodePath("../CanvasLayer/GUI")
-minerals = 100
 friction = 6
 regen_per_second = 2
 
@@ -96,7 +95,7 @@ solar_system_randomness = 0.3
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 9 )
-volume_db = 5.0
+volume_db = 2.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
