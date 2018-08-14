@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Enemy/_Graphics/Bosses/boss.png" type="Texture" id=10]
 [ext_resource path="res://Assets/SolarSystem/_Graphics/Fuel Station/space_station.png" type="Texture" id=11]
 
-[node name="Instructions" type="MarginContainer"]
+[node name="Instructions" type="MarginContainer" index="0"]
 
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
@@ -500,7 +500,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
-text = "Stars: Stars are the centre of solar systems. They are similar to planets but they can be harder to get to and hold a lot more minerals. 
+text = "Stars: Stars are the centre of star systems. They are similar to planets but they can be harder to get to and hold a lot more minerals. 
 WARNING: they take a LONG time to mine when starting off.
 
 
