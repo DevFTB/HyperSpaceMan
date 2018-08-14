@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/SolarSystem/_Scenes/SolarSystem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/game music.wav" type="AudioStream" id=9]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 game_time = 1000
@@ -76,8 +76,8 @@ _sections_unfolded = [ "Region" ]
 z_index = 1
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 GUI = NodePath("../CanvasLayer/GUI")
+minerals = 100
 friction = 6
-regen_per_second = 2
 
 [node name="SolarSystemSpawner" type="Node" parent="." index="2"]
 
@@ -103,13 +103,13 @@ bus = "Master"
 
 [connection signal="end_game" from="." to="CanvasLayer/EndGame" method="_on_Main_end_game"]
 
-[connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
-
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_pause"]
 
-[connection signal="unpause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_unpause"]
+[connection signal="pause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_pause"]
 
 [connection signal="unpause" from="CanvasLayer/PauseMenu" to="CanvasLayer/GUI" method="_on_unpause"]
+
+[connection signal="unpause" from="CanvasLayer/PauseMenu" to="Player" method="_on_PauseMenu_unpause"]
 
 [connection signal="end_game" from="Player" to="CanvasLayer/EndGame" method="_on_Player_end_game"]
 

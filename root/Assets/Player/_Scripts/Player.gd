@@ -75,8 +75,7 @@ func _process(delta):
 		shoot()
 	
 	if mining:
-		mine_step(delta)
-		
+		mine_step(delta)		
 	if velocity.length() * speed_multiplier >= 200000 && $Sprite.animation != "Lightspeed":
 		$Sprite.play("Lightspeed")
 	elif velocity.length() * speed_multiplier < 200000 && $Sprite.animation != "Move":
