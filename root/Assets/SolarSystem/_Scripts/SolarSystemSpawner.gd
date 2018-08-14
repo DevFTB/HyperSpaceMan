@@ -23,7 +23,7 @@ var explored_grid = {}
 var start_pos
 var game_time
 var planet_sprite_array
-var sun_sprite_array
+var sun_sprite_array 
 var sun_names_temp = ["Kepler", "HD", "2MASS", "KOI", "WASP", "K2", "HIP", "EPIC", "KELT", "Sol", "CoRoT", "Gliese", "OGLE", "Qatar", "HAT", "GJ", "KELT"]
 var sun_names = []
 	
@@ -49,11 +49,25 @@ func _ready():
 	# Initialization here
 	randomize()
 	generate_sun_names()
+	planet_sprite_array = []
+	for i in range (1, 3):
+		for j in range(1, 6):
+			if not (i == 2 and j == 5):
+				var building_array = []
+				if i == 1:
+					for k in range(0, 7):
+						building_array.append("res://Assets/SolarSystem/_Graphics/Planets/t" + str(i) + "p" + str(j) + "/t" + str(i) + "0" + str(k) + ".png")
+				else:
+					for k in range(0, 6):
+						building_array.append("res://Assets/SolarSystem/_Graphics/Planets/t" + str(i) + "p" + str(j) + "/t" + str(i) + "0" + str(k) + ".png")
+				planet_sprite_array.append(building_array)
+	print(planet_sprite_array)
+	sun_sprite_array = [["res://Assets/SolarSystem/_Graphics/Suns/s1/sun00.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun01.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun02.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun03.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun04.png", "res://Assets/SolarSystem/_Graphics/Suns/s1/sun05.png"]]
 
 	start_pos = get_node("/root/Main/Player").position
 	game_time = get_node("/root/Main").game_time
-	planet_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Planets", 2)
-	sun_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Suns", 2)
+	#planet_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Planets", 2)
+	#sun_sprite_array = build_animations("res://Assets/SolarSystem/_Graphics/Suns", 2)
 	explored_grid[[0,0]] = true
 	
 	var solar_system = solar_system_scene.instance()
